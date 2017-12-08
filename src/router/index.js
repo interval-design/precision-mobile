@@ -10,6 +10,11 @@ export default new Router({
       path: '/',
       name: 'index',
       component: (resolve) => require(["@/views/index"],resolve)
-    }
+    },
+    {
+      path: '/invite-code/:cardId',
+      name: 'InviteCode',
+      component: (resolve) => require(["@/views/InviteCode"],resolve)
+    },
   ]
 })

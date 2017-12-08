@@ -28,9 +28,7 @@
         default: 'middle',
         validator: function (value) {
           return [
-            'huge',
             'big',
-            'middle',
             'small',
           ].indexOf(value) !== -1
         }
@@ -71,27 +69,23 @@
   @import '../styles/variable';
 
   .itv-base-button {
-    padding: 0 16px;
-    border-radius: 2px;
-    outline: none;
-    font-size: 14px;
-    line-height: 1;
-    cursor: pointer;
+    padding: 0 32px;
+    height: 72px;
     border: 1px solid $font;
-    &--huge {
-      padding: 0 40px;
-      height: 44px;
-    }
+    border-radius: 2px;
+    font-size: 28px;
+    line-height: 1;
+    outline: none;
+    cursor: pointer;
     &--big {
-      height: 36px;
+      padding: 0 64px;
+      font-size: 32px;
+      height: 80px;
     }
-    &--middle {
-      height: 32px;
+    &--small{
+      font-size: 24px;
+      height: 48px;
     }
-    &--small {
-      height: 28px;
-    }
-
     &--primary,
     &--success,
     &--error,

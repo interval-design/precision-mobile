@@ -1,31 +1,20 @@
 <template>
   <div class="it-main">
     <transition name="fade" mode="out-in">
-      <router-view></router-view>
+      <router-view class="itv-view"></router-view>
     </transition>
   </div>
 </template>
 
 <script>
-  import axios from "axios";
+  import ApiUser from './api/user';
 
   export default {
     name: 'app',
     created() {
-      document.body.addEventListener('touchstart', function() {});
-      // response 拦截器
-      axios.interceptors.response.use(
-        response => {
-          // token过期
-          if (response.data.code === 1101) {
-            // location.reload();
-          }
-          return response;
-        },
-        error => {
-          return Promise.reject(error.response.data.message)   // 返回接口返回的错误信息
-        }
-      );
+      document.body.addEventListener('touchstart',()=>{});
+      this.initToken();
+
       // title更新事件
       this.$bus.$on(this.$bus.EVENTS.TITLE, (title) => {
         this.$bus.title = title;
@@ -36,21 +25,50 @@
       });
 
       //  用户更新事件
-      this.$bus.$on(this.$bus.EVENTS.USER_UPDATE, () => {
+      this.$bus.$on(this.$bus.EVENTS.USER_UPDATE, (callback) => {
+        this.getCurrentUser(callback)
       });
     },
     methods: {
-      /**
-       * TODO:获取用户信息
-       */
-      getCurrentUser() {
+      initToken() {
+        ApiUser.getWexinToken({url: location.href.split('#')[0]}).then(res => {
+          let data = res.data;
+          if (data.code === 0) {
+            wx.config({
+              debug: false,
+              appId: data.data.appid,
+              timestamp: data.data.timestamp,
+              nonceStr: data.data.noncestr,
+              signature: data.data.signature,
+              jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'addCard']
+            });
+          }
+        });
       },
+
+      /**
+       * TODO:获取当前用户详情
+       * @param callback
+       */
+      getCurrentUser(callback) {},
+
+      /**
+       * 获取当前微信用户详情
+       */
+      getCurrentWeixinUser(){
+        ApiUser.getCurrentWeixinUser().then(res=>{
+          if(res.data.code === 0){
+            this.$bus.weixinUser = res.data.data.wx_user;
+          }
+        })
+      }
     }
   }
 </script>
 
 <style lang="scss">
   @import "styles/custom.scss";
+
   .it-main {
     position: relative;
     background-color: $bg;
@@ -61,5 +79,16 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+  }
+  .itv-view {
+    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    .bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
   }
 </style>

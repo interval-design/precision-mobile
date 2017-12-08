@@ -1,25 +1,55 @@
 <template>
-  <transition name="page">
-    <div class="itv-base-dialog" v-show="visible">
-      <div class="itv-base-dialog-wrap" :style="{width: width}">
-        <header class="itv-base-dialog-header" v-if="!auto">
-          <span class="itv-base-dialog-close itv-icon itv-icon-close" @click="close"></span>
+  <div class="itv-base-dialog">
+    <transition name="fade">
+      <div class="itv-base-dialog-mask" v-show="visible" @click="mask"></div>
+    </transition>
+    <transition name="fade">
+      <div class="itv-base-dialog-wrap" v-show="visible" :style="styles" >
+        <header class="itv-base-dialog-header">
+          <slot name="title" v-if="title"></slot>
         </header>
-        <section class="itv-base-dialog-body">
+        <div class="itv-base-dialog-body">
           <slot></slot>
-        </section>
-        <footer>
+        </div>
+        <footer class="itv-base-dialog-footer">
           <slot name="footer"></slot>
+          <span @click="close">
+            <slot name="close"></slot>
+          </span>
         </footer>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </div>
 </template>
 
 <script>
   export default {
     name: 'BaseDialog',
-    props: ['visible', 'width', 'auto', 'fn'], // dialog是否显示
+    props: {
+      visible: {
+        type: Boolean
+      },
+      title: {
+        type: String
+      },
+      width: {
+        type: String,
+        default: '100%'
+      },
+      top: {
+        type: String,
+        default: '20%'
+      }
+    },
+    computed: {
+      styles() {
+        let style = {
+          width: this.width,
+          top: this.top
+        };
+        return style;
+      }
+    },
     data() {
       return {
         timer: null
@@ -28,23 +58,9 @@
     methods: {
       close() {
         this.$emit('update:visible', false)
-      }
-    },
-    watch: {
-      visible(newVal, oldVal) {
-        if (this.auto) {
-          if (newVal) {
-            let _this = this;
-            this.timer = setTimeout(
-              () => {
-                _this.close();
-                _this.fn();
-              }, 1000
-            );
-          } else {
-            this.timer = null;
-          }
-        }
+      },
+      mask() {
+        // some
       }
     }
   }
@@ -53,26 +69,25 @@
   @import '../styles/variable.scss';
 
   .itv-base-dialog {
-    transform: scale(1);
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, .3);
-    z-index: 9999;
+    &-mask {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, .7);
+      z-index: 9999;
+    }
     &-wrap {
+      position: absolute;
+      left: 50%;
+      padding: 0 56px;
       box-sizing: border-box;
-      margin: 10vh auto 0;
-      border: 1px solid $border;
       border-radius: 2px;
-      width: 400px;
-      background: #fff;
-      transition: .2s ease;
-      transform: translateY(0);
+      z-index: 9999;
+      transform: translateX(-50%);
     }
     &-header {
-      position: relative;
       height: 44px;
     }
     &-close {
@@ -81,9 +96,6 @@
       right: 16px;
       cursor: pointer;
 
-    }
-    &-body {
-      padding: 0 24px;
     }
   }
 </style>
