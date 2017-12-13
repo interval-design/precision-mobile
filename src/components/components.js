@@ -9,13 +9,15 @@ import BaseDialog from './BaseDialog.vue'
 import BaseInput from './BaseInput.vue'
 import BaseCell from './BaseCell.vue'
 import BaseNumber from './BaseNumber.vue'
+import BaseLeftDelete from './BaseLeftDelete.vue'
 
 const PRECISION = {
   BaseButton,
   BaseDialog,
   BaseInput,
   BaseCell,
-  BaseNumber
+  BaseNumber,
+  BaseLeftDelete
 };
 
 export default () => {

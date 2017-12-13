@@ -32,4 +32,24 @@ export default {
   creatdAddress(params) {
     return axios.post('/api/addresses/', params);
   },
+
+  /**
+   * 编辑收货地址
+   * @param addressId
+   * @param params
+   * @returns {AxiosPromise<any>}
+   */
+  editAddress(addressId,params){
+    return axios.put(`/api/addresses/${addressId}/`,params);
+  },
+
+  /**
+   * 删除收货地址
+   * @param addressId
+   * @param params
+   * @returns {AxiosPromise}
+   */
+  delAddress(addressId, params){
+    return axios.delete(`/api/addresses/${addressId}/`,params);
+  }
 }

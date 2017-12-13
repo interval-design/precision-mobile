@@ -1,18 +1,20 @@
 <template>
   <div class="itv-address-group">
-    <div class="itv-address itv-bg-white" v-for="address in addresses" @click="selected(address)">
-      <icon-svg :icon-class="$bus.address.id === address.id ? 'radio-checked':'radio'"></icon-svg>
-      <div class="itv-address-info">
-        <div class="itv-address-info-content">
-          <p>{{ address.province }} {{ address.city }} {{ address.district }} {{ address.street }}</p>
-          <div class="consignee">
-            <span>{{ address.consignee }}</span>
-            <span>{{ address.phone }}</span>
+    <base-left-delete :value="address.id" @del="delAddress" v-for="address in addresses">
+      <div class="itv-address itv-bg-white" @click="selected(address)">
+        <icon-svg :icon-class="$bus.address.id === address.id ? 'radio-checked':'radio'"></icon-svg>
+        <div class="itv-address-info">
+          <div class="itv-address-info-content">
+            <p>{{ address.province }} {{ address.city }} {{ address.district }} {{ address.street }}</p>
+            <div class="consignee">
+              <span>{{ address.consignee }}</span>
+              <span>{{ address.phone }}</span>
+            </div>
           </div>
         </div>
+        <icon-svg icon-class="edit" @click.native.stop="edit(address)"></icon-svg>
       </div>
-      <icon-svg icon-class="edit" @click.native.stop="edit(address)"></icon-svg>
-    </div>
+    </base-left-delete>
     <base-button type="info" size="big" width="100%" fixed="bottom" @click="$router.push({name:'AddressAdd'})">添加新地址
     </base-button>
   </div>
@@ -39,7 +41,9 @@
         ApiBuy.getAddresses().then(res => {
           if (res.data.code === 0) {
             this.addresses = res.data.data.addresses;
-            this.$bus.address = res.data.data.addresses[0];
+            if(!this.$bus.address){
+              this.$bus.address = res.data.data.addresses[0];
+            }
           }
         })
       },
@@ -60,6 +64,18 @@
       edit(address){
         this.$bus.address = address;
         this.$router.push({name:'AddressEdit'});
+      },
+
+      /**
+       * 删除地址
+       * @param id
+       */
+      delAddress(id){
+        ApiBuy.delAddress(id).then(res=>{
+          if(res.data.code === 0){
+           this.loadAddresses();
+          }
+        })
       },
     },
   }

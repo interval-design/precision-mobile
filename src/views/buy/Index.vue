@@ -88,6 +88,8 @@
         ApiBuy.getInviteCodeGroup(this.$bus.encryptCode).then(res => {
           if (res.data.code === 0) {
             this.details = res.data.data.invite_code_group;
+          } else {
+            this.$router.replace({name:'BuyError'});
           }
         })
       }

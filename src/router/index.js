@@ -56,6 +56,11 @@ export default new Router({
       component: (resolve) => require(["@/views/buy/Index"], resolve)
     },
     {
+      path: '/buy-error',
+      name: 'BuyError',
+      component: (resolve) => require(["@/views/buy/Error"], resolve)
+    },
+    {
       path: '/address',
       name: 'Address',
       component: (resolve) => require(["@/views/buy/AddressSelect"], resolve)

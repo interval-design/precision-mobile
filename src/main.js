@@ -8,6 +8,10 @@ import 'swiper/dist/css/swiper.css'
 import * as Cookies from 'tiny-cookie'
 import CustomComponents from './components/components'
 import './icons'
+import AlloyFinger from 'alloyfinger'
+import AlloyFingerVue from '../node_modules/alloyfinger/vue/alloy_finger.vue.js'
+import {CitySelect} from 'vue-ydui/dist/lib.px/cityselect';
+import 'vue-ydui/dist/ydui.base.css';
 
 Vue.config.productionTip = false;
 Vue.prototype.$bus = Bus;
@@ -15,6 +19,8 @@ Vue.prototype.$cookies = Cookies;
 Vue.use(Cookies);
 Vue.use(VueAwesomeSwiper);
 Vue.use(CustomComponents);
+Vue.use(AlloyFingerVue,{ AlloyFinger:  AlloyFinger });
+Vue.component(CitySelect.name, CitySelect);
 
 router.afterEach((to, from, next) => {;
   setTimeout(() => {

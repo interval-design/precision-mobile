@@ -1,6 +1,6 @@
 <template>
   <div class="itv-bind-success">
-    <img src="../assets/images/pic_phone_done.png" alt="phone_done">
+    <img src="../assets/images/pic-phone-done.png" alt="phone-done">
     <p>恭喜您绑定成功</p>
     <base-button @click="$router.push({name:'Index'})">去首页</base-button>
   </div>
@@ -22,7 +22,7 @@
   .itv-bind-success{
     text-align: center;
     img{
-      padding-top: 165px;
+      padding-top: 84px;
     }
     p{
       padding: 48px 0 72px;
