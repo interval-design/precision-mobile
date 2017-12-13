@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="42px" height="42px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>nav_icon_brand_pressed</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="21" cy="21" r="21"></circle>
+        <circle id="path-2" cx="21" cy="21" r="21"></circle>
+    </defs>
+    <g id="微信端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="nav_icon_brand_pressed">
+            <g id="Oval-4-Copy-2">
+                <use fill="#3C90EF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                <circle stroke="#3C90EF" stroke-width="2" cx="21" cy="21" r="20"></circle>
+            </g>
+            <g id="Group-3">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <g id="Mask"></g>
+                <g mask="url(#mask-3)" stroke-linecap="round">
+                    <g transform="translate(-6.000000, 13.000000)">
+                        <g id="Group-2-Copy" stroke="none" stroke-width="1" fill-rule="evenodd">
+                            <path d="M15.3870968,3.42275042 C17.9991039,1.14091681 20.7417115,1.10289829e-16 23.6149194,0 C27.9247312,0 32.234543,4.56366723 34.1935484,6.46519525 C36.1525538,8.36672326 39.6787634,11.7894737 44.3803763,11.7894737 C47.5147849,11.7894737 50.3879928,10.6485569 53,8.36672326" id="Path-2" stroke="#FFFFFF" stroke-width="2"></path>
+                            <path d="M0,7.63327674 C2.61200717,5.35144312 5.3546147,4.21052632 8.22782258,4.21052632 C12.5376344,4.21052632 16.8474462,8.77419355 18.8064516,10.6757216 C20.765457,12.5772496 24.2916667,16 28.9932796,16 C32.1276882,16 35.0008961,14.8590832 37.6129032,12.5772496" id="Path-2-Copy" stroke="#FFFFFF" stroke-width="2"></path>
+                        </g>
+                        <path d="M25,12 L30,6" id="Path-4-Copy" stroke="#FFFFFF" stroke-width="2"></path>
+                        <path d="M22,10 L27,4" id="Path-4-Copy-4" stroke="#FFFFFF" stroke-width="2"></path>
+                        <path d="M29,13 L32,9" id="Path-4-Copy-2" stroke="#FFFFFF" stroke-width="2"></path>
+                        <path d="M20,7 L23,3" id="Path-4-Copy-3" stroke="#FFFFFF" stroke-width="2"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

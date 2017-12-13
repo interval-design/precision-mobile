@@ -5,13 +5,13 @@
 import axios from 'axios'
 
 export default {
+
   /**
-   * 获取微信配置
-   * @param {*} params
-   * @returns {AxiosPromise<any>}
+   * 获取当前用户详情
+   * @returns {*}
    */
-  getWexinToken(params) {
-    return axios.get("/api/wx/js_sdk_config/", {params: params});
+  getCurrentUser(params){
+    return axios.get('/api/current_user/',params);
   },
 
   /**
@@ -24,10 +24,28 @@ export default {
   },
 
   /**
-   * 获取添加微信卡券配置参数
+   * 获取图形验证码
+   * @param params
+   * @returns {*}
+   */
+  getCaptcha(params) {
+    return axios.get('/api/captcha/', {params: params});
+  },
+
+  /**
+   * 发送微信用户绑定手机验证码短信
    * @returns {AxiosPromise<any>}
    */
-  cardConfig() {
-    return axios.get(`/api/wx/card/${cardId}/add_card_config/`, {params: params});
+  sendBind(params) {
+    return axios.post('/api/sms/bind/', params);
+  },
+
+  /**
+   * 微信用户绑定手机
+   * @param params
+   * @returns {AxiosPromise<any>}
+   */
+  bind(params) {
+    return axios.put('/api/user/bind/', params);
   }
 }

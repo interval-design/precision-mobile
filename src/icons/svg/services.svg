@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="41px" viewBox="0 0 44 41" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>nav_icon_shop_default</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="个人中心" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-447.000000, -1248.000000)" stroke-linecap="round">
+        <g id="nav_icon_shop_default" transform="translate(448.000000, 1249.000000)" stroke="#3C90EF" stroke-width="2">
+            <path d="M6,6 L38.99,6 C40.966,6 42.406,7.624 41.897,9.534 L37.501,25.892 C37.15,27.209 35.957,28 34.594,28 L9,28" id="Shape"></path>
+            <path d="M0,0 L1.863,0 C3.372,0 4.646,0.869 4.841,2.365 L8.659,31.51 C8.854,33.006 10.128,34 11.637,34 L37,34" id="Shape"></path>
+            <path d="M12,39 L16,39" id="Shape"></path>
+            <path d="M30,39 L34,39" id="Shape"></path>
+        </g>
+    </g>
+</svg>

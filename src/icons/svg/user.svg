@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>nav_icon_user_default</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="个人中心" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-636.000000, -1249.000000)" stroke-linecap="round">
+        <g id="nav_icon_user_default" transform="translate(637.000000, 1250.000000)" stroke="#3C90EF" stroke-width="2">
+            <path d="M35.237,38 C37.177,38 38.484,36.068 37.83,34.242 C35.822,28.632 31.302,24.225 25.625,22.362" id="Shape"></path>
+            <path d="M12.375,22.363 C6.698,24.226 2.178,28.633 0.17,34.243 C-0.484,36.069 0.823,38.001 2.763,38.001" id="Shape"></path>
+            <path d="M31,12 C31,18.627 25.627,24 19,24 C12.373,24 7,18.627 7,12 C7,5.373 12.373,0 19,0 C25.627,0 31,5.373 31,12 L31,12 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

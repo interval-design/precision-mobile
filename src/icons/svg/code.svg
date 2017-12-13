@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>register_icon_code_pressed</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="改绑手机-验证旧手机" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-83.000000, -668.000000)">
+        <g id="register_icon_code_pressed" transform="translate(83.000000, 668.000000)" stroke="#3C90EF" stroke-width="2">
+            <path d="M35,18 C35,8.61088475 27.3891153,1 18,1 C8.61088475,1 1,8.61088475 1,18 C1,27.3891153 8.61088475,35 18,35 C27.3891153,35 35,27.3891153 35,18 Z" id="Shape"></path>
+            <path d="M18,4.5 L18,16.65 C18,17.3952 18.6048,18 19.35,18 L29.7,18" id="Shape"></path>
+        </g>
+    </g>
+</svg>

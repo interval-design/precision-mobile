@@ -12,7 +12,11 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        target: 'http://precision.interval.im/',
+        target: 'http://precision-m.interval.im/',
+        changeOrigin: true
+      },
+      '/extensions': {
+        target: 'http://precision-m.interval.im/',
         changeOrigin: true
       }
     },

@@ -1,5 +1,5 @@
 <template>
-  <button class="itv-base-button" :class="classes" @click="_click">
+  <button class="itv-base-button" :class="classes" @click="_click" :style="{'width':width}">
     <slot></slot>
   </button>
 </template>
@@ -25,18 +25,30 @@
       },
       size: {
         type: String,
-        default: 'middle',
+        default: 'default',
         validator: function (value) {
           return [
+            'default',
             'big',
             'small',
           ].indexOf(value) !== -1
         }
       },
-      // 按钮形式，线框式/填充式，默认填充式
       line: {
         type: Boolean,
         default: false
+      },
+      width:{
+        type:String,
+      },
+      fixed:{
+        type: String,
+        validator: function (value) {
+          return [
+            'bottom',
+            'top',
+          ].indexOf(value) !== -1
+        }
       },
       disabled: {
         type: Boolean,
@@ -57,7 +69,8 @@
             [`${prefixCls}--${this.type}`]: this.type,
             [`${prefixCls}--disabled`]: this.disabled,
             [`${prefixCls}--${this.size}`]: this.size,
-            [`${prefixCls}--line`]: this.line
+            [`${prefixCls}--line`]: this.line,
+            [`${prefixCls}--fixed-${this.fixed}`]: this.fixed
           }
         ]
       }
@@ -69,22 +82,21 @@
   @import '../styles/variable';
 
   .itv-base-button {
-    padding: 0 32px;
-    height: 72px;
     border: 1px solid $font;
     border-radius: 2px;
-    font-size: 28px;
-    line-height: 1;
     outline: none;
     cursor: pointer;
+    &--default{
+      padding: 16px 64px;
+      font-size: 28px;
+    }
     &--big {
-      padding: 0 64px;
+      padding:24px 80px;
       font-size: 32px;
-      height: 80px;
     }
     &--small{
+      padding: 8px 32px;
       font-size: 24px;
-      height: 48px;
     }
     &--primary,
     &--success,
@@ -178,12 +190,22 @@
         background: transparent;
       }
     }
-
     &--disabled {
       border-color: $gray;
       background: $gray;
     }
-
+    &--fixed-bottom{
+      position: fixed;
+      left: 0;
+      bottom: -2px;
+      border-radius: 0;
+      z-index: 9999;
+    }
+    &--fixed-top{
+      position: fixed;
+      left: 0;
+      top: 0;
+    }
     &:active {
       filter: brightness(.9);
       border-style: solid;

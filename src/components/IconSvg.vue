@@ -22,20 +22,30 @@
       },
       svgClass() {
         if (this.className) {
-          return 'icon-svg-' + this.className
+          return 'itv-icon-svg itv-icon-svg--' + this.className
         } else {
-          return 'icon-svg'
+          return 'itv-icon-svg'
         }
       }
     }
   }
 </script>
 
-<style>
-  .icon-svg {
-    width: 64px;
-    height: 64px;
-    fill: currentColor;
+<style lang="scss">
+  .itv-icon-svg {
+    width: 38px;
+    height: 38px;
     overflow: hidden;
+    fill: currentColor;
+    stroke: currentColor;
+    vertical-align: middle;
+    &--dialog {
+      width: 64px;
+      height: 64px;
+    }
+    &--nav{
+      width: 42px;
+      height: 42px;
+    }
   }
 </style>

@@ -6,10 +6,9 @@ export default new Vue({
       title: null,
       user: {},
       weixinUser:{},
+      encryptCode:'', // 购买时选券返回的加密码
       scrollPosition:null,
       EVENTS: {
-        TITLE:'TITLE',
-        LOGIN: 'LOGIN',
         USER_UPDATE: 'USER_UPDATE',
         WEIXIN_USER_UPDATE: 'WEIXIN_USER_UPDATE',
       },

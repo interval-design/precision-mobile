@@ -15,3 +15,126 @@
 .itv-highlight-red{
   color: $red;
 }
+
+.itv-bg-white{
+  background: $white;
+}
+
+.itv-input{
+  padding: 8px 32px;
+  height: 100%;
+  width: 100%;
+  vertical-align: middle;
+}
+
+.itv-avatar{
+  display: inline-block;
+  height: 100px;
+  width: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  img{
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.itv-nav{
+  position: fixed;
+  left: 0;
+  bottom:0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 72px;
+  height: 100px;
+  width: 100%;
+  background: $white;
+  z-index: 9999;
+  &-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    height: 100%;
+    font-size: 20px;
+  }
+}
+
+.itv-address {
+  display: flex;
+  padding: 32px 24px;
+  &-info {
+    flex: 1;
+    padding: 0 40px;
+    &-title {
+      font-size: 24px;
+    }
+    &-content {
+      color: $font-sub;
+      p {
+        padding: 16px 0 8px;
+      }
+      .consignee {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
+  & + & {
+    border-top: 1px solid $border;
+  }
+}
+
+.itv-swiper {
+  .swiper-slide {
+    height: auto;
+    img {
+      height: 100%;
+    }
+  }
+  .itv-base-button {
+    position: absolute;
+    left: 60px;
+    top: 200px;
+  }
+  .swiper-button-prev {
+    left: 32px;
+    background-image: url("./assets/images/arrow-left.svg");
+  }
+  .swiper-button-next {
+    right: 32px;
+    background-image: url("./assets/images/arrow-right.svg");
+  }
+}
+
+.itv-services {
+  padding-bottom: 90px;
+  &-banner {
+    height: 360px;
+    background: $light-blue;
+  }
+  &-nav {
+    .item {
+      position: absolute;
+      height: 200px;
+      width: 100%;
+      &-1{
+        top:100px;
+      }
+      &-2{
+        top:320px;
+      }
+      &-3{
+        top:550px;
+      }
+    }
+  }
+  .section {
+    position: relative;
+    .itv-base-button {
+      position: absolute;
+    }
+  }
+}
