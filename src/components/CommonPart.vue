@@ -1,13 +1,13 @@
 <template>
   <div class="itv-services-common">
     <section class="section">
-      <img src="../assets/pic-common-1.jpg" srcset="../assets/pic-common-1.jpg 2x" alt="pic-common-1">
+      <img src="../assets/images/pic-common-1.jpg" srcset="../assets/images/pic-common-1.jpg 2x" alt="pic-common-1">
       <!-- TODO:跳转没写  -->
       <base-button width="60%" class="btn-1">继续了解普瑞森测序平台</base-button>
       <base-button width="65%" class="btn-2">继续了解普瑞森大数据平台</base-button>
     </section>
     <template v-if="$route.name != 'Index'">
-      <img src="../assets/pic-common-2.jpg" srcset="../assets/pic-common-2.jpg 2x" alt="pic-common-2">
+      <img src="../assets/images/pic-common-2.jpg" srcset="../assets/images/pic-common-2.jpg 2x" alt="pic-common-2">
       <template v-if="$route.name == 'ServiceFilter'">
         <img src="../assets/filter/pic-4.jpg" srcset="../assets/filter/pic-4.jpg 2x">
       </template>
@@ -17,7 +17,7 @@
       <template v-if="$route.name == 'ServiceEcosystem'">
         <img src="../assets/ecosystem/pic-2.jpg" srcset="../assets/ecosystem/pic-2.jpg 2x">
       </template>
-      <img src="../assets/pic-common-3.jpg" srcset="../assets/pic-common-3.jpg 2x" alt="pic-common-3">
+      <img src="../assets/images/pic-common-3.jpg" srcset="../assets/images/pic-common-3.jpg 2x" alt="pic-common-3">
       <base-button width="100%" fixed="bottom" size="big" @click="buy">购买服务</base-button>
     </template>
   </div>
@@ -40,7 +40,7 @@
             cardSign: _data.cardSign, // 卡券签名
             success: (res) => {
               let _cardList = res.cardList; // 用户选中的卡券列表信息
-              this.$bus.encryptCode = _cardList.encrypt_code;
+              this.$bus.encryptCode = JSON.parse(_cardList)[0].encrypt_code;
               this.$router.push({name: 'Buy'});
             },
           });

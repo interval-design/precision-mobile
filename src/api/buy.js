@@ -16,11 +16,20 @@ export default {
   },
 
   /**
-   * 列出当前用户的收货地址
+   * 列出当前用户的收货地址列表
    * @param params
    * @returns {AxiosPromise<any>}
    */
   getAddresses(params) {
     return axios.get('/api/current_user/addresses/', {params: params});
-  }
+  },
+
+  /**
+   * 创建收货人地址
+   * @param params
+   * @returns {AxiosPromise<any>}
+   */
+  creatdAddress(params) {
+    return axios.post('/api/addresses/', params);
+  },
 }

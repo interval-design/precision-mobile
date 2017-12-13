@@ -63,7 +63,12 @@ export default new Router({
     {
       path: '/address-add',
       name: 'AddressAdd',
-      component: (resolve) => require(["@/views/buy/AddressAdd"], resolve)
+      component: (resolve) => require(["@/views/buy/AddressEdit"], resolve)
+    },
+    {
+      path: '/address-edit',
+      name: 'AddressEdit',
+      component: (resolve) => require(["@/views/buy/AddressEdit"], resolve)
     },
 
     // 个人中心
@@ -71,7 +76,7 @@ export default new Router({
       path: '/center',
       name: 'Center',
       meta:{nav:true},
-      component: (resolve) => require(["@/views/center/index"], resolve)
+      component: (resolve) => require(["@/views/center/Index"], resolve)
     },
 
     // 技术

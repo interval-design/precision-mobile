@@ -1,53 +1,72 @@
 <template>
   <div class="itv-address-group">
-    <div class="itv-address itv-bg-white">
-      <!-- TODO:选择图标需要替换 -->
-      <icon-svg icon-class="location"></icon-svg>
+    <div class="itv-address itv-bg-white" v-for="address in addresses" @click="selected(address)">
+      <icon-svg :icon-class="$bus.address.id === address.id ? 'radio-checked':'radio'"></icon-svg>
       <div class="itv-address-info">
         <div class="itv-address-info-content">
-          <p>上海市浦东新区草高公路 距离市中心约15406米距离市中心约15406米</p>
+          <p>{{ address.province }} {{ address.city }} {{ address.district }} {{ address.street }}</p>
           <div class="consignee">
-            <span>猴子收</span>
-            <span>111111111</span>
+            <span>{{ address.consignee }}</span>
+            <span>{{ address.phone }}</span>
           </div>
         </div>
       </div>
-      <icon-svg icon-class="edit"></icon-svg>
+      <icon-svg icon-class="edit" @click.native.stop="edit(address)"></icon-svg>
     </div>
-    <div class="itv-address itv-bg-white">
-      <icon-svg icon-class="location"></icon-svg>
-      <div class="itv-address-info">
-        <div class="itv-address-info-content">
-          <p>上海市浦东新区草高公路 距离市中心约15406米距离市中心约15406米</p>
-          <div class="consignee">
-            <span>猴子收</span>
-            <span>111111111</span>
-          </div>
-        </div>
-      </div>
-      <icon-svg icon-class="edit"></icon-svg>
-    </div>
-    <base-button type="info" size="big" width="100%" fixed="bottom" @click="$route.push({name:'AddressAdd'})">添加新地址</base-button>
+    <base-button type="info" size="big" width="100%" fixed="bottom" @click="$router.push({name:'AddressAdd'})">添加新地址
+    </base-button>
   </div>
 </template>
 
 <script>
+  import ApiBuy from '../../api/buy';
 
   export default {
-    name: 'AddressAdd',
+    name: 'AddressSelect',
     created() {
+      this.loadAddresses();
     },
     data() {
       return {
-        selected:'',
+        addresses: [],
       }
     },
-    methods: {},
+    methods: {
+      /**
+       * 列出当前用户的收货地址
+       */
+      loadAddresses() {
+        ApiBuy.getAddresses().then(res => {
+          if (res.data.code === 0) {
+            this.addresses = res.data.data.addresses;
+            this.$bus.address = res.data.data.addresses[0];
+          }
+        })
+      },
+
+      /**
+       * 设置当前选中的地址Id,并返回购买页面
+       * @param address
+       */
+      selected(address){
+        this.$bus.address = address;
+        history.back();
+      },
+
+      /**
+       * 设置当前选中的地址Id,并去往编辑页面
+       * @param address
+       */
+      edit(address){
+        this.$bus.address = address;
+        this.$router.push({name:'AddressEdit'});
+      },
+    },
   }
 </script>
 <style lang="scss">
-  .itv-address-group{
-    .itv-address{
+  .itv-address-group {
+    .itv-address {
       align-items: center;
     }
   }

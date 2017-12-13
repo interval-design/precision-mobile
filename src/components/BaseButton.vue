@@ -199,7 +199,7 @@
       left: 0;
       bottom: -2px;
       border-radius: 0;
-      z-index: 9999;
+      z-index: 1000;
     }
     &--fixed-top{
       position: fixed;

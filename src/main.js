@@ -9,7 +9,6 @@ import * as Cookies from 'tiny-cookie'
 import CustomComponents from './components/components'
 import './icons'
 
-
 Vue.config.productionTip = false;
 Vue.prototype.$bus = Bus;
 Vue.prototype.$cookies = Cookies;
