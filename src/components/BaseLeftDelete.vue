@@ -7,10 +7,7 @@
          :style="txtStyle">
       <slot></slot>
     </div>
-    <div class="del" :style="zIndex" @click.prevent="del(value)">
-      <!-- TODO:图标要换成垃圾桶 -->
-      <icon-svg icon-class="location"></icon-svg>
-    </div>
+    <div class="del" :style="zIndex" @click.prevent="del(value)">删除</div>
   </div>
 </template>
 
@@ -29,7 +26,7 @@
         moveX: 0,       //滑动时的位置
         disX: 0,       //移动距离
         txtStyle: '',
-        delWidth: 100,
+        delWidth: 150,
         top: '',
         zIndex: 'z-index:-1',
       }
@@ -55,13 +52,10 @@
           // 如果是向右滑动或者只是点击，不改变滑动位置
           if (this.disX < 0 || this.disX === 0) {
             this.txtStyle = "transform:translateX(0)";
-          } else if (this.disX > 0) {
-            // 如果是向左滑动，则实时给这个根元素一个向左的偏移 - left，当偏移量到达固定值delWidth时，固定元素的偏移量为delWidth
-            this.txtStyle = "transform:translateX(-" + this.disX + "px)";
-            if (this.disX >= this.delWidth) {
-              this.txtStyle = "transform:translateX(-" + this.delWidth + "px)";
-              this.zIndex = "z-index:" + 10 + "rem";
-            }
+          }
+          if (this.disX >= this.delWidth / 2) {
+            this.txtStyle = "transform:translateX(-" + this.delWidth + "px)";
+            this.zIndex = "z-index:" + 10 + "rem";
           }
         }
       },
@@ -89,21 +83,28 @@
 
   .itv-base-left-delete {
     position: relative;
-    z-index:2;
+    z-index: 2;
+    & + & {
+      border-top: 1px solid $border;
+    }
     .move {
       position: relative;
+      transition: all .2s ease;
     }
     .del {
       position: absolute;
       right: 0;
       top: 0;
+      bottom: 0;
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 100px;
+      width: 150px;
       height: 100%;
       color: $white;
+      font-size: 28px;
       background: $red;
+      transition: all .2s ease;
     }
   }
 </style>

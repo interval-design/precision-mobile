@@ -4,5 +4,5 @@ const prodEnv = require('./prod.env')
 
 module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
-  NODE_HOST:'"http://precision.interval.im/"'
+  NODE_HOST:'"http://precision-m.interval.im/"'
 })

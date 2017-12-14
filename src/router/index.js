@@ -55,11 +55,26 @@ export default new Router({
       name: 'Buy',
       component: (resolve) => require(["@/views/buy/Index"], resolve)
     },
+    // 购买失败
     {
       path: '/buy-error',
       name: 'BuyError',
-      component: (resolve) => require(["@/views/buy/Error"], resolve)
+      component: (resolve) => require(["@/views/buy/BuyError"], resolve)
     },
+    // 交易失败
+    {
+      path: '/transactions-error',
+      name: 'TransactionsError',
+      component: (resolve) => require(["@/views/buy/TransactionsError"], resolve)
+    },
+    // 交易成功
+    {
+      path: '/transactions-success',
+      name: 'TransactionsSuccess',
+      component: (resolve) => require(["@/views/buy/TransactionsSuccess"], resolve)
+    },
+
+    // 收货地址
     {
       path: '/address',
       name: 'Address',

@@ -51,7 +51,7 @@
               timestamp: data.data.timestamp,
               nonceStr: data.data.noncestr,
               signature: data.data.signature,
-              jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'addCard', 'chooseCard']
+              jsApiList: ['onMenuShareTimeline', 'onMenuShareAppMessage', 'addCard', 'chooseCard','chooseWXPay']
             });
           }
         });

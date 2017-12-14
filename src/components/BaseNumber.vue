@@ -1,8 +1,8 @@
 <template>
   <span class="itv-number">
-        <span class="itv-number-action" :class="{'disabled':this.value === 0}" @click="sub">-</span>
+        <span class="itv-number-action" :class="{'disabled':this.value === min}" @click="sub">-</span>
         <input type="number" class="itv-input" :value="currentValue" @change="change" @input="change"/>
-        <span class="itv-number-action" :class="{'disabled':this.value === 99}" @click="add">+</span>
+        <span class="itv-number-action" :class="{'disabled':this.value === max}" @click="add">+</span>
     </span>
 </template>
 
@@ -13,6 +13,14 @@
     props: {
       value: {
         type: Number
+      },
+      min:{
+        type: [String,Number],
+        default:1
+      },
+      max:{
+        type: [String,Number],
+        default:3
       }
     },
     watch: {
@@ -39,14 +47,14 @@
       },
 
       sub() {
-        if (this.currentValue > 0) {
+        if (this.currentValue > this.min) {
           this.currentValue--;
           this.setCurrentValue(this.currentValue);
         }
       },
 
       add() {
-        if (this.currentValue < 99) {
+        if (this.currentValue < this.max) {
           this.currentValue++;
           this.setCurrentValue(this.currentValue);
         }

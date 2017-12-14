@@ -1,7 +1,7 @@
 <template>
-  <div class="itv-bind-success">
+  <div class="itv-action-result">
     <img src="../assets/images/pic-phone-done.png" alt="phone-done">
-    <p>恭喜您绑定成功</p>
+    <h1>恭喜您绑定成功</h1>
     <base-button @click="$router.push({name:'Index'})">去首页</base-button>
   </div>
 </template>
@@ -18,15 +18,4 @@
     methods: {},
   }
 </script>
-<style lang="scss">
-  .itv-bind-success{
-    text-align: center;
-    img{
-      padding-top: 84px;
-    }
-    p{
-      padding: 48px 0 72px;
-      font-size: 28px;
-    }
-  }
-</style>
+<style lang="scss"></style>

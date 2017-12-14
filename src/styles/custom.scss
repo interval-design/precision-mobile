@@ -94,8 +94,26 @@
       }
     }
   }
-  & + & {
-    border-top: 1px solid $border;
+}
+
+.itv-action-result{
+  text-align: center;
+  img{
+    padding-top: 84px;
+  }
+  h1{
+    padding: 48px 0 72px;
+    font-size: 32px;
+  }
+  .desc{
+    padding: 0 100px 84px;
+    list-style: disc;
+    text-align: left;
+    color: $font-sub;
+    font-size: 28px;
+    *{
+      margin-bottom: 8px;
+    }
   }
 }
 
