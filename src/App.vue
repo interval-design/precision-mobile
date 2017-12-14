@@ -37,6 +37,11 @@
       this.$bus.$on(this.$bus.EVENTS.USER_UPDATE, () => {
         this.getCurrentUser()
       });
+      // 微信用户更新事件
+      this.$bus.$on(this.$bus.EVENTS.WX_USER_UPDATE, () => {
+        this.getCurrentUser()
+      });
+
       this.getCurrentUser();
       this.getCurrentWeixinUser();
     },

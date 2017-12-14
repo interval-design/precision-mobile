@@ -88,7 +88,6 @@
        * 根据微信卡券code获取邀请码组详情
        */
       loadDetails() {
-        this.$bus.encryptCode = 'N9Wgb4sYDhlYAgOuhYrtJ6lIQyo+RIi5RwR0gguMC58=';
         ApiBuy.getInviteCodeGroup(this.$bus.encryptCode).then(res => {
           if (res.data.code === 0) {
             this.details = res.data.data.invite_code_group;
