@@ -11,6 +11,9 @@
         <span class="itv-highlight-yellow">去改绑</span>
       </p>
     </div>
+    <base-cell title="我的订单" value="查看全部" size="small" icon>
+      <!--<icon-svg slot="icon" icon-class="arrow-right-small"></icon-svg>-->
+    </base-cell>
   </div>
 </template>
 
@@ -38,13 +41,13 @@
       background-size: cover;
       text-align: center;
       color: $white;
-      p{
+      p {
         padding-top: 16px;
-        span{
+        span {
           vertical-align: middle;
         }
       }
-      .mobile{
+      .mobile {
         margin: 0 8px;
       }
     }

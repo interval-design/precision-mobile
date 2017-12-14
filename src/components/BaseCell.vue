@@ -1,9 +1,9 @@
 <template>
-  <div class="itv-base-cell">
+  <div class="itv-base-cell" :class="classes">
     <slot name="title">{{ title }}</slot>
     <div class="desc">
       <slot><span>{{ value }}</span></slot>
-      <slot name="link-icon" v-if="icon">
+      <slot name="icon" v-if="icon">
         <icon-svg icon-class="arrow-right" style="margin-left: 16px"></icon-svg>
       </slot>
     </div>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+  const prefixCls = 'itv-base-cell';
 
   export default {
     name: 'BaseCell',
@@ -24,6 +25,25 @@
       icon: {
         type: Boolean,
         default: false
+      },
+      size: {
+        type: String,
+        default: '',
+        validator: function (value) {
+          return [
+            'small',
+          ].indexOf(value) !== -1
+        }
+      },
+    },
+    computed: {
+      classes() {
+        return [
+          `${prefixCls}`,
+          {
+            [`${prefixCls}--${this.size}`]: this.size,
+          }
+        ]
       }
     },
     data() {
@@ -51,6 +71,12 @@
       align-items: center;
       justify-content: space-between;
       color: $font-sub;
+    }
+    &--small{
+      .desc{
+        font-size: 24px;
+      }
+      padding: 16px 24px;
     }
   }
 </style>

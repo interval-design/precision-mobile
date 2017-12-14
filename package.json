@@ -10,10 +10,8 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "cube-ui": "^1.1.1",
     "vue": "^2.5.2",
     "vue-awesome-swiper": "^3.0.6",
-    "vue-pickers": "^1.0.3",
     "vue-router": "^3.0.1",
     "vue-ydui": "^1.1.5",
     "ydui-district": "^1.1.0"

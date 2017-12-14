@@ -55,12 +55,6 @@
         default: false
       },
     },
-    methods: {
-      // 触发click事件，组件上就不用写native了
-      _click() {
-        this.$emit('click')
-      }
-    },
     computed: {
       classes() {
         return [
@@ -73,6 +67,12 @@
             [`${prefixCls}--fixed-${this.fixed}`]: this.fixed
           }
         ]
+      }
+    },
+    methods: {
+      // 触发click事件，组件上就不用写native了
+      _click() {
+        this.$emit('click')
       }
     }
   }

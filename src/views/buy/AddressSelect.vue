@@ -1,6 +1,6 @@
 <template>
   <div class="itv-address-group">
-    <base-left-delete :value="address.id" @del="delAddress" v-for="address in addresses">
+    <base-left-delete :value="address.id" @del="delAddress" v-for="address in addresses" :key="address.id">
       <div class="itv-address itv-bg-white" @click="selected(address)">
         <icon-svg :icon-class="$bus.address.id === address.id ? 'radio-checked':'radio'"></icon-svg>
         <div class="itv-address-info">
