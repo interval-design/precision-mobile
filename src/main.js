@@ -30,7 +30,7 @@ router.afterEach((to, from, next) => {
 // request 拦截器
 axios.interceptors.request.use(
   config => {
-    if (!Cookies.get('_prs_user')) {
+    if (!Cookies.get('_prs_wx_user')) {
       location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${location.href}`;
     }
     return config;

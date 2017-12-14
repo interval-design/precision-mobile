@@ -19,7 +19,7 @@
           <p>此微信卡券领取成功后<span class="itv-highlight-red">90天</span>内有效，请注意使用时间并妥善保管。</p>
         </div>
       </div>
-      <icon-svg icon-class="demo" class-name="dialog" slot="close"></icon-svg>
+      <icon-svg icon-class="close" class-name="dialog" slot="close"></icon-svg>
     </base-Dialog>
   </div>
 </template>

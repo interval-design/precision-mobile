@@ -99,6 +99,7 @@
         align-items: center;
         span {
           margin-top: 24px;
+          font-size: 24px;
         }
       }
     }
