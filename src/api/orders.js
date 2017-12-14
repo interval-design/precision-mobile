@@ -24,5 +24,25 @@ export default {
    */
   createTransactions(orderId, params) {
     return axios.post(`/api/orders/${orderId}/transactions/`, params);
+  },
+
+  /**
+   * 列出当前用户的订单
+   * @param params
+   * @returns {AxiosPromise<any>}
+   */
+  getOrders(params) {
+    return axios.get('/api/current_user/orders/', {params: params});
+  },
+
+  /**
+   * 获取订单详情
+   * @param orderId
+   * @param params
+   * @returns {AxiosPromise<any>}
+   */
+  getOrdersDetails(orderId, params) {
+    return axios.get(`/api/orders/${orderId}/`, {params: params});
+
   }
 }

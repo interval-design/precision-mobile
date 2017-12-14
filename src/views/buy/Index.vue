@@ -15,14 +15,14 @@
       <icon-svg icon-class="arrow-right" style="align-self: center"></icon-svg>
     </router-link>
     <template v-if="details">
-      <div class="product-info">
+      <div class="itv-product-info">
         <img src="../../assets/images/pic-filter.png" srcset="../../assets/images/pic-filter.png 2x"
              v-if="details.product.id === 1">
         <img src="../../assets/images/pic-child.png" srcset="../../assets/images/pic-child.png 2x"
              v-if="details.product.id === 2">
         <img src="../../assets/images/pic-ecosystem.png" srcset="../../assets/images/pic-ecosystem.png 2x"
              v-if="details.product.id === 3">
-        <h1 class="product-info-name">{{ details.product.name }}</h1>
+        <h1 class="itv-product-info-name">{{ details.product.name }}</h1>
         <base-number v-model="number"></base-number>
       </div>
       <base-cell title="应付金额">
@@ -88,6 +88,7 @@
        * 根据微信卡券code获取邀请码组详情
        */
       loadDetails() {
+        // this.$bus.encryptCode = 'N9Wgb4sYDhlYAgOuhYrtJ/sgH+TeKlf2uVcKRd+A0us=';
         ApiBuy.getInviteCodeGroup(this.$bus.encryptCode).then(res => {
           if (res.data.code === 0) {
             this.details = res.data.data.invite_code_group;
@@ -149,22 +150,8 @@
   @import "../../styles/variable";
 
   .itv-buy {
-    .product-info {
-      background: white;
+    .itv-product-info{
       margin: 16px 0;
-      padding: 32px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      img {
-        width: 100px;
-        height: 100px;
-        margin-right: 32px;
-      }
-      &-name {
-        flex: 1;
-        font-size: 28px;
-      }
     }
     .money {
       font-size: 32px;

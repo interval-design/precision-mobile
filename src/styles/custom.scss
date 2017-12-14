@@ -2,8 +2,7 @@
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity .3s ease;
-  transition-delay: 200ms;
+  transition: opacity .2s ease;
 }
 
 .fade-enter,
@@ -30,6 +29,10 @@
 
 .itv-highlight-yellow{
   color: $yellow;
+}
+
+.itv-highlight-blue{
+  color: $blue;
 }
 
 .itv-bg-white{
@@ -172,6 +175,26 @@
     .itv-base-button {
       position: absolute;
     }
+  }
+}
+
+.itv-product-info {
+  background: white;
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  img {
+    width: 150px;
+    height: 150px;
+    margin-right: 32px;
+  }
+  &-name {
+    flex: 1;
+    font-size: 28px;
+  }
+  &-num{
+    flex: .15;
   }
 }
 

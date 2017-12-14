@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="43px" height="32px" viewBox="0 0 43 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>car</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="9.66666667" cy="24.6666667" r="4.66666667"></circle>
+        <circle id="path-2" cx="33.6666667" cy="24.6666667" r="4.66666667"></circle>
+    </defs>
+    <g id="订单详情" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-21.000000, -563.000000)">
+        <g id="car" transform="translate(23.000000, 565.000000)">
+            <g id="Group-4">
+                <path d="M1,-1 L23,-1 C24.1045695,-1 25,-0.1045695 25,1 L25,25 L1,25 C-0.1045695,25 -1,24.1045695 -1,23 L-1,1 C-1,-0.1045695 -0.1045695,-1 1,-1 Z" id="Rectangle-3" stroke="#384450" stroke-width="2"></path>
+                <path d="M25,25 L40,25 L40,15.5398035 L33.3522358,10 L25,10 L25,25 Z" id="Rectangle-3-Copy" stroke="#384450" stroke-width="2"></path>
+                <g id="Oval-4">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <circle stroke="#384450" stroke-width="2" cx="9.66666667" cy="24.6666667" r="3.66666667"></circle>
+                </g>
+                <g id="Oval-4-Copy">
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    <circle stroke="#384450" stroke-width="2" cx="33.6666667" cy="24.6666667" r="3.66666667"></circle>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

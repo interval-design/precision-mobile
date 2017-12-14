@@ -1,6 +1,6 @@
 <template>
   <div class="itv-action-result">
-    <img src="../../assets/images/pic-buy-error.png" alt="buy-error">
+    <img src="../../assets/images/pic-box-none.png" alt="buy-error">
     <h1>很抱歉 邀请券异常或已使用</h1>
     <ul class="desc">
       <li>普瑞森基因检测服务暂仅支持凭邀请券购买</li>

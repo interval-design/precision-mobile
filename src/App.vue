@@ -1,7 +1,9 @@
 <template>
   <div class="itv-main">
     <transition name="fade" mode="out-in">
-      <router-view></router-view>
+      <keep-alive include="Orders">
+        <router-view></router-view>
+      </keep-alive>
     </transition>
     <nav class="itv-nav" v-show="$route.meta.nav">
       <router-link class="itv-nav-item" :to="{name:'Index'}">

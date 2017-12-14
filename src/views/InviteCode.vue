@@ -74,7 +74,7 @@
       transform: translateX(-50%);
     }
     .success-desc {
-      padding: 56px;
+      padding: 56px 48px;
       color: $white;
       text-align: center;
       &-hd{

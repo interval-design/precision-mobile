@@ -24,12 +24,6 @@ Vue.component(Tab.name, Tab);
 Vue.component(TabPanel.name, TabPanel);
 
 
-router.afterEach((to, from, next) => {
-  setTimeout(() => {
-    window.scrollTo(0, 0);
-  }, 200)
-});
-
 // request 拦截器
 axios.interceptors.request.use(
   config => {
@@ -55,6 +49,13 @@ axios.interceptors.response.use(
     return Promise.reject(error.response.data.message)   // 返回接口返回的错误信息
   }
 );
+
+router.beforeEach((to, from, next) => {
+  if (from.name === 'OrderDetails') {
+    to.meta.isBack = true;
+  }
+  next();
+});
 
 /* eslint-disable no-new */
 new Vue({

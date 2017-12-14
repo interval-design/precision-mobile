@@ -51,5 +51,9 @@
       width: 50px;
       height: 50px;
     }
+    &--order{
+      width: 80px;
+      height: 80px;
+    }
   }
 </style>

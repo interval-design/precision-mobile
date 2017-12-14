@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="74px" height="84px" viewBox="0 0 74 84" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>4</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="微信端" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="4" transform="translate(2.000000, 2.000000)">
+            <g id="Group-10">
+                <path d="M42,10 L54.0173913,10 C62.508169,10 69.3913043,17.968586 69.3913043,27.7983349 L69.3913043,56.5494912 C69.3913043,66.3792401 62.508169,74.3478261 54.0173913,74.3478261" id="Rectangle-9" stroke="#FFFFFF" stroke-width="4"></path>
+                <rect id="Rectangle-7-Copy" stroke="#FFFFFF" stroke-width="4" x="17.3913043" y="36.5217391" width="17.3913043" height="17.3913043" rx="1"></rect>
+                <path d="M17.5,43.4782609 L11.4347826,43.4782609 C10.8824979,43.4782609 10.4347826,43.0305456 10.4347826,42.4782609 L10.4347826,1 C10.4347826,0.44771525 10.8824979,1.01453063e-16 11.4347826,0 L40.7391304,0 C41.2914152,-2.06356265e-15 41.7391304,0.44771525 41.7391304,1 L41.7391304,42.4782609 C41.7391304,43.0305456 41.2914152,43.4782609 40.7391304,43.4782609 L35,43.4782609" id="Rectangle-7" stroke="#FFFFFF" stroke-width="4"></path>
+                <rect id="Rectangle-10-Copy" fill="#FFFFFF" x="12" y="16" width="28" height="4"></rect>
+                <rect id="Rectangle-7-Copy-2" stroke="#FFFFFF" stroke-width="4" transform="translate(26.956522, 73.826087) rotate(90.000000) translate(-26.956522, -73.826087) " x="20.8695652" y="46.8695652" width="12.173913" height="53.9130435" rx="1"></rect>
+                <rect id="Rectangle-10" fill="#FFFFFF" x="10" y="60" width="34" height="4" rx="2"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

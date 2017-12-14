@@ -41,7 +41,9 @@
             success: (res) => {
               let _cardList = res.cardList; // 用户选中的卡券列表信息
               this.$bus.encryptCode = JSON.parse(_cardList)[0].encrypt_code;
-              this.$router.push({name: 'Buy'});
+              setTimeout(()=>{
+                this.$router.push({name: 'Buy'});
+              },200)
             },
           });
         })

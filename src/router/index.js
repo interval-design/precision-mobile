@@ -5,6 +5,13 @@ Vue.use(Router);
 
 export default new Router({
   mode: 'history',
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      setTimeout(() => {
+        window.scrollTo(savedPosition.x, savedPosition.y)
+      }, 200)
+    }
+  },
   routes: [
     // 绑定手机
     {
@@ -98,11 +105,18 @@ export default new Router({
       meta:{nav:true},
       component: (resolve) => require(["@/views/user/Index"], resolve)
     },
+
+    // 订单
     {
-      path: '/user/orders',
+      path: '/orders',
       name: 'Orders',
       meta:{nav:true},
-      component: (resolve) => require(["@/views/user/orders/orders"], resolve)
+      component: (resolve) => require(["@/views/user/orders/Orders"], resolve)
+    },
+    {
+      path: '/orders/:order_id',
+      name: 'OrderDetails',
+      component: (resolve) => require(["@/views/user/orders/Details"],resolve)
     },
 
     // 技术
