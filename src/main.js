@@ -21,7 +21,6 @@ Vue.use(CustomComponents);
 Vue.component(CitySelect.name, CitySelect);
 
 router.afterEach((to, from, next) => {
-  ;
   setTimeout(() => {
     window.scrollTo(0, 0);
   }, 200)

@@ -28,6 +28,10 @@
   color: $red;
 }
 
+.itv-highlight-yellow{
+  color: $yellow;
+}
+
 .itv-bg-white{
   background: $white;
 }
@@ -146,8 +150,10 @@
     background: $light-blue;
   }
   &-nav {
+    text-align: center;
     .item {
       position: absolute;
+      left: 0;
       height: 200px;
       width: 100%;
       &-1{

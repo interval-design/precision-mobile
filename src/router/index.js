@@ -93,10 +93,16 @@ export default new Router({
 
     // 个人中心
     {
-      path: '/center',
-      name: 'Center',
+      path: '/user',
+      name: 'User',
       meta:{nav:true},
-      component: (resolve) => require(["@/views/center/Index"], resolve)
+      component: (resolve) => require(["@/views/user/Index"], resolve)
+    },
+    {
+      path: '/user/orders',
+      name: 'UserOrders',
+      meta:{nav:true},
+      component: (resolve) => require(["@/views/user/orders/orders"], resolve)
     },
 
     // 技术

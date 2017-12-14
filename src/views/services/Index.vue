@@ -1,12 +1,11 @@
 <template>
-  <div class="itv-services">
+  <div class="itv-services index">
     <div class="itv-services-banner"></div>
-    <section>
-      <!-- TODO:图需要替换 -->
-      <img src="../../assets/index/pic-4.jpg" srcset="../../assets/index/pic-4.jpg 2x" alt="pic-4">
-      <router-link class="link link-1" :to="{name:'ServiceFilter'}"></router-link>
-      <router-link class="link link-2" :to="{name:'ServiceChild'}"></router-link>
-      <router-link class="link link-3" :to="{name:'ServiceEcosystem'}"></router-link>
+    <section class="section itv-services-nav">
+      <img src="../../assets/index/pic-4.jpg" srcset="../../assets/images/pic-services.png 2x" alt="pic-services">
+      <router-link class="item item-1" :to="{name:'ServiceFilter'}"></router-link>
+      <router-link class="item item-2" :to="{name:'ServiceChild'}"></router-link>
+      <router-link class="item item-3" :to="{name:'ServiceEcosystem'}"></router-link>
     </section>
   </div>
 </template>
@@ -16,4 +15,23 @@
     name: 'ServicesIndex'
   }
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+  .itv-services{
+    &.index{
+      .section{
+        margin-bottom: 16px;
+      }
+      .item {
+        &-1{
+          top:0;
+        }
+        &-2{
+          top:220px;
+        }
+        &-3{
+          top:450px;
+        }
+      }
+    }
+  }
+</style>

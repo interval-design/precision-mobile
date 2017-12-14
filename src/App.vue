@@ -10,14 +10,14 @@
       </router-link>
       <router-link class="itv-nav-item" :to="{name:'About'}">
         <icon-svg class-name="nav" :icon-class="$route.name == 'About' ? 'about-active':'about'"></icon-svg>
-        <span>普瑞森</span>
+        <span>关于普瑞森</span>
       </router-link>
       <router-link class="itv-nav-item" :to="{name:'Services'}">
         <icon-svg class-name="nav" :icon-class="$route.name == 'Services' ? 'services-active':'services'"></icon-svg>
         <span>购买服务</span>
       </router-link>
-      <router-link class="itv-nav-item" :to="{name:'Center'}">
-        <icon-svg class-name="nav" :icon-class="$route.name == 'Center' ? 'user-active':'user'"></icon-svg>
+      <router-link class="itv-nav-item" :to="{name:'User'}">
+        <icon-svg class-name="nav" :icon-class="$route.name == 'User' ? 'user-active':'user'"></icon-svg>
         <span>个人中心</span>
       </router-link>
     </nav>

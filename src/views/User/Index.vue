@@ -6,8 +6,10 @@
       </div>
       <p>{{ $bus.weixinUser.nickname }}</p>
       <p>
-        <icon-svg icon-class="phone-white"></icon-svg>
-        {{ $bus.user.mobile }}</p>
+        <icon-svg icon-class="phone-white" style="width: 26px; height: 26px;"></icon-svg>
+        <span class="mobile">{{ $bus.user.mobile }}</span>
+        <span class="itv-highlight-yellow">去改绑</span>
+      </p>
     </div>
   </div>
 </template>
@@ -15,7 +17,7 @@
 <script>
 
   export default {
-    name: 'CenterIndex',
+    name: 'UserIndex',
     created() {
     },
     data() {
@@ -38,6 +40,12 @@
       color: $white;
       p{
         padding-top: 16px;
+        span{
+          vertical-align: middle;
+        }
+      }
+      .mobile{
+        margin: 0 8px;
       }
     }
   }
