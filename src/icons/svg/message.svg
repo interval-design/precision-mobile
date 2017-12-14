@@ -1,0 +1,17 @@
+
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="33px" height="32px" viewBox="0 0 33 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>user_icon_message_default</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="个人中心" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-330.000000, -1161.000000)">
+        <g id="Group-34" transform="translate(312.000000, 1148.000000)" stroke="#3C90EF" stroke-width="2">
+            <g id="user_icon_message_default" transform="translate(19.000000, 14.000000)">
+                <path d="M26.896375,0 L5.66835,0 C2.550525,0 0,2.53153846 0,5.62615385 L0,19.2307692 C0,21.78 2.08165,23.8461538 4.65,23.8461538 L8.525,23.8461538 L13.8694,29.1507692 C14.76995,30.0446154 16.23005,30.0446154 17.1306,29.1507692 L22.475,23.8461538 L26.35,23.8461538 C28.91835,23.8461538 31,21.78 31,19.2307692 L31,4.07307692 C31,1.82384615 29.162475,0 26.896375,0 L26.896375,0 Z" id="Shape"></path>
+                <path d="M6.975,9.23076923 L23.25,9.23076923" id="Shape"></path>
+                <path d="M9.3,14.6153846 L20.925,14.6153846" id="Shape"></path>
+            </g>
+        </g>
+    </g>
+</svg>

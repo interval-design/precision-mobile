@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="51px" height="40px" viewBox="0 0 51 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>user_icon_payment_default</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="108.292885%" y1="50%" x2="0%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#3C90EF" offset="0%"></stop>
+            <stop stop-color="#A7D0FF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M40.8529566,13.3333333 L50,13.3333333 L50,27.6923077 L40.8529566,27.6923077 C36.8878353,27.6923077 33.6734694,24.4779418 33.6734694,20.5128205 L33.6734694,20.5128205 C33.6734694,16.5476992 36.8878353,13.3333333 40.8529566,13.3333333 Z" id="path-2"></path>
+        <filter x="-24.5%" y="-13.9%" width="136.8%" height="141.8%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="-2" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="SourceAlpha" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.308893267   0 0 0 0 0.58039956   0 0 0 0 0.884486607  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="个人中心" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-101.000000, -495.000000)">
+        <g id="user_icon_payment_default" transform="translate(101.000000, 495.000000)">
+            <rect id="Rectangle-7" fill="url(#linearGradient-1)" x="0" y="0" width="48.9795918" height="40" rx="8"></rect>
+            <g id="Rectangle-8">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use stroke="#FFFFFF" stroke-width="2" fill="#4A99F1" fill-rule="evenodd" xlink:href="#path-2"></use>
+            </g>
+            <ellipse id="Oval-2" fill="#FFFFFF" cx="39.7959184" cy="20.5128205" rx="2.04081633" ry="2.05128205"></ellipse>
+        </g>
+    </g>
+</svg>

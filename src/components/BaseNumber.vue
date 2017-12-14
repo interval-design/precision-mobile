@@ -1,5 +1,5 @@
 <template>
-  <span class="itv-number">
+  <span class="itv-base-number">
         <span class="itv-number-action" :class="{'disabled':this.value === min}" @click="sub">-</span>
         <input type="number" class="itv-input" :value="currentValue" @change="change" @input="change"/>
         <span class="itv-number-action" :class="{'disabled':this.value === max}" @click="add">+</span>
@@ -65,7 +65,7 @@
 <style lang="scss">
   @import "../styles/variable";
 
-  .itv-number {
+  .itv-base-number {
     border: 1px solid $border;
     width: 200px;
     display: flex;

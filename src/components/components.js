@@ -10,6 +10,7 @@ import BaseInput from './BaseInput.vue'
 import BaseCell from './BaseCell.vue'
 import BaseNumber from './BaseNumber.vue'
 import BaseLeftDelete from './BaseLeftDelete.vue'
+import BaseBadge from './BaseBadge.vue'
 
 const PRECISION = {
   BaseButton,
@@ -17,7 +18,8 @@ const PRECISION = {
   BaseInput,
   BaseCell,
   BaseNumber,
-  BaseLeftDelete
+  BaseLeftDelete,
+  BaseBadge
 };
 
 export default () => {

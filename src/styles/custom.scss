@@ -174,3 +174,11 @@
     }
   }
 }
+
+.yd-tab-nav-item{
+  font-size: 28px;
+  line-height: 100px;
+  &:after{
+    display: none;
+  }
+}

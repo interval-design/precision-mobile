@@ -16,7 +16,7 @@
         <base-button size="small" line @click="$route.push({name:'ServiceEcosystem'})">了解更多</base-button>
       </swiper-slide>
     </swiper>
-    <div class="section-link itv-bg-white">
+    <div class="section-link">
       <router-link class="section-link-item" :to="{name:'ServiceFilter'}">
         <img src="../assets/index/icon-filter.png" alt="icon-filter">
         <span>肠癌风险评估</span>
@@ -93,6 +93,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 24px 64px;
+      background: $white;
       &-item {
         display: flex;
         flex-direction: column;

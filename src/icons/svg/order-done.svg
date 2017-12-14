@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="45px" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>user_icon_done_default</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-4.63966181%" y1="0%" x2="102.611318%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#B3F588" offset="0%"></stop>
+            <stop stop-color="#00D390" offset="100%"></stop>
+        </linearGradient>
+        <polyline id="path-2" points="11.25 25.3125 20.625 32.8125 33.75 13.125"></polyline>
+        <filter x="-15.6%" y="-12.7%" width="126.7%" height="130.5%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="-1" dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feMorphology radius="2" operator="erode" in="SourceAlpha" result="shadowInner"></feMorphology>
+            <feOffset dx="-1" dy="1" in="shadowInner" result="shadowInner"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.253841902   0 0 0 0 0.599038053   0 0 0 0 0.431670222  0 0 0 0.133491848 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="个人中心" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-603.000000, -490.000000)">
+        <g id="user_icon_done_default" transform="translate(603.000000, 490.000000)">
+            <rect id="Rectangle-9" fill="url(#linearGradient-1)" x="0" y="0" width="45" height="45" rx="14"></rect>
+            <g id="Path-5" stroke-linecap="round" stroke-linejoin="round">
+                <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                <use stroke="#FFFFFF" stroke-width="4" xlink:href="#path-2"></use>
+            </g>
+        </g>
+    </g>
+</svg>

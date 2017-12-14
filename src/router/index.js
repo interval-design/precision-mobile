@@ -100,7 +100,7 @@ export default new Router({
     },
     {
       path: '/user/orders',
-      name: 'UserOrders',
+      name: 'Orders',
       meta:{nav:true},
       component: (resolve) => require(["@/views/user/orders/orders"], resolve)
     },

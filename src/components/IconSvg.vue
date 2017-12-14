@@ -47,5 +47,9 @@
       width: 42px;
       height: 42px;
     }
+    &--user-order{
+      width: 50px;
+      height: 50px;
+    }
   }
 </style>

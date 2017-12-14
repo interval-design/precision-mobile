@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="42px" viewBox="0 0 48 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 48.1 (47250) - http://www.bohemiancoding.com/sketch -->
+    <title>user_icon_ing_default</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="-22.4476803%" y1="-24.6010057%" x2="122.276935%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFF440" offset="0%"></stop>
+            <stop stop-color="#FF7714" offset="100%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="12.5" cy="34.5" r="5.5"></circle>
+        <circle id="path-3" cx="37.5" cy="34.5" r="5.5"></circle>
+    </defs>
+    <g id="个人中心" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(-352.000000, -495.000000)">
+        <g id="user_icon_ing_default" transform="translate(352.000000, 495.000000)">
+            <path d="M34,11.0018939 L46.8957816,17.4619967 C47.5726051,17.8010493 48,18.4931746 48,19.2501732 L48,31 C48,32.1045695 47.1045695,33 46,33 L32,33 L2,33 C0.8954305,33 1.87533573e-15,32.1045695 -2.22044605e-16,31 L-2.22044605e-16,2 C-3.57315355e-16,0.8954305 0.8954305,-1.91384796e-17 2,-2.22044605e-16 L32,-2.22044605e-16 C33.1045695,1.53715886e-15 34,0.8954305 34,2 L34,11.0018939 Z M36.4404692,14.2373734 C36.3033775,14.1701125 36.1527029,14.1351411 36,14.1351411 C35.4477153,14.1351411 35,14.5828564 35,15.1351411 L35,19.1823648 C35,19.7346495 35.4477153,20.1823648 36,20.1823648 L44.2490815,20.1823648 C44.6305662,20.1823648 44.9788169,19.9653187 45.1468492,19.622834 C45.3901136,19.1270106 45.1853741,18.5278615 44.6895507,18.2845971 L36.4404692,14.2373734 Z" id="Combined-Shape" fill="url(#linearGradient-1)"></path>
+            <g id="Oval-3">
+                <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                <circle stroke="#FFFFFF" stroke-width="2" cx="12.5" cy="34.5" r="6.5"></circle>
+            </g>
+            <g id="Oval-3-Copy">
+                <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <circle stroke="#FFFFFF" stroke-width="2" cx="37.5" cy="34.5" r="6.5"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

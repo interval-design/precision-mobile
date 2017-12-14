@@ -131,64 +131,35 @@
     &--primary.itv-base-button--line {
       border-color: $blue;
       color: $blue;
-      &:hover {
-        background: $blue;
-      }
     }
     &--success.itv-base-button--line {
       border-color: $green;
       color: $green;
-      &:hover {
-        background: $green;
-      }
     }
     &--error.itv-base-button--line {
       border-color: $red;
       color: $red;
-      &:hover {
-        background: $red;
-      }
     }
     &--warning.itv-base-button--line {
       border-color: $yellow;
       color: $yellow;
-      &:hover {
-        background: $yellow;
-      }
     }
     &--info.itv-base-button--line {
       border-color: $font;
       color: $font;
-      &:hover {
-        color: $white;
-        background: $blue;
-        border-color: $blue;
-      }
     }
     &--code.itv-base-button--line {
       border-color: $gray;
       color: $gray;
-      &:hover {
-        color: $white;
-        background: $gray;
-        border-color: $gray;
-      }
     }
     &--line {
       background: transparent;
-      &:hover {
-        color: #fff;
-        filter: brightness(1);
-      }
     }
     &--line.itv-base-button--disabled {
       border-color: $gray;
       color: $gray;
       cursor: no-drop;
       background: transparent;
-      &:hover {
-        background: transparent;
-      }
     }
     &--disabled {
       border-color: $gray;
@@ -209,6 +180,9 @@
     &:active {
       filter: brightness(.9);
       border-style: solid;
+    }
+    & + &{
+      margin-left: 16px;
     }
   }
 </style>
