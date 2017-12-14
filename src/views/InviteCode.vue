@@ -50,6 +50,7 @@
             }],
             success: (res) => {
               this.success = true;
+              this.$bus.$emit(this.$bus.EVENTS.WX_USER_UPDATE);
             },
           });
         })

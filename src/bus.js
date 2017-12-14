@@ -11,7 +11,7 @@ export default new Vue({
       scrollPosition:null,
       EVENTS: {
         USER_UPDATE: 'USER_UPDATE',
-        WEIXIN_USER_UPDATE: 'WEIXIN_USER_UPDATE',
+        WX_USER_UPDATE: 'WX_USER_UPDATE',
       },
     }
   }
