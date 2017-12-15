@@ -3,7 +3,7 @@
     <router-link :to="{name: 'Microbiology'}">
       <img src="../../assets/precision/pic-1.jpg" alt="pic-1">
     </router-link>
-    <router-link :to="{name: 'Article'}">
+    <router-link :to="{name: 'Articles'}">
       <img src="../../assets/precision/pic-2.jpg" alt="pic-2">
     </router-link>
     <router-link :to="{name: 'AboutInfo'}">

@@ -17,6 +17,7 @@
         </div>
       </li>
     </ul>
+    <p v-if="articles.length === 0" style="padding: 40px">暂无动态</p>
   </div>
 </template>
 
