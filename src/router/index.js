@@ -119,18 +119,67 @@ export default new Router({
       component: (resolve) => require(["@/views/user/orders/Details"],resolve)
     },
 
-    // 技术
-    {
-      path: '/research/microbiology',
-      name: 'ResearchMicrobiology',
-      component: (resolve) => require(["@/views/research/Microbiology"], resolve)
-    },
-
     // 领取体验码
     {
       path: '/invite-code',
       name: 'InviteCode',
       component: (resolve) => require(["@/views/InviteCode"], resolve)
     },
+
+    // 关于普瑞森
+    {
+      path: '/precision',
+      name: 'Precision',
+      meta:{nav:true},
+      component: (resolve) => require(["@/views/precision/Index"], resolve)
+    },
+
+    // 微生物组学
+    {
+      path: '/microbiology',
+      name: 'Microbiology',
+      component: (resolve) => require(["@/views/precision/Microbiology"], resolve)
+    },
+
+    // 关于普瑞森
+    {
+      path: '/about',
+      name: 'About',
+      component: (resolve) => require(["@/views/about/Index"], resolve),
+      children: [
+        {
+          path: 'info',
+          name: 'AboutInfo',
+          meta: {index: 1},
+          component: (resolve) => require(["@/views/about/Info"], resolve),
+        },
+        {
+          path: 'team',
+          name: 'AboutTeam',
+          meta: {index: 2},
+          component: (resolve) => require(["@/views/about/Team"], resolve),
+        },
+        {
+          path: 'join',
+          name: 'AboutJoin',
+          meta: {index: 3},
+          component: (resolve) => require(["@/views/about/Join"], resolve),
+        }
+      ]
+    },
+
+    // 科研动态
+    {
+      path: '/article',
+      name: 'Articles',
+      component: (resolve) => require(["@/views/article/Index"], resolve)
+    },
+
+    // 动态详情
+    {
+      path: '/article/:articleId',
+      name: 'ArticleDetail',
+      component: (resolve) => require(["@/views/article/Details"], resolve),
+    }
   ]
 })
