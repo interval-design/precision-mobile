@@ -10,8 +10,8 @@
         <icon-svg class-name="nav" :icon-class="$route.name == 'Index' ? 'home-active':'home'" ></icon-svg>
         <span>首页</span>
       </router-link>
-      <router-link class="itv-nav-item" :to="{name:'About'}">
-        <icon-svg class-name="nav" :icon-class="$route.name == 'About' ? 'about-active':'about'"></icon-svg>
+      <router-link class="itv-nav-item" :to="{name:'Precision'}">
+        <icon-svg class-name="nav" :icon-class="$route.name == 'Precision' ? 'about-active':'about'"></icon-svg>
         <span>关于普瑞森</span>
       </router-link>
       <router-link class="itv-nav-item" :to="{name:'Services'}">
