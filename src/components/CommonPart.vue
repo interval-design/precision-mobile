@@ -30,23 +30,30 @@
     name: 'ServiceCommonPart',
     methods: {
       buy() {
-        ApiWx.getCardList().then(res => {
-          let _data = res.data.data;
-          wx.chooseCard({
-            cardType: _data.cardType, // 卡券类型
-            timestamp: _data.timestamp, // 卡券签名时间戳
-            nonceStr: _data.nonceStr, // 卡券签名随机串
-            signType: _data.signType, // 签名方式，默认'SHA1'
-            cardSign: _data.cardSign, // 卡券签名
-            success: (res) => {
-              let _cardList = res.cardList; // 用户选中的卡券列表信息
-              this.$bus.encryptCode = JSON.parse(_cardList)[0].encrypt_code;
-              setTimeout(()=>{
-                this.$router.push({name: 'Buy'});
-              },200)
-            },
-          });
-        })
+        if(!this.$cookies.getRaw('_prs_wx_user')){
+          location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${location.href}`;
+        }
+        if (this.$bus.user.mobile === '' || !this.$bus.user.mobile ) {
+          this.$router.push({ name: 'Bind'})
+        } else{
+          ApiWx.getCardList().then(res => {
+            let _data = res.data.data;
+            wx.chooseCard({
+              cardType: _data.cardType, // 卡券类型
+              timestamp: _data.timestamp, // 卡券签名时间戳
+              nonceStr: _data.nonceStr, // 卡券签名随机串
+              signType: _data.signType, // 签名方式，默认'SHA1'
+              cardSign: _data.cardSign, // 卡券签名
+              success: (res) => {
+                let _cardList = res.cardList; // 用户选中的卡券列表信息
+                this.$bus.encryptCode = JSON.parse(_cardList)[0].encrypt_code;
+                setTimeout(()=>{
+                  this.$router.push({name: 'Buy'});
+                },200)
+              },
+            });
+          })
+        }
       }
     }
   }

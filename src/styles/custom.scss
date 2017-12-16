@@ -198,6 +198,35 @@
   }
 }
 
+.itv-table{
+  border-collapse: collapse;
+  color: $font-sub;
+  th,
+  td {
+    padding: 16px;
+    text-align: left;
+  }
+  th {
+    font-weight: normal;
+  }
+}
+.itv-user-service {
+  position: absolute;
+  right: 0;
+  bottom: 140px;
+  padding: 0 32px;
+  width: 100%;
+  text-align: right;
+  .itv-base-button {
+    background: $white;
+    .itv-icon-svg{
+      width: 30px;
+      height: 30px;
+      margin-right: 8px;
+    }
+  }
+}
+
 .yd-tab-nav-item{
   font-size: 28px;
   line-height: 100px;

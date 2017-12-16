@@ -39,7 +39,8 @@
       <h2>我的报告<span class="new" v-if="$bus.user.total_unread_reports > 0">有新报告</span></h2>
       <div><span class="total">{{ $bus.user.total_reports }}</span>份</div>
     </div>
-    <div class="itv-center-service">
+
+    <div class="itv-user-service">
       <base-button size="small" line>
         <base-badge :count="$bus.user.total_unread_messages" position="left">
           <icon-svg icon-class="message"></icon-svg>给客服留言
@@ -59,6 +60,8 @@
   export default {
     name: 'UserIndex',
     created() {
+      this.$bus.$emit(this.$bus.EVENTS.WX_USER_UPDATE);
+      this.$bus.$emit(this.$bus.EVENTS.USER_UPDATE);
     },
     data() {
       return {}
@@ -129,22 +132,6 @@
         padding: 0 16px;
         font-size: 64px;
         color: $blue;
-      }
-    }
-    &-service {
-      position: absolute;
-      right: 0;
-      bottom: 140px;
-      padding: 0 32px;
-      width: 100%;
-      text-align: right;
-      .itv-base-button {
-        background: $white;
-        .itv-icon-svg{
-          width: 30px;
-          height: 30px;
-          margin-right: 8px;
-        }
       }
     }
   }

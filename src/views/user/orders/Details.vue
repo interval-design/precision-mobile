@@ -59,18 +59,20 @@
       <h1 class="itv-product-info-name">{{ order.product_name }}</h1>
       <span class="itv-product-info-num">x{{ order.quantity }}</span>
     </div>
-    <!-- 物流 order.status === 2-->
-    <div class="itv-orders-details-progress itv-address itv-bg-white" v-if="order.status > 2">
+    <!-- 物流 -->
+    <div class="itv-orders-details_progress itv-address itv-bg-white" v-if="order.status > 2">
       <icon-svg icon-class="car"></icon-svg>
       <div class="itv-address-info">
-        <h2 class="itv-address-info-title">试剂盒已寄出 <span @click="billTracking(order.tracking_nos)" class="tracking">运单快捷查询</span></h2>
+        <h2 class="itv-address-info-title">试剂盒已寄出 <span @click="billTracking(order.tracking_nos)" class="tracking">运单快捷查询</span>
+        </h2>
         <div class="itv-address-info-content">
           <p>快递公司：顺丰速运</p>
           <p>运单编号：{{ order.tracking_nos[0] }}</p>
-          <p>寄出时间：{{ order.iso_send_time | toDate}}</p>
+          <p>寄出时间：{{ order.iso_send_time | moment}}</p>
         </div>
       </div>
     </div>
+    <!-- 收货信息 -->
     <div class="itv-address itv-bg-white">
       <icon-svg icon-class="location"></icon-svg>
       <div class="itv-address-info">
@@ -84,6 +86,75 @@
         </div>
       </div>
     </div>
+    <!-- 订单信息 -->
+    <div class="itv-orders-details_info itv-bg-white">
+      <table class="itv-table">
+        <tr>
+          <th>订单编号：</th>
+          <td>{{ order.code }}</td>
+        </tr>
+        <tr>
+          <th>订单状态：</th>
+          <td>{{ orderStatus(order.status) }}</td>
+        </tr>
+        <tr>
+          <th>下单时间：</th>
+          <td>{{ order.iso_create_time | moment }}</td>
+        </tr>
+        <tr>
+          <th>支付时间：</th>
+          <td v-if="order._iso_pay_time">{{ order._iso_pay_time | moment }}</td>
+          <td v-else>-</td>
+        </tr>
+        <tr v-if="order.iso_send_time">
+          <th>试剂盒寄出时间：</th>
+          <td>{{order.iso_send_time | moment}}</td>
+        </tr>
+        <tr v-if="order.iso_receive_time">
+          <th>收到试剂盒时间：</th>
+          <td>{{order.iso_receive_time | moment}}</td>
+        </tr>
+        <tr v-if="order.iso_finish_time">
+          <th>完成时间：</th>
+          <td>{{order.iso_finish_time | moment}}</td>
+        </tr>
+      </table>
+    </div>
+    <!-- 付款方式 -->
+    <div class="itv-orders-details_info itv-bg-white" v-if="order.transaction">
+      <div class="pay">
+        <span>付款方式：</span>
+        <td>{{ transaction }}</td>
+      </div>
+      <div class="pay">
+        <span>实付金额:</span>
+        <span class="itv-highlight-red">￥{{(order.price - order.discount) / 100 }}</span>
+      </div>
+    </div>
+    <!-- 检测报告 -->
+    <div class="itv-orders-details_report itv-bg-white">
+      <h2>检测报告</h2>
+      <div class=report-item :class="{'bg-filter':order.product === 1,'bg-child':order.product === 2,'bg-microbiology':order.product === 3}"  v-for="report in order.sub_orders">
+        <h3>{{ report.product_name }}报告</h3>
+        <p class="person">
+          <span>被测人：{{ report.person_name }}</span>
+          <span>{{ report.iso_report_time | moment }}</span>
+        </p>
+      </div>
+      <!--客服-->
+      <div class="itv-user-service">
+        <base-button size="small" line>
+          <base-badge :count="$bus.user.total_unread_messages" position="left">
+            <icon-svg icon-class="message"></icon-svg>给客服留言
+          </base-badge>
+        </base-button>
+        <base-button size="small" line>
+          <a href="tel:1111">
+            <icon-svg icon-class="telephone"></icon-svg>客服电话
+          </a>
+        </base-button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -92,44 +163,40 @@
 
   export default {
     name: "OrdersDetails",
-    filters: {
-      /**
-       * 日期格式化
-       */
-      toDate(val) {
-        if (!val) {return '-';}
-        /**
-         * 数字补零
-         */
-        let addZero = (num) => {
-          return (num<10? '0':'') + num;
-        };
-        let time = new Date(val);
-        let year = time.getFullYear();
-        let month = time.getMonth()+1;
-        let day = time.getDate();
-        let hour = addZero(time.getHours());
-        let min = addZero(time.getMinutes());
-        return `${year}-${month}-${day} ${hour}:${min}`;
-      }
-    },
-    computed:{
+    computed: {
       /**
        * 是否显示分析时间
        */
-      showAnalyzeTime(){
+      showAnalyzeTime() {
         if (!this.order.iso_receive_time) {
           return;
         }
         return Date.now() > this.getAnalyzeTime();
-      }
+      },
+
+      /**
+       * 支付类型
+       */
+      transaction() {
+        switch (this.order.transaction) {
+          case 'ALI_ORCODE':
+            return '支付宝网页扫码支付';
+            break;
+          case 'WX_NATIVE':
+            return '微信网页扫码支付';
+            break;
+          case 'WX_JSAPI':
+            return '微信公众号支付';
+            break;
+        }
+      },
     },
     created() {
       this.loadOrderDetails();
     },
     data() {
       return {
-        order: null
+        order: null,
       }
     },
     methods: {
@@ -146,7 +213,7 @@
        */
       getAnalyzeTime() {
         let time = new Date(this.order.iso_receive_time).getTime();
-        return (time + 7*24*60*60*1000 + 0.9527*60*60*1000);
+        return (time + 7 * 24 * 60 * 60 * 1000 + 0.9527 * 60 * 60 * 1000);
       },
 
       /**
@@ -156,14 +223,37 @@
       billTracking(bills) {
         location.href = `http://www.sf-express.com/cn/sc/dynamic_function/waybill/#search/bill-number/${bills.join(',')}`;
       },
+
+      /**
+       * 根据订单状态码返回订单状态文字
+       */
+      orderStatus(statusCode) {
+        let status = ['待付款', '已付款', '试剂盒已寄出', '样本检测中', '已完成', '已关闭'];
+        return status[statusCode];
+      },
+
+      /**
+       * 跳转到报告页面
+       */
+      openReport(order) {
+        // 更新报告查看次数
+        ApiOrder.updateReportViews(order, {}).then(
+          res => {
+            if (res.data.code === 0) {
+              location.href = order.report_full_link;
+            }
+          }
+        )
+      },
     },
   }
 </script>
 
 <style lang="scss">
   @import "../../../styles/variable";
-  .itv-orders-details{
-    &_hd{
+
+  .itv-orders-details {
+    &_hd {
       display: flex;
       align-items: center;
       padding: 24px 48px;
@@ -173,23 +263,79 @@
       background-size: cover;
       text-align: center;
       color: $white;
-      .desc{
+      .desc {
         text-align: left;
         margin-left: 48px;
-        h2{
+        h2 {
           font-size: 28px;
           margin-bottom: 16px;
         }
       }
     }
-    &-progress{
+    &_info {
+      padding: 8px;
+      margin-top: 16px;
+      .pay {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: $font-sub;
+        padding: 16px;
+      }
+    }
+    &_report {
+      position: relative;
+      padding: 24px 24px 120px;
+      margin-top: 16px;
+      h2 {
+        font-size: 28px;
+        margin-bottom: 24px;
+      }
+      .report-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 32px;
+        height: 199px;
+        color: $white;
+        h3 {
+          font-size: 32px;
+        }
+        .person {
+          display: flex;
+          justify-content: space-between;
+        }
+        & + & {
+          margin-top: 16px;
+        }
+      }
+      .bg-filter {
+        background: url("../../../assets/images/pic-filter-bg.png") no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .bg-child {
+        background: url("../../../assets/images/pic-child-bg.png") no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .bg-microbiology {
+        background: url("../../../assets/images/pic-microbiology-bg.png") no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+      .itv-user-service{
+        bottom: 32px;
+      }
+    }
+    &_progress {
       margin-top: 16px;
       border-bottom: 1px solid $border;
-      p{
+      p {
         padding: 16px 0 0;
       }
     }
-    .tracking{
+    .tracking {
       color: $blue;
       text-decoration: underline;
     }

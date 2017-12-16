@@ -41,11 +41,26 @@
       });
       // 微信用户更新事件
       this.$bus.$on(this.$bus.EVENTS.WX_USER_UPDATE, () => {
-        this.getCurrentUser()
+        this.getCurrentWeixinUser()
       });
-
       this.getCurrentUser();
       this.getCurrentWeixinUser();
+    },
+    watch:{
+      $route(){
+        if (this.$route.meta.auth) {
+          if(!this.$cookies.getRaw('_prs_wx_user')){
+            location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${location.href}`;
+          }
+          setTimeout(()=>{
+            // 用户存在，手机未绑定，跳转到手机绑定页面
+            if (this.$bus.user.mobile === '' || !this.$bus.user.mobile && this.$route.name !== 'Bind') {
+              console.log(this.$bus.user.mobile);
+              this.$router.push({ name: 'Bind'})
+            }
+          },500);
+        }
+      }
     },
     methods: {
       initToken() {

@@ -24,37 +24,29 @@ Vue.component(Tab.name, Tab);
 Vue.component(TabPanel.name, TabPanel);
 
 
-// request 拦截器
-axios.interceptors.request.use(
-  config => {
-    if (!Cookies.get('_prs_wx_user')) {
-      // location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${location.href}`;
-    }
-    return config;
-  },
-  err => {
-    return Promise.reject(err);
-  }
-);
-
-// response 拦截器
-axios.interceptors.response.use(
-  response => {
-    if (response.data.code === 1101) {
-      router.push({name: 'Bind'});
-    }
-    return response;
-  },
-  error => {
-    return Promise.reject(error.response.data.message)   // 返回接口返回的错误信息
-  }
-);
-
 router.beforeEach((to, from, next) => {
   if (from.name === 'OrderDetails') {
     to.meta.isBack = true;
   }
   next();
+});
+
+
+Vue.filter('moment',(val)=>{
+  if (!val) {return '-';}
+  /**
+   * 数字补零
+   */
+  let addZero = (num) => {
+    return (num<10? '0':'') + num;
+  };
+  let time = new Date(val);
+  let year = time.getFullYear();
+  let month = time.getMonth()+1;
+  let day = time.getDate();
+  let hour = addZero(time.getHours());
+  let min = addZero(time.getMinutes());
+  return `${year}-${month}-${day} ${hour}:${min}`;
 });
 
 /* eslint-disable no-new */

@@ -7,15 +7,12 @@
       <yd-tab-panel label="已完成" :active="$route.query.tab === 'done'"></yd-tab-panel>
     </yd-tab>
     <div class="itv-orders-container" v-if="orders && orders.length !== 0">
-      <router-link class="itv-orders-item itv-bg-white" :to="{name:'OrderDetails',params:{order_id:order.id}}" v-for="order in orders" :key="order.id">
+      <router-link class="itv-orders-item itv-bg-white" :to="{name:'OrderDetails',params:{order_id:order.id}}"
+                   v-for="order in orders" :key="order.id">
         <div class="itv-orders-item_hd">
           <span>订单号 {{ order.code }}</span>
-          <span class="itv-highlight-blue" v-if="order.status === 0">待付款</span>
-          <span class="itv-highlight-blue" v-if="order.status === 1">已付款</span>
-          <span class="itv-highlight-blue" v-if="order.status === 2">试剂盒已寄出</span>
-          <span class="itv-highlight-blue" v-if="order.status === 3">试剂盒已收到</span>
-          <span class="itv-highlight-blue" v-if="order.status === 4">已完成</span>
-          <span class="itv-highlight-red" v-if="order.status === 5">已关闭</span>
+          <span class="itv-highlight-blue" v-if="order.status < 5 ">{{ orderStatus(order.status) }}</span>
+          <span class="itv-highlight-red" v-else>{{ orderStatus(order.status) }}</span>
         </div>
         <div class="itv-orders-item_bd itv-product-info">
           <img src="../../../assets/images/pic-filter.png" srcset="../../../assets/images/pic-filter.png 2x"
@@ -39,7 +36,8 @@
         <div class="itv-services">
           <p>猜你需要</p>
           <section class="section itv-services-nav">
-            <img src="../../../assets/index/pic-4.jpg" srcset="../../../assets/images/pic-services.png 2x" alt="pic-services">
+            <img src="../../../assets/index/pic-4.jpg" srcset="../../../assets/images/pic-services.png 2x"
+                 alt="pic-services">
             <router-link class="item item-1" :to="{name:'ServiceFilter'}"></router-link>
             <router-link class="item item-2" :to="{name:'ServiceChild'}"></router-link>
             <router-link class="item item-3" :to="{name:'ServiceEcosystem'}"></router-link>
@@ -55,20 +53,20 @@
   export default {
     name: 'Orders',
     watch: {
-      $route(){
+      $route() {
         this.setStatus();
       },
-      status(){
+      status() {
         this.loadOrders();
       },
     },
     created() {
       this.isFirstEnter = true;
     },
-    activated(){
-      if(!this.$route.meta.isBack || this.isFirstEnter){
+    activated() {
+      if (!this.$route.meta.isBack || this.isFirstEnter) {
         this.orders = [];
-        this.setStatus().then(res=>{
+        this.setStatus().then(res => {
           this.loadOrders();
         });
       }
@@ -83,7 +81,7 @@
       }
     },
     methods: {
-      setStatus(){
+      setStatus() {
         // 这里要确保一定是在status变换完成之后请求数据，所以使用Promise
         return new Promise((resolve, reject) => {
           switch (this.$route.query.tab) {
@@ -131,6 +129,14 @@
           }
         })
       },
+
+      /**
+       * 根据订单状态码返回订单状态文字
+       */
+      orderStatus(statusCode) {
+        let status = ['待付款', '已付款', '试剂盒已寄出', '样本检测中', '已完成', '已关闭'];
+        return status[statusCode];
+      }
     },
   }
 </script>
@@ -138,11 +144,11 @@
   @import "../../../styles/variable";
 
   .itv-orders {
-    &-nav{
+    &-nav {
       position: fixed;
       width: 100%;
     }
-    &-container{
+    &-container {
       padding: 100px 0;
     }
     &-item {
@@ -150,8 +156,7 @@
       width: 100%;
       margin-top: 16px;
       &_hd,
-      &_footer
-      {
+      &_footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -159,35 +164,35 @@
         border-bottom: 1px solid $border;
         font-size: 28px;
       }
-      &_bd{
+      &_bd {
         border-bottom: 1px solid $border;
       }
-      &_footer{
+      &_footer {
         justify-content: flex-end;
-        .money{
+        .money {
           margin-left: 16px;
         }
       }
     }
-    .itv-services{
+    .itv-services {
       color: $font-sub;
-      p{
-        padding:24px;
+      p {
+        padding: 24px;
         font-size: 28px;
         text-align: left;
       }
-      img{
+      img {
         padding-top: 0;
       }
       .item {
-        &-1{
-          top:0;
+        &-1 {
+          top: 0;
         }
-        &-2{
-          top:220px;
+        &-2 {
+          top: 220px;
         }
-        &-3{
-          top:450px;
+        &-3 {
+          top: 450px;
         }
       }
     }

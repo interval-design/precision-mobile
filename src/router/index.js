@@ -60,24 +60,28 @@ export default new Router({
     {
       path: '/buy',
       name: 'Buy',
+      meta:{auth:true},
       component: (resolve) => require(["@/views/buy/Index"], resolve)
     },
     // 购买失败
     {
       path: '/buy-error',
       name: 'BuyError',
+      meta:{auth:true},
       component: (resolve) => require(["@/views/buy/BuyError"], resolve)
     },
     // 交易失败
     {
       path: '/transactions-error',
       name: 'TransactionsError',
+      meta:{auth:true},
       component: (resolve) => require(["@/views/buy/TransactionsError"], resolve)
     },
     // 交易成功
     {
       path: '/transactions-success',
       name: 'TransactionsSuccess',
+      meta:{auth:true},
       component: (resolve) => require(["@/views/buy/TransactionsSuccess"], resolve)
     },
 
@@ -85,16 +89,19 @@ export default new Router({
     {
       path: '/address',
       name: 'Address',
+      meta:{auth:true},
       component: (resolve) => require(["@/views/buy/AddressSelect"], resolve)
     },
     {
       path: '/address-add',
       name: 'AddressAdd',
+      meta:{auth:true},
       component: (resolve) => require(["@/views/buy/AddressEdit"], resolve)
     },
     {
       path: '/address-edit',
       name: 'AddressEdit',
+      meta:{auth:true},
       component: (resolve) => require(["@/views/buy/AddressEdit"], resolve)
     },
 
@@ -116,6 +123,7 @@ export default new Router({
     {
       path: '/orders/:order_id',
       name: 'OrderDetails',
+      meta:{auth:true},
       component: (resolve) => require(["@/views/user/orders/Details"],resolve)
     },
 

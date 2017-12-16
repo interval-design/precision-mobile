@@ -35,6 +35,12 @@
         success: false,
       }
     },
+    created(){
+      if(!this.$cookies.getRaw('_prs_wx_user')){
+        location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${location.href}`;
+      }
+      this.$bus.$emit(this.$bus.EVENTS.WX_USER_UPDATE);
+    },
     methods: {
       addCard() {
         ApiWx.cardConfig(this.$route.query.card_id).then(res => {
