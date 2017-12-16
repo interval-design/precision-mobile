@@ -1,5 +1,5 @@
 <template>
-  <svg :class="svgClass" aria-hidden="true">
+  <svg :class="svgClass" aria-hidden="true" :style="styles">
     <use :xlink:href="iconName"></use>
   </svg>
 </template>
@@ -14,6 +14,12 @@
       },
       className: {
         type: String
+      },
+      width: {
+        type: String,
+      },
+      height: {
+        type: String,
       }
     },
     computed: {
@@ -26,6 +32,14 @@
         } else {
           return 'itv-icon-svg'
         }
+      },
+
+      styles() {
+        let _style = {
+          width: this.width,
+          height: this.height,
+        };
+        return _style;
       }
     }
   }
@@ -43,15 +57,15 @@
       width: 64px;
       height: 64px;
     }
-    &--nav{
+    &--nav {
       width: 42px;
       height: 42px;
     }
-    &--user-order{
+    &--user-order {
       width: 50px;
       height: 50px;
     }
-    &--order{
+    &--order {
       width: 80px;
       height: 80px;
     }

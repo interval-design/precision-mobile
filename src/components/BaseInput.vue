@@ -3,6 +3,7 @@
     <template v-if="type !== 'textarea'">
       <slot name="title">{{ title }}</slot>
       <input class="itv-input" type="text" :value="currentValue" @input="handleInput" :placeholder="placeholder">
+      <slot name="footer">{{ footer }}</slot>
     </template>
     <textarea v-else :rows="rows" :value="currentValue"  @input="handleInput" :placeholder="placeholder"></textarea>
   </div>
@@ -30,6 +31,9 @@
         }
       },
       title: {
+        type: String
+      },
+      footer:{
         type: String
       },
       rows:{

@@ -5,7 +5,7 @@
     <img src="../assets/invite/bg-filter.jpg" v-if="$route.query.category_id == 1">
     <base-Button class="btn" size="big" @click="addCard" v-if="$bus.weixinUser.card_ids.indexOf($route.query.card_id) == -1">立即领取</base-Button>
     <base-Button class="btn" size="big" disabled v-else>已领取</base-Button>
-    <base-Dialog style="text-align: center" :visible.sync="success">
+    <base-Dialog :visible.sync="success" background="transparent">
       <img src="../assets/invite/pic-child.png" v-if="$route.query.category_id == 2">
       <img src="../assets/invite/pic-ecosystem.png" v-if="$route.query.category_id == 3">
       <img src="../assets/invite/pic-filter.png" v-if="$route.query.category_id == 1">

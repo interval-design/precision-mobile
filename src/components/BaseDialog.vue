@@ -4,16 +4,16 @@
       <div class="itv-base-dialog-mask" v-show="visible" @click="mask"></div>
     </transition>
     <transition name="fade">
-      <div class="itv-base-dialog-wrap" v-show="visible" :style="styles" >
-        <header class="itv-base-dialog-header">
-          <slot name="title" v-if="title"></slot>
+      <div class="itv-base-dialog-wrap" v-show="visible" :style="styles">
+        <header class="itv-base-dialog-header" v-if="title">
+          <slot name="title">{{ title }}</slot>
         </header>
         <div class="itv-base-dialog-body">
           <slot></slot>
         </div>
         <footer class="itv-base-dialog-footer">
           <slot name="footer"></slot>
-          <span @click="close">
+          <span class="itv-base-dialog-footer_close" @click="close">
             <slot name="close"></slot>
           </span>
         </footer>
@@ -39,13 +39,18 @@
       top: {
         type: String,
         default: '20%'
+      },
+      background: {
+        type: String,
+        default: '#fff'
       }
     },
     computed: {
       styles() {
         let style = {
           width: this.width,
-          top: this.top
+          top: this.top,
+          background: this.background
         };
         return style;
       }
@@ -86,16 +91,20 @@
       border-radius: 2px;
       z-index: 9999;
       transform: translateX(-50%);
+      text-align: center;
     }
     &-header {
-      height: 44px;
+      padding: 24px;
+      font-size: 32px;
     }
-    &-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      cursor: pointer;
-
+    &-footer {
+      padding: 32px 0;
+      &_close {
+        position: absolute;
+        bottom: -100px;
+        left: 0;
+        right: 0;
+      }
     }
   }
 </style>

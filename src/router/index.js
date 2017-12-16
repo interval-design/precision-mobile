@@ -5,7 +5,7 @@ Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  scrollBehavior (to, from, savedPosition) {
+  scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
       setTimeout(() => {
         window.scrollTo(savedPosition.x, savedPosition.y)
@@ -29,7 +29,7 @@ export default new Router({
     {
       path: '/',
       name: 'Index',
-      meta:{nav:true},
+      meta: {nav: true},
       component: (resolve) => require(["@/views/Index"], resolve)
     },
 
@@ -37,7 +37,7 @@ export default new Router({
     {
       path: '/services',
       name: 'Services',
-      meta:{nav:true},
+      meta: {nav: true},
       component: (resolve) => require(["@/views/services/Index"], resolve)
     },
     {
@@ -60,28 +60,28 @@ export default new Router({
     {
       path: '/buy',
       name: 'Buy',
-      meta:{auth:true},
+      meta: {auth: true},
       component: (resolve) => require(["@/views/buy/Index"], resolve)
     },
     // 购买失败
     {
       path: '/buy-error',
       name: 'BuyError',
-      meta:{auth:true},
+      meta: {auth: true},
       component: (resolve) => require(["@/views/buy/BuyError"], resolve)
     },
     // 交易失败
     {
       path: '/transactions-error',
       name: 'TransactionsError',
-      meta:{auth:true},
+      meta: {auth: true},
       component: (resolve) => require(["@/views/buy/TransactionsError"], resolve)
     },
     // 交易成功
     {
       path: '/transactions-success',
       name: 'TransactionsSuccess',
-      meta:{auth:true},
+      meta: {auth: true},
       component: (resolve) => require(["@/views/buy/TransactionsSuccess"], resolve)
     },
 
@@ -89,19 +89,19 @@ export default new Router({
     {
       path: '/address',
       name: 'Address',
-      meta:{auth:true},
+      meta: {auth: true},
       component: (resolve) => require(["@/views/buy/AddressSelect"], resolve)
     },
     {
       path: '/address-add',
       name: 'AddressAdd',
-      meta:{auth:true},
+      meta: {auth: true},
       component: (resolve) => require(["@/views/buy/AddressEdit"], resolve)
     },
     {
       path: '/address-edit',
       name: 'AddressEdit',
-      meta:{auth:true},
+      meta: {auth: true},
       component: (resolve) => require(["@/views/buy/AddressEdit"], resolve)
     },
 
@@ -109,7 +109,7 @@ export default new Router({
     {
       path: '/user',
       name: 'User',
-      meta:{nav:true},
+      meta: {nav: true},
       component: (resolve) => require(["@/views/user/Index"], resolve)
     },
 
@@ -117,14 +117,14 @@ export default new Router({
     {
       path: '/orders',
       name: 'Orders',
-      meta:{nav:true},
+      meta: {nav: true},
       component: (resolve) => require(["@/views/user/orders/Index"], resolve)
     },
     {
       path: '/orders/:order_id',
       name: 'OrderDetails',
-      meta:{auth:true},
-      component: (resolve) => require(["@/views/user/orders/Details"],resolve)
+      meta: {auth: true},
+      component: (resolve) => require(["@/views/user/orders/Details"], resolve)
     },
 
     // 报告
@@ -141,11 +141,24 @@ export default new Router({
       component: (resolve) => require(["@/views/InviteCode"], resolve)
     },
 
+    // 录入被测人信息
+    {
+      path: '/person',
+      name: 'Person',
+      component: (resolve) => require(["@/views/person/Index"], resolve)
+    },
+
+    {
+      path: '/questionnaire',
+      name: 'Questionnaire',
+      component: (resolve) => require(["@/views/person/questionnaire"], resolve)
+    },
+
     // 关于普瑞森
     {
       path: '/precision',
       name: 'Precision',
-      meta:{nav:true},
+      meta: {nav: true},
       component: (resolve) => require(["@/views/precision/Index"], resolve)
     },
 
