@@ -6,7 +6,21 @@
       <yd-tab-panel label="进行中" :active="$route.query.tab ==='ing'"></yd-tab-panel>
       <yd-tab-panel label="已完成" :active="$route.query.tab === 'done'"></yd-tab-panel>
     </yd-tab>
-    <div class="itv-orders-container" v-if="orders && orders.length !== 0">
+    <div class="itv-orders-container itv-action-result" v-if="orders.length === 0">
+      <img src="../../../assets/images/pic-box-none.png">
+      <h1>您还没有订单</h1>
+      <div class="itv-services">
+        <p>猜你需要</p>
+        <section class="section itv-services-nav">
+          <img src="../../../assets/index/pic-4.jpg" srcset="../../../assets/images/pic-services.png 2x"
+               alt="pic-services">
+          <router-link class="item item-1" :to="{name:'ServiceFilter'}"></router-link>
+          <router-link class="item item-2" :to="{name:'ServiceChild'}"></router-link>
+          <router-link class="item item-3" :to="{name:'ServiceEcosystem'}"></router-link>
+        </section>
+      </div>
+    </div>
+    <div class="itv-orders-container" v-else>
       <router-link class="itv-orders-item itv-bg-white" :to="{name:'OrderDetails',params:{order_id:order.id}}"
                    v-for="order in orders" :key="order.id">
         <div class="itv-orders-item_hd">
@@ -29,22 +43,6 @@
         </div>
       </router-link>
     </div>
-    <template v-else>
-      <div class="itv-orders-container itv-action-result">
-        <img src="../../../assets/images/pic-box-none.png">
-        <h1>您还没有订单</h1>
-        <div class="itv-services">
-          <p>猜你需要</p>
-          <section class="section itv-services-nav">
-            <img src="../../../assets/index/pic-4.jpg" srcset="../../../assets/images/pic-services.png 2x"
-                 alt="pic-services">
-            <router-link class="item item-1" :to="{name:'ServiceFilter'}"></router-link>
-            <router-link class="item item-2" :to="{name:'ServiceChild'}"></router-link>
-            <router-link class="item item-3" :to="{name:'ServiceEcosystem'}"></router-link>
-          </section>
-        </div>
-      </div>
-    </template>
   </div>
 </template>
 <script>
@@ -75,7 +73,7 @@
     },
     data() {
       return {
-        orders: null,
+        orders: [],
         status: null,
         isFirstEnter: false
       }

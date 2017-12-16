@@ -46,6 +46,7 @@
   vertical-align: middle;
 }
 
+// 头像
 .itv-avatar{
   display: inline-block;
   height: 100px;
@@ -58,6 +59,7 @@
   }
 }
 
+// 底部导航栏
 .itv-nav{
   position: fixed;
   left: 0;
@@ -80,6 +82,7 @@
   }
 }
 
+// 地址信息
 .itv-address {
   display: flex;
   padding: 32px 24px;
@@ -103,6 +106,7 @@
   }
 }
 
+// 操作结果：下单失败/成功、列表为空等
 .itv-action-result{
   text-align: center;
   img{
@@ -124,6 +128,7 @@
   }
 }
 
+// 重写swiper插件样式
 .itv-swiper {
   .swiper-slide {
     height: auto;
@@ -146,6 +151,7 @@
   }
 }
 
+// 服务模块公共的样式
 .itv-services {
   padding-bottom: 90px;
   &-banner {
@@ -178,6 +184,7 @@
   }
 }
 
+// 产品信息公共样式：下单/订单列表/订单详情
 .itv-product-info {
   background: white;
   padding: 32px;
@@ -198,6 +205,7 @@
   }
 }
 
+// 表格样式：订单详情
 .itv-table{
   border-collapse: collapse;
   color: $font-sub;
@@ -210,6 +218,8 @@
     font-weight: normal;
   }
 }
+
+// 底部客服
 .itv-user-service {
   position: absolute;
   right: 0;
@@ -227,6 +237,54 @@
   }
 }
 
+// 报告列表：订单详情/报告列表
+.itv-report{
+  position: relative;
+  padding: 24px 24px 120px;
+  margin-top: 16px;
+  h2 {
+    font-size: 28px;
+    margin-bottom: 24px;
+  }
+  .report-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px;
+    height: 199px;
+    color: $white;
+    h3 {
+      font-size: 32px;
+    }
+    .person {
+      display: flex;
+      justify-content: space-between;
+    }
+    & + & {
+      margin-top: 16px;
+    }
+  }
+  .bg-filter {
+    background: url("./assets/images/pic-filter-bg.png") no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .bg-child {
+    background: url("./assets/images/pic-child-bg.png") no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .bg-microbiology {
+    background: url("./assets/images/pic-microbiology-bg.png") no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  .itv-user-service{
+    bottom: 32px;
+  }
+}
+
+// 地址选择栏插件样式重写
 .yd-tab-nav-item{
   font-size: 28px;
   line-height: 100px;

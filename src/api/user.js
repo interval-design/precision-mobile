@@ -47,5 +47,24 @@ export default {
    */
   bind(params) {
     return axios.put('/api/user/bind/', params);
+  },
+
+  /**
+   * 列出当前用户的报告
+   * @param params
+   * @returns {AxiosPromise<any>}
+   */
+  getReports(params){
+    return axios.get('/api/current_user/reports/', params);
+  },
+
+  /**
+   * 更新报告查看次数
+   * @param subOrderId
+   * @param params
+   * @returns {AxiosPromise<any>}
+   */
+  updateReportViews(subOrderId,params){
+    return axios.put(`/api/sub_orders/${subOrderId}/report_views/`, params);
   }
 }

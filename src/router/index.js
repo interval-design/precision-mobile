@@ -118,13 +118,20 @@ export default new Router({
       path: '/orders',
       name: 'Orders',
       meta:{nav:true},
-      component: (resolve) => require(["@/views/user/orders/Orders"], resolve)
+      component: (resolve) => require(["@/views/user/orders/Index"], resolve)
     },
     {
       path: '/orders/:order_id',
       name: 'OrderDetails',
       meta:{auth:true},
       component: (resolve) => require(["@/views/user/orders/Details"],resolve)
+    },
+
+    // 报告
+    {
+      path: '/reports',
+      name: 'Reports',
+      component: (resolve) => require(["@/views/user/reports/Index"], resolve)
     },
 
     // 领取体验码

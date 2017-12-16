@@ -35,11 +35,10 @@
         </router-link>
       </div>
     </div>
-    <div class="itv-center-report">
+    <router-link :to="{name:'Reports'}" class="itv-center-report">
       <h2>我的报告<span class="new" v-if="$bus.user.total_unread_reports > 0">有新报告</span></h2>
       <div><span class="total">{{ $bus.user.total_reports }}</span>份</div>
-    </div>
-
+    </router-link>
     <div class="itv-user-service">
       <base-button size="small" line>
         <base-badge :count="$bus.user.total_unread_messages" position="left">
@@ -110,8 +109,10 @@
       }
     }
     &-report {
+      display: inline-block;
       margin: 16px 0;
       height: 150px;
+      width: 100%;
       padding: 16px 88px;
       background: url("../../assets/center/pic-report.jpg") no-repeat;
       background-position: right;

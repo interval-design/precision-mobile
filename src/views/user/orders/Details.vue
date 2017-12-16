@@ -132,9 +132,12 @@
       </div>
     </div>
     <!-- 检测报告 -->
-    <div class="itv-orders-details_report itv-bg-white">
+    <div class="itv-report itv-bg-white">
       <h2>检测报告</h2>
-      <div class=report-item :class="{'bg-filter':order.product === 1,'bg-child':order.product === 2,'bg-microbiology':order.product === 3}"  v-for="report in order.sub_orders">
+      <div class=report-item
+           :class="{'bg-filter':order.product === 1,'bg-child':order.product === 2,'bg-microbiology':order.product === 3}"
+           v-for="report in order.sub_orders"
+           @click="openReport(report)">
         <h3>{{ report.product_name }}报告</h3>
         <p class="person">
           <span>被测人：{{ report.person_name }}</span>
@@ -145,12 +148,14 @@
       <div class="itv-user-service">
         <base-button size="small" line>
           <base-badge :count="$bus.user.total_unread_messages" position="left">
-            <icon-svg icon-class="message"></icon-svg>给客服留言
+            <icon-svg icon-class="message"></icon-svg>
+            给客服留言
           </base-badge>
         </base-button>
         <base-button size="small" line>
           <a href="tel:1111">
-            <icon-svg icon-class="telephone"></icon-svg>客服电话
+            <icon-svg icon-class="telephone"></icon-svg>
+            客服电话
           </a>
         </base-button>
       </div>
@@ -160,6 +165,7 @@
 
 <script>
   import ApiOrders from '../../../api/orders'
+  import ApiUser from '../../../api/user'
 
   export default {
     name: "OrdersDetails",
@@ -235,12 +241,12 @@
       /**
        * 跳转到报告页面
        */
-      openReport(order) {
+      openReport(report) {
         // 更新报告查看次数
-        ApiOrder.updateReportViews(order, {}).then(
+        ApiUser.updateReportViews(report.id, {}).then(
           res => {
             if (res.data.code === 0) {
-              location.href = order.report_full_link;
+              location.href = report.report_full_link;
             }
           }
         )
@@ -281,51 +287,6 @@
         align-items: center;
         color: $font-sub;
         padding: 16px;
-      }
-    }
-    &_report {
-      position: relative;
-      padding: 24px 24px 120px;
-      margin-top: 16px;
-      h2 {
-        font-size: 28px;
-        margin-bottom: 24px;
-      }
-      .report-item {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 32px;
-        height: 199px;
-        color: $white;
-        h3 {
-          font-size: 32px;
-        }
-        .person {
-          display: flex;
-          justify-content: space-between;
-        }
-        & + & {
-          margin-top: 16px;
-        }
-      }
-      .bg-filter {
-        background: url("../../../assets/images/pic-filter-bg.png") no-repeat;
-        background-position: center;
-        background-size: cover;
-      }
-      .bg-child {
-        background: url("../../../assets/images/pic-child-bg.png") no-repeat;
-        background-position: center;
-        background-size: cover;
-      }
-      .bg-microbiology {
-        background: url("../../../assets/images/pic-microbiology-bg.png") no-repeat;
-        background-position: center;
-        background-size: cover;
-      }
-      .itv-user-service{
-        bottom: 32px;
       }
     }
     &_progress {
