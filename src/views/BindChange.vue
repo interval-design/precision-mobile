@@ -42,7 +42,7 @@
       <base-button v-else width="100%" @click="bindPhone">{{progress.btnText}}</base-button>
       <div class="itv-bind-change-tips" v-if="progress.num === 1">
         <p>旧手机号无法使用？</p>
-        <p>请您联系普瑞森客服进行人工申诉找回。（工作时间：工作日9:00-17:00）<a href="tel:4008226270">立即拨打</a></p>
+        <p>请您联系普瑞森客服进行人工申诉找回。（工作时间：工作日9:00-17:00）<a href="tel:0214008226270">立即拨打</a></p>
       </div>
     </div>
     <div v-else class="itv-bind-change-success">

@@ -153,7 +153,7 @@
           </base-badge>
         </base-button>
         <base-button size="small" line>
-          <a href="tel:1111">
+          <a href="tel:0214008226270">
             <icon-svg icon-class="telephone"></icon-svg>
             客服电话
           </a>
