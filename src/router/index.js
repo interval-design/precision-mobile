@@ -208,6 +208,13 @@ export default new Router({
       path: '/article/:articleId',
       name: 'ArticleDetail',
       component: (resolve) => require(["@/views/article/Details"], resolve),
+    },
+    
+    // 改绑页面
+    {
+      path: '/bind-change',
+      name: 'BindChange',
+      component: (resolve) => require(["@/views/BindChange"], resolve),
     }
   ]
 })
