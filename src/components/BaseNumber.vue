@@ -1,8 +1,8 @@
 <template>
   <span class="itv-base-number">
-        <span class="itv-number-action" :class="{'disabled':this.value === min}" @click="sub">-</span>
+        <span class="itv-base-number-action" :class="{'disabled':this.value === min}" @click="sub">-</span>
         <input type="number" class="itv-input" :value="currentValue" @change="change" @input="change"/>
-        <span class="itv-number-action" :class="{'disabled':this.value === max}" @click="add">+</span>
+        <span class="itv-base-number-action" :class="{'disabled':this.value === max}" @click="add">+</span>
     </span>
 </template>
 
@@ -77,6 +77,7 @@
       text-align: center;
       border-left: 1px solid $border;
       border-right: 1px solid $border;
+      background: $white;
     }
     &-action {
       display: inline-block;

@@ -4,7 +4,7 @@
     <h1>恭喜您 购买成功</h1>
     <p class="desc">我们将尽快发出试剂盒，请您按照试剂盒内的说明，填写被测人信息和完成采集，并用快递到付寄回~</p>
     <base-button type="info" line @click="$router.push({name:'Index'})">返回主页</base-button>
-    <base-button @click="$router.push({name:'CenterOrders'})">查看订单</base-button>
+    <base-button @click="$router.push({name:'Orders'})">查看订单</base-button>
   </div>
 </template>
 

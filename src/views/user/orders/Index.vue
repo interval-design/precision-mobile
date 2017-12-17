@@ -40,13 +40,14 @@
         </div>
         <div class="itv-orders-item_footer">
           <p>总金额<span class="itv-highlight-red money">￥{{ order.price / 100 }}</span></p>
+          <base-button line size="small" style="margin-left: 16px" v-if="order.status === 0" @click="createTransactions(order.id)">付款</base-button>
         </div>
       </router-link>
     </div>
   </div>
 </template>
 <script>
-  import ApiOrder from '../../../api/orders';
+  import ApiOrders from '../../../api/orders';
 
   export default {
     name: 'Orders',
@@ -118,7 +119,7 @@
       },
 
       loadOrders() {
-        ApiOrder.getOrders({
+        ApiOrders.getOrders({
           order_by: '-id',
           statuses: this.status
         }).then(res => {
@@ -134,6 +135,34 @@
       orderStatus(statusCode) {
         let status = ['待付款', '已付款', '试剂盒已寄出', '样本检测中', '已完成', '已关闭'];
         return status[statusCode];
+      },
+
+      /**
+       * 创建交易
+       * @param orderId
+       */
+      createTransactions(orderId) {
+        ApiOrders.createTransactions(orderId, {
+          channel: 'WX_JSAPI'
+        }).then(res => {
+          if (res.data.code === 0) {
+            let _data = res.data.data;
+            wx.chooseWXPay({
+              timestamp: _data.timeStamp,
+              nonceStr: _data.nonceStr,
+              package: _data.package,
+              signType: _data.signType,
+              paySign: _data.paySign,
+              success: (res) => {
+                if (res.errMsg === "chooseWXPay:ok") {
+                  this.$router.push({ name: 'TransactionsSuccess' })
+                }
+              }
+            })
+          } else {
+            this.$router.push({ name: 'TransactionsError' })
+          }
+        })
       }
     },
   }

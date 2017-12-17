@@ -51,11 +51,11 @@
     </div>
     <div class="itv-product-info">
       <img src="../../../assets/images/pic-filter.png" srcset="../../../assets/images/pic-filter.png 2x"
-           v-if="order.id === 1">
+           v-if="order.product === 1">
       <img src="../../../assets/images/pic-child.png" srcset="../../../assets/images/pic-child.png 2x"
-           v-if="order.id === 2">
+           v-if="order.product === 2">
       <img src="../../../assets/images/pic-ecosystem.png" srcset="../../../assets/images/pic-ecosystem.png 2x"
-           v-if="order.id === 3">
+           v-if="order.product === 3">
       <h1 class="itv-product-info-name">{{ order.product_name }}</h1>
       <span class="itv-product-info-num">x{{ order.quantity }}</span>
     </div>
@@ -128,11 +128,11 @@
       </div>
       <div class="pay">
         <span>实付金额:</span>
-        <span class="itv-highlight-red">￥{{(order.price - order.discount) / 100 }}</span>
+        <span class="itv-highlight-red">￥{{ order.price / 100 }}</span>
       </div>
     </div>
     <!-- 检测报告 -->
-    <div class="itv-report itv-bg-white">
+    <div class="itv-report itv-bg-white" v-if="order.status === 4">
       <h2>检测报告</h2>
       <div class=report-item
            :class="{'bg-filter':order.product === 1,'bg-child':order.product === 2,'bg-microbiology':order.product === 3}"
