@@ -68,7 +68,7 @@
         <div class="itv-address-info-content">
           <p>快递公司：顺丰速运</p>
           <p>运单编号：{{ order.tracking_nos[0] }}</p>
-          <p>寄出时间：{{ order.iso_send_time | moment}}</p>
+          <p>寄出时间：{{ order.iso_send_time | formatTime}}</p>
         </div>
       </div>
     </div>
@@ -99,24 +99,24 @@
         </tr>
         <tr>
           <th>下单时间：</th>
-          <td>{{ order.iso_create_time | moment }}</td>
+          <td>{{ order.iso_create_time | formatTime }}</td>
         </tr>
         <tr>
           <th>支付时间：</th>
-          <td v-if="order._iso_pay_time">{{ order._iso_pay_time | moment }}</td>
+          <td v-if="order._iso_pay_time">{{ order._iso_pay_time | formatTime }}</td>
           <td v-else>-</td>
         </tr>
         <tr v-if="order.iso_send_time">
           <th>试剂盒寄出时间：</th>
-          <td>{{order.iso_send_time | moment}}</td>
+          <td>{{order.iso_send_time | formatTime}}</td>
         </tr>
         <tr v-if="order.iso_receive_time">
           <th>收到试剂盒时间：</th>
-          <td>{{order.iso_receive_time | moment}}</td>
+          <td>{{order.iso_receive_time | formatTime}}</td>
         </tr>
         <tr v-if="order.iso_finish_time">
           <th>完成时间：</th>
-          <td>{{order.iso_finish_time | moment}}</td>
+          <td>{{order.iso_finish_time | formatTime}}</td>
         </tr>
       </table>
     </div>
@@ -141,12 +141,12 @@
         <h3>{{ report.product_name }}报告</h3>
         <p class="person">
           <span>被测人：{{ report.person_name }}</span>
-          <span>{{ report.iso_report_time | moment }}</span>
+          <span>{{ report.iso_report_time | formatTime }}</span>
         </p>
       </div>
       <!--客服-->
       <div class="itv-user-service">
-        <base-button size="small" line>
+        <base-button size="small" line @click="$router.push({name:'Message',query:{'order_id':order.id}})">
           <base-badge :count="$bus.user.total_unread_messages" position="left">
             <icon-svg icon-class="message"></icon-svg>
             给客服留言

@@ -2,9 +2,8 @@
   <div class="itv-services-common">
     <section class="section">
       <img src="../assets/images/pic-common-1.jpg" srcset="../assets/images/pic-common-1.jpg 2x" alt="pic-common-1">
-      <!-- TODO:跳转没写  -->
-      <base-button width="60%" class="btn-1">继续了解普瑞森测序平台</base-button>
-      <base-button width="65%" class="btn-2">继续了解普瑞森大数据平台</base-button>
+      <base-button width="60%" class="btn-1" @click="$router.push({name:'Microbiology'})">继续了解普瑞森测序平台</base-button>
+      <base-button width="65%" class="btn-2" @click="$router.push({name:'Microbiology'})">继续了解普瑞森大数据平台</base-button>
     </section>
     <template v-if="$route.name != 'Index'">
       <img src="../assets/images/pic-common-2.jpg" srcset="../assets/images/pic-common-2.jpg 2x" alt="pic-common-2">

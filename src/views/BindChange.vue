@@ -18,22 +18,22 @@
     </ul>
     <div v-if="progress.num<3">
       <div class="itv-form">
-        <div class="itv-input-group" :class="{'active':focus == 1}">
-          <icon-svg :icon-class="focus == 1 ? 'phone' : 'phone-disabled'"></icon-svg>
+        <div class="itv-input-group" :class="{'active':focus === 1}">
+          <icon-svg :icon-class="focus === 1 ? 'phone' : 'phone-disabled'"></icon-svg>
           <input class="itv-input" type="text" v-model="bindForm.mobile" :placeholder="progress.phoneText" @focus="focus = 1">
         </div>
-        <div class="itv-input-group" :class="{'active':focus == 2}">
-          <icon-svg :icon-class="focus == 2 ? 'captcha' : 'captcha-disabled'"></icon-svg>
+        <div class="itv-input-group" :class="{'active':focus === 2}">
+          <icon-svg :icon-class="focus === 2 ? 'captcha' : 'captcha-disabled'"></icon-svg>
           <input class="itv-input" type="text" v-model="bindForm.captchaCode" placeholder="请输入验证码" @focus="focus = 2">
           <div class="captcha-group">
             <img class="img" :src="'data:img/jpg;base64,' + bindForm.captchaImage" alt="captchaImage">
             <span class="refresh" @click="getCaptcha">刷新</span>
           </div>
         </div>
-        <div class="itv-input-group" :class="{'active':focus == 3}">
-          <icon-svg :icon-class="focus == 3 ? 'code' : 'code-disabled'"></icon-svg>
+        <div class="itv-input-group" :class="{'active':focus === 3}">
+          <icon-svg :icon-class="focus === 3 ? 'code' : 'code-disabled'"></icon-svg>
           <input class="itv-input" type="text" v-model="bindForm.code" placeholder="输入验证码" @focus="focus = 3">
-          <base-button size="small" :disabled="codeStatus.sending || bindForm.captchaCode == ''" @click="sendCode">获取验证码
+          <base-button size="small" :disabled="codeStatus.sending || bindForm.captchaCode === ''" @click="sendCode">获取验证码
           </base-button>
         </div>
         <div class="info-tip">{{ bindForm.errorText }}</div>
@@ -49,7 +49,6 @@
       <img src="../assets/images/pic-phone-done.png" alt="phone-done">
       <h1>恭喜您绑定成功</h1>
     </div>
-    
   </div>
 </template>
 
@@ -102,8 +101,6 @@
       bindPhone() {
         this.progress.num = 3;
       },
-
-
 
       /**
        * 获取图形验证码
@@ -167,8 +164,6 @@
           let _data = res.data.data;
           if (res.data.code === 0) {
             this.$bus.$emit(this.$bus.EVENTS.USER_UPDATE, _data.user);
-            this.$cookies.setRaw('_prs_user', _data.token, {expires: '30D'});
-            this.$router.push({name:'BindSuccess'});
           } else {
             this.bindForm.errorText = res.data.message;
           }
@@ -186,7 +181,6 @@
     text-align: center;
     color: $font-sub;
     .progress {
-      // margin-top: 64px;
       display: flex;
       justify-content: space-between;
       &-line {

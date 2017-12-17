@@ -8,7 +8,7 @@
       <p>
         <icon-svg icon-class="phone-white" style="width: 26px; height: 26px;"></icon-svg>
         <span class="mobile">{{ $bus.user.mobile }}</span>
-        <span class="itv-highlight-yellow">去改绑</span>
+        <router-link :to="{name:'BindChange'}" class="itv-highlight-yellow">去改绑</router-link>
       </p>
     </div>
     <div class="itv-center-order">
@@ -40,7 +40,7 @@
       <div><span class="total">{{ $bus.user.total_reports }}</span>份</div>
     </router-link>
     <div class="itv-user-service">
-      <base-button size="small" line>
+      <base-button size="small" line @click="$router.push({name:'Message'})">
         <base-badge :count="$bus.user.total_unread_messages" position="left">
           <icon-svg icon-class="message"></icon-svg>给客服留言
         </base-badge>
@@ -55,7 +55,6 @@
 </template>
 
 <script>
-
   export default {
     name: 'UserIndex',
     created() {

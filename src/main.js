@@ -32,17 +32,19 @@ router.beforeEach((to, from, next) => {
 });
 
 
-Vue.filter('moment',(val)=>{
-  if (!val) {return '-';}
+Vue.filter('formatTime', (val) => {
+  if (!val) {
+    return '-';
+  }
   /**
    * 数字补零
    */
   let addZero = (num) => {
-    return (num<10? '0':'') + num;
+    return (num < 10 ? '0' : '') + num;
   };
   let time = new Date(val);
   let year = time.getFullYear();
-  let month = time.getMonth()+1;
+  let month = time.getMonth() + 1;
   let day = time.getDate();
   let hour = addZero(time.getHours());
   let min = addZero(time.getMinutes());

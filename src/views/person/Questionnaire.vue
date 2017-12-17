@@ -1,6 +1,6 @@
 <template>
   <div class="itv-questionnaire">
-    <router-link class="skip" :to="{name:'questionnaireFinish',query:{action:'skip'}}">跳过</router-link>
+    <router-link class="skip" :to="{name:'QuestionnaireFinish',query:{action:'skip'}}">跳过</router-link>
     <div class="itv-services-banner"></div>
     <p class="itv-questionnaire-desc itv-bg-white">普瑞森基因检测前置健康问卷能帮助我们了解您的生活习惯、健康状况和病史，会影响我们对您所出分析报告结果和对您的健康建议，请您如实填写</p>
     <div class="itv-question itv-bg-white">

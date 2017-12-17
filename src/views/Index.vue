@@ -4,16 +4,16 @@
     <swiper class="itv-swiper" :options="bannerOption">
       <swiper-slide>
         <img src="../assets/index/banner-child.jpg" srcset="../assets/index/banner-child.jpg 2x" alt="banner-child">
-        <base-button size="small" line @click="$route.push({name:'ServiceChild'})">了解更多</base-button>
+        <base-button size="small" line @click="$router.push({name:'ServiceChild'})">了解更多</base-button>
       </swiper-slide>
       <swiper-slide>
         <img src="../assets/index/banner-filter.jpg" srcset="../assets/index/banner-filter.jpg 2x" alt="banner-filter">
-        <base-button size="small" line @click="$route.push({name:'ServiceFilter'})">了解更多</base-button>
+        <base-button size="small" line @click="$router.push({name:'ServiceFilter'})">了解更多</base-button>
       </swiper-slide>
       <swiper-slide>
         <img src="../assets/index/banner-ecosystem.jpg" srcset="../assets/index/banner-ecosystem.jpg 2x"
              alt="banner-ecosystem">
-        <base-button size="small" line @click="$route.push({name:'ServiceEcosystem'})">了解更多</base-button>
+        <base-button size="small" line @click="$router.push({name:'ServiceEcosystem'})">了解更多</base-button>
       </swiper-slide>
     </swiper>
     <div class="section-link">
@@ -32,7 +32,7 @@
     </div>
     <section class="section section-1">
       <img src="../assets/index/pic-1.jpg" srcset="../assets/index/pic-1.jpg 2x" alt="pic-1">
-      <base-button @click="$router.push({name:'ResearchMicrobiology'})">了解微生物组学</base-button>
+      <base-button @click="$router.push({name:'Microbiology'})">了解微生物组学</base-button>
     </section>
     <swiper class="itv-swiper" :options="bacteriaOption">
       <swiper-slide>

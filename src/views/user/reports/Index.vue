@@ -12,7 +12,7 @@
       <h3>{{ report.product_name }}报告</h3>
       <p class="person">
         <span>被测人：{{ report.person_name }}</span>
-        <span>{{ report.iso_report_time | moment }}</span>
+        <span>{{ report.iso_report_time | formatTime }}</span>
       </p>
     </div>
   </div>

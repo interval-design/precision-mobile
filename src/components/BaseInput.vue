@@ -42,6 +42,7 @@
     },
     watch: {
       value(val) {
+        // 外面的变了让里面的变
         this.setCurrentValue(val);
       }
     },
@@ -52,6 +53,7 @@
     },
     methods: {
       handleInput(event) {
+        // 里面的变了让外面的变
         let value = event.target.value;
         this.$emit('input', value);
       },

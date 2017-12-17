@@ -87,7 +87,7 @@
       next() {
         ApiPerson.EditPersonInfo(this.kitCode, this.form).then(res => {
           if (res.data.code === 0) {
-            this.$router.push({name:'Questionnaire',query:{kitCode:this.kitCode}});
+            this.$router.push({name:'Questionnaire',query:{'kit_code':this.kitCode}});
           }
         })
       }
