@@ -151,7 +151,13 @@ export default new Router({
     {
       path: '/questionnaire',
       name: 'Questionnaire',
-      component: (resolve) => require(["@/views/person/questionnaire"], resolve)
+      component: (resolve) => require(["@/views/person/Questionnaire"], resolve)
+    },
+
+    {
+      path: '/questionnaire-finish',
+      name: 'QuestionnaireFinish',
+      component: (resolve) => require(["@/views/person/QuestionnaireFinish"], resolve)
     },
 
     // 关于普瑞森

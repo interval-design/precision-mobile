@@ -26,9 +26,12 @@
       </div>
       <icon-svg icon-class="close" class-name="dialog" slot="close"></icon-svg>
     </base-Dialog>
-    <base-Dialog class="kit-code" :visible.sync="kitCodeDialog" width="80%">
-      <div class="itv-input-group">
-        <input class="itv-input" type="text" v-model="kitCode" placeholder="请输入试剂盒条码号">
+    <!-- 手动输入 -->
+    <base-Dialog title="手动输入" class="kit-code" :visible.sync="kitCodeDialog" width="80%">
+      <div class="input">
+        <div class="itv-input-group">
+          <input class="itv-input" type="text" v-model="kitCode" placeholder="请输入试剂盒条码号">
+        </div>
       </div>
       <template slot="footer">
         <base-button line width="40%" @click="kitCodeDialog = false;kitCode = ''">取消</base-button>
@@ -44,7 +47,7 @@
       <base-input title="体重" v-model="form.weight" footer="kg"></base-input>
       <base-input title="腰围" v-model="form.waist" footer="cm"></base-input>
     </div>
-    <base-button size="big" width="100%" fixed="bottom" @click="next">下一步</base-button>
+    <base-button size="big" width="100%" fixed="bottom" :disabled="kitCode === ''" @click="next">下一步</base-button>
   </div>
 </template>
 
@@ -84,8 +87,7 @@
       next() {
         ApiPerson.EditPersonInfo(this.kitCode, this.form).then(res => {
           if (res.data.code === 0) {
-            // FIXME:并没有跳转,需要调试
-            this.$router.push({name:'Questionnaire'})
+            this.$router.push({name:'Questionnaire',query:{kitCode:this.kitCode}});
           }
         })
       }
@@ -106,9 +108,9 @@
       width: 100%;
       text-align: left;
     }
-    .kit-code {
-      .itv-input-group {
-        padding: 72px 0 48px;
+    .kit-code{
+      .input{
+        padding: 32px;
       }
     }
     .action {

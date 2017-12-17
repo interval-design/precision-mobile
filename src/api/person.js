@@ -13,7 +13,18 @@ export default {
    * @returns {AxiosPromise<any>}
    * @constructor
    */
-  EditPersonInfo(kitCode,params){
-    return axios.put(`/api/sub_orders/${kitCode}/person_info/`,params);
+  EditPersonInfo(kitCode, params) {
+    return axios.put(`/api/sub_orders/${kitCode}/person_info/`, params);
+  },
+
+  /**
+   * 编辑子订单前置调查问卷
+   * @param kitCode
+   * @param params
+   * @returns {AxiosPromise<any>}
+   * @constructor
+   */
+  EditQuestionnaire(kitCode, params) {
+    return axios.put(`/api/sub_orders/${kitCode}/questionnaire/`, params);
   }
 }

@@ -3,22 +3,22 @@
     <img class="logo" src="../assets/logo.png" alt="logo">
     <p>绑定手机即可体检普瑞森服务</p>
     <div class="itv-form">
-      <div class="itv-input-group" :class="{'active':focus == 1}">
-        <icon-svg :icon-class="focus == 1 ? 'phone' : 'phone-disabled'"></icon-svg>
+      <div class="itv-input-group" :class="{'active':focus === 1}">
+        <icon-svg :icon-class="focus === 1 ? 'phone' : 'phone-disabled'"></icon-svg>
         <input class="itv-input" type="text" v-model="bindForm.mobile" placeholder="请输入新手机号" @focus="focus = 1">
       </div>
-      <div class="itv-input-group" :class="{'active':focus == 2}">
-        <icon-svg :icon-class="focus == 2 ? 'captcha' : 'captcha-disabled'"></icon-svg>
+      <div class="itv-input-group" :class="{'active':focus === 2}">
+        <icon-svg :icon-class="focus === 2 ? 'captcha' : 'captcha-disabled'"></icon-svg>
         <input class="itv-input" type="text" v-model="bindForm.captchaCode" placeholder="请输入验证码" @focus="focus = 2">
         <div class="captcha-group">
           <img class="img" :src="'data:img/jpg;base64,' + bindForm.captchaImage" alt="captchaImage">
           <span class="refresh" @click="getCaptcha">刷新</span>
         </div>
       </div>
-      <div class="itv-input-group" :class="{'active':focus == 3}">
-        <icon-svg :icon-class="focus == 3 ? 'code' : 'code-disabled'"></icon-svg>
+      <div class="itv-input-group" :class="{'active':focus === 3}">
+        <icon-svg :icon-class="focus === 3 ? 'code' : 'code-disabled'"></icon-svg>
         <input class="itv-input" type="text" v-model="bindForm.code" placeholder="输入验证码" @focus="focus = 3">
-        <base-button size="small" :disabled="codeStatus.sending || bindForm.captchaCode == ''" @click="sendCode">获取验证码
+        <base-button size="small" :disabled="codeStatus.sending || bindForm.captchaCode === ''" @click="sendCode">获取验证码
         </base-button>
       </div>
       <div class="info-tip">{{ bindForm.errorText }}</div>
@@ -139,41 +139,6 @@
     }
     .itv-form{
       padding: 64px 0;
-    }
-    .itv-input-group {
-      display: flex;
-      align-items: center;
-      padding: 16px 8px;
-      text-align: left;
-      border-bottom: 1px solid $border;
-      transition: all .3s;
-      &:not(:first-child){
-        margin-top: 64px;
-      }
-      .itv-input {
-        flex: 1;
-      }
-      .icon-svg {
-        margin-right: 16px;
-      }
-      .captcha-group {
-        .img {
-          display: inline-block;
-          width: 120px;
-          object-fit: contain;
-        }
-        .refresh {
-          display: inline-block;
-          color: $blue;
-          font-size: 28px;
-          vertical-align: bottom;
-          cursor: pointer;
-        }
-      }
-      &.active {
-        border-bottom: 1px solid $blue;
-        transition: all .3s;
-      }
     }
     .info-tip {
       padding: 16px 0;
