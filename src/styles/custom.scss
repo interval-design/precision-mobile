@@ -378,7 +378,7 @@
 // 地址选择栏插件样式重写
 .yd-tab-nav-item{
   font-size: 28px !important;
-  line-height: 100px;
+  line-height: 100px !important;
   &:after{
     display: none;
   }
