@@ -127,6 +127,7 @@
           this.bindForm.errorText = "手机号不能为空";
           return;
         }
+        // TODO:改绑接口还没写好
         ApiUser.sendBind({
           mobile: this.bindForm.mobile,
           captcha_token: this.bindForm.captchaToken,

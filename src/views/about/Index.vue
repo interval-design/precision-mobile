@@ -1,13 +1,12 @@
 <template>
   <div class="itv-about">
-    <header class="itv-about-header">
-      <router-link :to="{name:'AboutInfo'}" active-class="itv-about-active" class="itv-about-header-item">了解普瑞森</router-link>
-      <router-link :to="{name:'AboutTeam'}" active-class="itv-about-active" class="itv-about-header-item">普瑞森团队</router-link>
-      <router-link :to="{name:'AboutJoin'}" active-class="itv-about-active" class="itv-about-header-item">加入我们</router-link>
-    </header>
-
+    <yd-tab class="itv-orders-nav" active-color="#3C90EF" :callback="tabActive">
+      <yd-tab-panel label="了解普瑞森" :active="$route.name === 'AboutInfo'"></yd-tab-panel>
+      <yd-tab-panel label="普瑞森团队" :active="$route.name === 'AboutTeam'"></yd-tab-panel>
+      <yd-tab-panel label="加入我们" :active="$route.name === 'AboutJoin'"></yd-tab-panel>
+    </yd-tab>
     <div class="itv-about-content">
-      <transition :name="transitionName" mode="out-in">
+      <transition name="fade" mode="out-in">
         <router-view></router-view>
       </transition>
     </div>
@@ -17,72 +16,22 @@
 <script>
   export default {
     name: 'About',
-    data() {
-      return {
-        transitionName: 'fade'
-      }
-    }
+    methods: {
+      tabActive(value) {
+        switch (value) {
+          case '了解普瑞森':
+            this.$router.replace({name: 'AboutInfo'});
+            break;
+          case '普瑞森团队':
+            this.$router.replace({name: 'AboutTeam'});
+            break;
+          case '加入我们':
+            this.$router.replace({name: 'AboutJoin'});
+            break;
+        }
+      },
+    },
   }
 </script>
 
-<style lang="scss">
-@import '../../styles/variable.scss';
-.itv-about {
-  &-header {
-    position: fixed;
-    width: 100%;
-    display: flex;
-    text-align: center;
-    font-size: 28px;
-    line-height: 40px;
-    background: $white;
-    box-shadow: 0 0 1px $border;
-    &-item {
-      flex: 1;
-      padding: 30px 8px;
-      margin: 0 40px;
-      border-bottom: 4px solid transparent;
-    }
-  }
-  &-content {
-    padding-top: 120px;
-  }
-}
-.itv-about-active {
-  color: $blue;
-  border-color: $blue;
-}
-
-
- .vux-pop-out-enter-active,
- .vux-pop-out-leave-active,
- .vux-pop-in-enter-active,
- .vux-pop-in-leave-active {
- will-change: transform;
- transition: all 250ms;
- height: 100%;
- position: absolute;
- backface-visibility: hidden;
- perspective: 1000;
- }
-
- .vux-pop-out-enter {
- opacity: 0;
- transform: translate3d(-100%, 0, 0);
- }
-
- .vux-pop-out-leave-active {
- opacity: 0;
- transform: translate3d(100%, 0, 0);
- }
-
- .vux-pop-in-enter {
- opacity: 0;
- transform: translate3d(100%, 0, 0);
- }
-
- .vux-pop-in-leave-active {
- opacity: 0;
- transform: translate3d(-100%, 0, 0);
- }
-</style>
+<style lang="scss"></style>

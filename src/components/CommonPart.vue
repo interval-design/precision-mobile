@@ -17,7 +17,7 @@
         <img src="../assets/ecosystem/pic-2.jpg" srcset="../assets/ecosystem/pic-2.jpg 2x">
       </template>
       <img src="../assets/images/pic-common-3.jpg" srcset="../assets/images/pic-common-3.jpg 2x" alt="pic-common-3">
-      <base-button width="100%" fixed="bottom" size="big" @click="buy">购买服务</base-button>
+      <base-button width="100%" fixed="bottom" size="big" @click="buy">购买服务<p style="font-size: 24px">(暂仅支持凭邀请券购买)</p></base-button>
     </template>
   </div>
 </template>
@@ -30,7 +30,7 @@
     methods: {
       buy() {
         if(!this.$cookies.getRaw('_prs_wx_user')){
-          location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${location.href}`;
+          location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${decodeURI(location.href)}`;
         }
         if (this.$bus.user.mobile === '' || !this.$bus.user.mobile ) {
           this.$router.push({ name: 'Bind'})
@@ -72,6 +72,9 @@
       .btn-2 {
         bottom: 510px;
       }
+    }
+    .itv-base-button{
+      padding: 8px 80px;
     }
   }
 </style>

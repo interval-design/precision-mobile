@@ -1,6 +1,8 @@
 <template>
   <div class="itv-services">
-    <div class="itv-services-banner"></div>
+    <div class="itv-services-banner">
+      <img src="../../assets/index/banner-child.jpg" alt="banner-child">
+    </div>
     <img src="../../assets/child/pic-1.jpg" srcset="../../assets/child/pic-1.jpg 2x" alt="pic-1">
     <img src="../../assets/child/pic-2.jpg" srcset="../../assets/child/pic-2.jpg 2x" alt="pic-2">
     <common-part></common-part>
