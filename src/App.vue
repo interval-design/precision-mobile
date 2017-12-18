@@ -98,7 +98,7 @@
       authCheck(){
         if (this.$route.meta.auth) {
           if(!this.$cookies.getRaw('_prs_wx_user')){
-            location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${decodeURI(location.href)}.`;
+            location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${encodeURIComponent(location.href)}.`;
           }
           setTimeout(()=>{
             // 用户存在，手机未绑定，跳转到手机绑定页面

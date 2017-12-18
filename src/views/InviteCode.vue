@@ -37,7 +37,7 @@
     },
     created(){
       if(!this.$cookies.getRaw('_prs_wx_user')){
-        location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${decodeURI(location.href)}`;
+        location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${encodeURIComponent(location.href)}`;
       }
       this.$bus.$emit(this.$bus.EVENTS.WX_USER_UPDATE);
     },
