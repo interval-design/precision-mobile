@@ -34,4 +34,16 @@
   }
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.itv-about {
+  .itv-orders-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  &-content {
+    padding-top: 100px;
+  }
+}
+</style>
