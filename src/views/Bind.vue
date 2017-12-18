@@ -92,7 +92,7 @@
               if (_seconds === 1) {
                 this.codeStatus.sending = false;
                 this.codeStatus.statusText = "获取验证码";
-                clearInterval(this.status.interval);
+                clearInterval(this.codeStatus.interval);
                 return;
               }
               _seconds--;

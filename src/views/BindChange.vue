@@ -18,9 +18,13 @@
     </ul>
     <div v-if="progress.num<3">
       <div class="itv-form">
-        <div class="itv-input-group" :class="{'active':focus === 1}">
+        <div class="itv-input-group" :class="{'active':focus === 1}" v-if="progress.num === 2">
           <icon-svg :icon-class="focus === 1 ? 'phone' : 'phone-disabled'"></icon-svg>
           <input class="itv-input" type="text" v-model="bindForm.mobile" :placeholder="progress.phoneText" @focus="focus = 1">
+        </div>
+        <div class="itv-input-group" v-else>
+          <icon-svg icon-class="phone-disabled"></icon-svg>
+          <span class="itv-input">{{ $bus.user.mobile }}</span>
         </div>
         <div class="itv-input-group" :class="{'active':focus === 2}">
           <icon-svg :icon-class="focus === 2 ? 'captcha' : 'captcha-disabled'"></icon-svg>
@@ -32,22 +36,21 @@
         </div>
         <div class="itv-input-group" :class="{'active':focus === 3}">
           <icon-svg :icon-class="focus === 3 ? 'code' : 'code-disabled'"></icon-svg>
-          <input class="itv-input" type="text" v-model="bindForm.code" placeholder="输入验证码" @focus="focus = 3">
-          <base-button size="small" :disabled="codeStatus.sending || bindForm.captchaCode === ''" @click="sendCode">{{ codeStatus.statusText}}
-          </base-button>
+          <input class="itv-input" type="text" v-model="bindForm.code" placeholder="请输入验证码" @focus="focus = 3">
+          <base-button size="small" :disabled="codeStatus.sending || bindForm.captchaCode === ''" @click="sendCode">{{ codeStatus.statusText}}</base-button>
         </div>
         <div class="info-tip">{{ bindForm.errorText }}</div>
       </div>
-      <base-button v-if="progress.num === 1" width="100%" @click="testPhone">{{progress.btnText}}</base-button>
-      <base-button v-else width="100%" @click="bindPhone">{{progress.btnText}}</base-button>
+      <base-button width="100%" @click="next">{{progress.btnText}}</base-button>
       <div class="itv-bind-change-tips" v-if="progress.num === 1">
         <p>旧手机号无法使用？</p>
         <p>请您联系普瑞森客服进行人工申诉找回。（工作时间：工作日9:00-17:00）<a href="tel:0214008226270">立即拨打</a></p>
       </div>
     </div>
-    <div v-else class="itv-bind-change-success">
+    <div v-else class="itv-action-result">
       <img src="../assets/images/pic-phone-done.png" alt="phone-done">
-      <h1>恭喜您绑定成功</h1>
+      <h1>恭喜您改绑成功</h1>
+      <base-button @click="$router.push({name:'User'})">返回</base-button>
     </div>
   </div>
 </template>
@@ -87,19 +90,39 @@
       /**
        * 验证当前手机
        */
-      testPhone() {
-        this.progress = {
-          num: 2,
-          phoneText: '请输入新手机号',
-          btnText: '立即绑定'
+      next() {
+        if(this.progress.num === 1){
+          ApiUser.bindChangeCheck({
+            code:this.bindForm.code
+          }).then(res=>{
+            if(res.data.code === 0){
+              this.progress = {
+                num: 2,
+                phoneText: '请输入新手机号',
+                btnText: '立即绑定'
+              };
+              this.bindForm.code = '';
+              this.bindForm.captchaCode = '';
+              this.codeStatus.sending = false;
+              this.codeStatus.statusText = "获取验证码";
+              clearInterval(this.codeStatus.interval);
+              this.getCaptcha();
+            } else {
+              this.bindForm.errorText = res.data.message;
+            }
+          })
+        } else {
+          ApiUser.bindChange({
+            mobile:this.bindForm.mobile,
+            code:this.bindForm.code
+          }).then(res=>{
+            if(res.data.code === 0){
+              this.progress.num = 3;
+            } else {
+              this.bindForm.errorText = res.data.message;
+            }
+          })
         }
-      },
-
-      /**
-       * 绑定新手机
-       */
-      bindPhone() {
-        this.progress.num = 3;
       },
 
       /**
@@ -123,35 +146,60 @@
        */
       sendCode() {
         let _seconds = 30;
-        if (this.bindForm.mobile === "") {
-          this.bindForm.errorText = "手机号不能为空";
-          return;
+        if(this.progress.num === 1){
+          ApiUser.sendBindChangeOld({
+            captcha_token: this.bindForm.captchaToken,
+            captcha_code: this.bindForm.captchaCode
+          }).then(res => {
+            if (res.data.code === 0) {
+              this.bindForm.errorText = '';
+              this.codeStatus.sending = true;
+              this.codeStatus.statusText = _seconds + 's';
+              this.codeStatus.interval = setInterval(() => {
+                if (_seconds === 1) {
+                  this.codeStatus.sending = false;
+                  this.codeStatus.statusText = "获取验证码";
+                  clearInterval(this.codeStatus.interval);
+                  return;
+                }
+                _seconds--;
+                this.codeStatus.statusText = _seconds + "s";
+              }, 1000);
+            }
+            else {
+              this.bindForm.errorText = res.data.message;
+            }
+          });
+        } else if(this.progress.num === 2){
+          if (this.bindForm.mobile === "") {
+            this.bindForm.errorText = "手机号不能为空";
+            return;
+          }
+          ApiUser.sendBindChangeNew({
+            mobile:this.bindForm.mobile,
+            captcha_token: this.bindForm.captchaToken,
+            captcha_code: this.bindForm.captchaCode
+          }).then(res => {
+            if (res.data.code === 0) {
+              this.bindForm.errorText = '';
+              this.codeStatus.sending = true;
+              this.codeStatus.statusText = _seconds + 's';
+              this.codeStatus.interval = setInterval(() => {
+                if (_seconds === 1) {
+                  this.codeStatus.sending = false;
+                  this.codeStatus.statusText = "获取验证码";
+                  clearInterval(this.codeStatus.interval);
+                  return;
+                }
+                _seconds--;
+                this.codeStatus.statusText = _seconds + "s";
+              }, 1000);
+            }
+            else {
+              this.bindForm.errorText = res.data.message;
+            }
+          });
         }
-        // TODO:改绑接口还没写好
-        ApiUser.sendBind({
-          mobile: this.bindForm.mobile,
-          captcha_token: this.bindForm.captchaToken,
-          captcha_code: this.bindForm.captchaCode
-        }).then(res => {
-          if (res.data.code === 0) {
-            this.bindForm.errorText = '';
-            this.codeStatus.sending = true;
-            this.codeStatus.statusText = _seconds + 's';
-            this.codeStatus.interval = setInterval(() => {
-              if (_seconds === 1) {
-                this.codeStatus.sending = false;
-                this.codeStatus.statusText = "获取验证码";
-                clearInterval(this.status.interval);
-                return;
-              }
-              _seconds--;
-              this.codeStatus.statusText = _seconds + "s";
-            }, 1000);
-          }
-          else {
-            this.bindForm.errorText = res.data.message;
-          }
-        });
       },
 
       /**
