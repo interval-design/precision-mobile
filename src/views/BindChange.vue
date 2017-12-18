@@ -33,7 +33,7 @@
         <div class="itv-input-group" :class="{'active':focus === 3}">
           <icon-svg :icon-class="focus === 3 ? 'code' : 'code-disabled'"></icon-svg>
           <input class="itv-input" type="text" v-model="bindForm.code" placeholder="输入验证码" @focus="focus = 3">
-          <base-button size="small" :disabled="codeStatus.sending || bindForm.captchaCode === ''" @click="sendCode">获取验证码
+          <base-button size="small" :disabled="codeStatus.sending || bindForm.captchaCode === ''" @click="sendCode">{{ codeStatus.statusText}}
           </base-button>
         </div>
         <div class="info-tip">{{ bindForm.errorText }}</div>
