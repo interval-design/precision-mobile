@@ -13,17 +13,6 @@ export default new Router({
     }
   },
   routes: [
-    // 绑定手机
-    {
-      path: '/bind',
-      name: 'Bind',
-      component: (resolve) => require(["@/views/Bind"], resolve)
-    },
-    {
-      path: '/bind-success',
-      name: 'BindSuccess',
-      component: (resolve) => require(["@/views/BindSuccess"], resolve)
-    },
     // 首页
     {
       path: '/',
@@ -113,6 +102,20 @@ export default new Router({
 
     /*------- 以下是需要用户身份权限的 ------------------------------------*/
 
+    // 绑定手机
+    {
+      path: '/bind',
+      name: 'Bind',
+      meta: {auth: true},
+      component: (resolve) => require(["@/views/Bind"], resolve)
+    },
+    {
+      path: '/bind-success',
+      name: 'BindSuccess',
+      meta: {auth: true},
+      component: (resolve) => require(["@/views/BindSuccess"], resolve)
+    },
+
     // 下单
     {
       path: '/buy',
@@ -164,7 +167,7 @@ export default new Router({
     {
       path: '/user',
       name: 'User',
-      meta: {nav: true,auth: true},
+      meta: {nav: true, auth: true},
       component: (resolve) => require(["@/views/user/Index"], resolve)
     },
     // 改绑页面
@@ -178,7 +181,7 @@ export default new Router({
     {
       path: '/orders',
       name: 'Orders',
-      meta: {nav: true,auth: true},
+      meta: {nav: true, auth: true},
       component: (resolve) => require(["@/views/user/orders/Index"], resolve)
     },
     {

@@ -5,7 +5,7 @@
       <router-link :to="{name:'AboutTeam'}" active-class="itv-about-active" class="itv-about-header-item">普瑞森团队</router-link>
       <router-link :to="{name:'AboutJoin'}" active-class="itv-about-active" class="itv-about-header-item">加入我们</router-link>
     </header>
-    
+
     <div class="itv-about-content">
       <transition :name="transitionName" mode="out-in">
         <router-view></router-view>
@@ -21,17 +21,7 @@
       return {
         transitionName: 'fade'
       }
-    },
-    // watch: {
-    //   '$route'(to,from) {
-    //     console.log(to);
-    //     if (to.meta.index>from.meta.index) {
-    //       this.transitionName = 'vux-pop-out';
-    //     }else {
-    //       this.transitionName = 'vux-pop-in';
-    //     }
-    //   }
-    // }
+    }
   }
 </script>
 
@@ -75,22 +65,22 @@
  backface-visibility: hidden;
  perspective: 1000;
  }
- 
+
  .vux-pop-out-enter {
  opacity: 0;
  transform: translate3d(-100%, 0, 0);
  }
- 
+
  .vux-pop-out-leave-active {
  opacity: 0;
  transform: translate3d(100%, 0, 0);
  }
- 
+
  .vux-pop-in-enter {
  opacity: 0;
  transform: translate3d(100%, 0, 0);
  }
- 
+
  .vux-pop-in-leave-active {
  opacity: 0;
  transform: translate3d(-100%, 0, 0);

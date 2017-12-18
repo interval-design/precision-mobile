@@ -12,7 +12,6 @@ import 'vue-ydui/dist/ydui.base.css';
 import CustomComponents from './components/components'
 import './icons'
 
-
 Vue.config.productionTip = false;
 Vue.prototype.$bus = Bus;
 Vue.prototype.$cookies = Cookies;
@@ -49,6 +48,15 @@ Vue.filter('formatTime', (val) => {
   let hour = addZero(time.getHours());
   let min = addZero(time.getMinutes());
   return `${year}-${month}-${day} ${hour}:${min}`;
+});
+
+// 滚动到顶部
+router.afterEach((to, from, next) => {
+  if (to.name !== 'Orders') {
+    setTimeout(() => {
+      window.scrollTo(0, 0);
+    }, 100)
+  }
 });
 
 /* eslint-disable no-new */

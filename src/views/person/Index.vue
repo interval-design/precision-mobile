@@ -78,7 +78,7 @@
           scanType: ["qrCode", "barCode"], // 可以指定扫二维码还是一维码，默认二者都有
           success: (res) => {
             let result = res.resultStr; // 当needResult 为 1 时，扫码返回的结果
-            this.kitCode = result[1];
+            this.kitCode = result;
           }
         });
       },

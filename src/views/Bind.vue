@@ -1,7 +1,7 @@
 <template>
   <div class="itv-bind">
     <img class="logo" src="../assets/logo.png" alt="logo">
-    <p>绑定手机即可体检普瑞森服务</p>
+    <p>绑定手机即可体验普瑞森服务</p>
     <div class="itv-form">
       <div class="itv-input-group" :class="{'active':focus === 1}">
         <icon-svg :icon-class="focus === 1 ? 'phone' : 'phone-disabled'"></icon-svg>

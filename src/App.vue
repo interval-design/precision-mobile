@@ -55,7 +55,6 @@
           setTimeout(()=>{
             // 用户存在，手机未绑定，跳转到手机绑定页面
             if (this.$bus.user.mobile === '' || !this.$bus.user.mobile && this.$route.name !== 'Bind') {
-              console.log(this.$bus.user.mobile);
               this.$router.push({ name: 'Bind'})
             }
           },500);
