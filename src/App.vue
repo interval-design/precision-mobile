@@ -34,6 +34,7 @@
     name: 'app',
     created() {
       this.initToken();
+      this.authCheck();
 
       //  用户更新事件
       this.$bus.$on(this.$bus.EVENTS.USER_UPDATE, () => {
@@ -48,17 +49,7 @@
     },
     watch:{
       $route(){
-        if (this.$route.meta.auth) {
-          if(!this.$cookies.getRaw('_prs_wx_user')){
-            location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${location.href}`;
-          }
-          setTimeout(()=>{
-            // 用户存在，手机未绑定，跳转到手机绑定页面
-            if (this.$bus.user.mobile === '' || !this.$bus.user.mobile && this.$route.name !== 'Bind') {
-              this.$router.push({ name: 'Bind'})
-            }
-          },500);
-        }
+        this.authCheck();
       }
     },
     methods: {
@@ -99,6 +90,23 @@
             this.$bus.weixinUser = res.data.data.wx_user;
           }
         })
+      },
+
+      /**
+       * 检查页面权限，是否需要授权/绑定手机号
+       */
+      authCheck(){
+        if (this.$route.meta.auth) {
+          if(!this.$cookies.getRaw('_prs_wx_user')){
+            location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${location.href}`;
+          }
+          setTimeout(()=>{
+            // 用户存在，手机未绑定，跳转到手机绑定页面
+            if (this.$bus.user.mobile === '' || !this.$bus.user.mobile && this.$route.name !== 'Bind') {
+              this.$router.push({ name: 'Bind'})
+            }
+          },500);
+        }
       }
     }
   }
