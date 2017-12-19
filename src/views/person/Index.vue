@@ -84,7 +84,14 @@
       },
 
       next() {
-        ApiPerson.EditPersonInfo(this.kitCode, this.form).then(res => {
+        ApiPerson.EditPersonInfo(this.kitCode, {
+          name:this.form.name,
+          sex:this.form.sex,
+          age:this.form.age,
+          height:this.form.height + 'cm',
+          weight:this.form.weight + 'kg',
+          waist:this.form.waist + 'cm'
+        }).then(res => {
           if (res.data.code === 0) {
             this.$router.push({name:'Questionnaire',query:{'kit_code':this.kitCode}});
           }

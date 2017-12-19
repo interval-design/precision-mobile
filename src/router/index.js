@@ -100,6 +100,24 @@ export default new Router({
       component: (resolve) => require(["@/views/InviteCode"], resolve)
     },
 
+    // 录入被测人信息
+    {
+      path: '/person',
+      name: 'Person',
+      component: (resolve) => require(["@/views/person/Index"], resolve)
+    },
+    // 前置问卷
+    {
+      path: '/questionnaire',
+      name: 'Questionnaire',
+      component: (resolve) => require(["@/views/person/Questionnaire"], resolve)
+    },
+    {
+      path: '/questionnaire-finish',
+      name: 'QuestionnaireFinish',
+      component: (resolve) => require(["@/views/person/QuestionnaireFinish"], resolve)
+    },
+
     /*------- 以下是需要用户身份权限的 ------------------------------------*/
 
     // 绑定手机
@@ -203,26 +221,6 @@ export default new Router({
       name: 'Message',
       meta: {auth: true},
       component: (resolve) => require(["@/views/user/message/Index"], resolve)
-    },
-    // 录入被测人信息
-    {
-      path: '/person',
-      name: 'Person',
-      meta: {auth: true},
-      component: (resolve) => require(["@/views/person/Index"], resolve)
-    },
-    // 前置问卷
-    {
-      path: '/questionnaire',
-      name: 'Questionnaire',
-      meta: {auth: true},
-      component: (resolve) => require(["@/views/person/Questionnaire"], resolve)
-    },
-    {
-      path: '/questionnaire-finish',
-      name: 'QuestionnaireFinish',
-      meta: {auth: true},
-      component: (resolve) => require(["@/views/person/QuestionnaireFinish"], resolve)
     }
   ]
 })

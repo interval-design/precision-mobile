@@ -104,6 +104,7 @@
   padding: 2px;
   border: 3px solid $font-sub;
   border-radius: 50%;
+  overflow: hidden;
   vertical-align: sub;
   -webkit-appearance: none;
   &:before {

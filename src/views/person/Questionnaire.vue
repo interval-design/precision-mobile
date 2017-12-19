@@ -9,13 +9,14 @@
       <p class="itv-question-hd">
         <icon-svg icon-class="issue"></icon-svg>
         <span class="itv-question-hd_text">{{ current.question }}</span>
-        <span class="itv-question-hd_progress">{{ page + 1 }}/14</span>
+        <span class="itv-question-hd_progress">{{ page + 1 }}/15</span>
       </p>
       <div class="itv-radio-group" v-for="option in current.options">
         <input class="itv-radio" type="radio" :id="option.id" :value="option.text" v-model="current.selected">
         <label :for="option.id">{{ option.text }}</label>
       </div>
-      <base-button fixed="bottom" width="100%" size="big" @click.native="next" :disabled="current.selected === ''">下一题
+      <base-button fixed="bottom" width="100%" size="big" @click.native="next" :disabled="current.selected === ''">
+        {{ page === 14 ? '完成' :'下一题'  }}
       </base-button>
     </div>
   </div>
@@ -185,7 +186,7 @@
     methods: {
       next() {
         this.result.push(this.current.selected);
-        if (this.current.id === 14) {
+        if (this.current.id === 15) {
           this.finish();
           return;
         }
@@ -197,7 +198,9 @@
         ApiPerson.EditQuestionnaire(this.$route.query.kit_code, {
           questionnaire: this.result,
         }).then(res => {
-          this.$router.push({name: 'questionnaireFinish'});
+          if(red.data.code === 0){
+            this.$router.push({name: 'QuestionnaireFinish'});
+          }
         });
       }
     },
