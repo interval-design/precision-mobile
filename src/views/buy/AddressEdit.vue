@@ -11,8 +11,8 @@
                    :city="form.city"
                    :area="form.district"
     ></yd-cityselect>
-    <base-button type="info" size="big" width="100%" fixed="bottom" @click="create" v-if="$route.name == 'AddressAdd'">新建</base-button>
-    <base-button type="info" size="big" width="100%" fixed="bottom" @click="edit" v-else>保存</base-button>
+    <base-button type="info" size="big" width="100%" position="bottom" @click="create" v-if="$route.name == 'AddressAdd'">新建</base-button>
+    <base-button type="info" size="big" width="100%" position="bottom" @click="edit" v-else>保存</base-button>
   </div>
 </template>
 

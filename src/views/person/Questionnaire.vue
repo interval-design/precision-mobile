@@ -185,6 +185,9 @@
     },
     methods: {
       next() {
+        if(this.current.selected === ''){
+          return;
+        }
         this.result.push(this.current.selected);
         if (this.current.id === 15) {
           this.finish();

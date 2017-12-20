@@ -50,6 +50,9 @@
           ].indexOf(value) !== -1
         }
       },
+      position:{
+        type:String
+      },
       disabled: {
         type: Boolean,
         default: false
@@ -64,7 +67,8 @@
             [`${prefixCls}--disabled`]: this.disabled,
             [`${prefixCls}--${this.size}`]: this.size,
             [`${prefixCls}--line`]: this.line,
-            [`${prefixCls}--fixed-${this.fixed}`]: this.fixed
+            [`${prefixCls}--fixed-${this.fixed}`]: this.fixed,
+            [`${prefixCls}--position-${this.position}`]: this.position
           }
         ]
       }
@@ -176,6 +180,11 @@
       position: fixed;
       left: 0;
       top: 0;
+    }
+    &--position-bottom{
+      position: absolute;
+      left: 0;
+      bottom: 0;
     }
     &:active {
       filter: brightness(.9);

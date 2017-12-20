@@ -4,7 +4,7 @@
       <span class="action_hd">录入试剂盒条码</span>
       <div class="kit-cocde-success" v-if="kitCode !== ''">
         <p>
-          <icon-svg icon-class="barcode" width="26px" height="26px" style="margin-right: 16px"></icon-svg>
+          <icon-svg icon-class="barcode" width="26px" height="26px" style="margin-right: 16px;vertical-align: sub;"></icon-svg>
           条码输入成功 {{ kitCode }}
         </p>
         <span class="itv-highlight-red">条码输入不正确？</span>
@@ -47,7 +47,7 @@
       <base-input title="体重" v-model="form.weight" footer="kg"></base-input>
       <base-input title="腰围" v-model="form.waist" footer="cm"></base-input>
     </div>
-    <base-button size="big" width="100%" fixed="bottom" :disabled="kitCode === ''" @click="next">下一步</base-button>
+    <base-button size="big" width="100%" position="bottom" :disabled="kitCode === ''" @click="next">下一步</base-button>
   </div>
 </template>
 
