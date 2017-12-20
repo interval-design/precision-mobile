@@ -19,7 +19,8 @@
             'success',
             'error',
             'primary',
-            'warning'
+            'warning',
+            'white',
           ].indexOf(value) !== -1
         }
       },
@@ -106,7 +107,8 @@
     &--success,
     &--error,
     &--warning,
-    &--info {
+    &--info,
+    &--white{
       color: #fff;
       &:hover {
         filter: brightness(1.1);
@@ -131,6 +133,10 @@
     &--info {
       border-color: $font;
       background: $font;
+    }
+    &--white {
+      border-color: $white;
+      background: $white;
     }
     &--primary.itv-base-button--line {
       border-color: $blue;

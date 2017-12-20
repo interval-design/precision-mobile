@@ -29,7 +29,11 @@
         <span class="itv-highlight-red money">￥{{(details.product.price - details.discount) / 100 }} </span>
       </base-cell>
     </template>
-    <base-button type="error" size="big" width="100%" fixed="bottom" @click="createOrders">支付订单</base-button>
+    <p class="protocol itv-bg-white" @click="protocol = !protocol">
+      <icon-svg :icon-class="protocol ? 'radio-checked':'radio'" style="margin:0 16px 4px 0;"></icon-svg>
+      我已阅读并同意<router-link :to="{name:'Protocol'}" class="itv-highlight-blue">《普瑞森基因服务知情同意书》</router-link>
+      </p>
+    <base-button type="error" size="big" width="100%" position="bottom" :disabled="!protocol" @click="createOrders">支付订单</base-button>
   </div>
 </template>
 
@@ -68,7 +72,8 @@
       return {
         details: null,
         address: {},
-        number: 1
+        number: 1,
+        protocol:true,
       }
     },
     methods: {
@@ -102,6 +107,9 @@
        * 创建订单
        */
       createOrders() {
+        if(!this.protocol){
+          return;
+        }
         ApiOrders.createOrders(this.$bus.encryptCode, {
           product_id: this.details.product.id,
           quantity: this.number,
@@ -155,6 +163,19 @@
     }
     .money {
       font-size: 32px;
+    }
+    .protocol{
+      position: absolute;
+      left: 0;
+      bottom: 95px;
+      padding: 0 32px;
+      height: 100px;
+      width: 100%;
+      line-height: 100px;
+      font-size:28px;
+      a{
+        vertical-align: inherit;
+      }
     }
   }
 </style>

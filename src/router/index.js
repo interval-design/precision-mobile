@@ -117,6 +117,12 @@ export default new Router({
       name: 'QuestionnaireFinish',
       component: (resolve) => require(["@/views/person/QuestionnaireFinish"], resolve)
     },
+    // 知情同意书
+    {
+      path: '/protocol',
+      name: 'Protocol',
+      component: (resolve) => require(["@/views/Protocol"], resolve)
+    },
 
     /*------- 以下是需要用户身份权限的 ------------------------------------*/
 
