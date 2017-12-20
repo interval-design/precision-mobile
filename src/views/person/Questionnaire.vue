@@ -201,7 +201,7 @@
         ApiPerson.EditQuestionnaire(this.$route.query.kit_code, {
           questionnaire: this.result,
         }).then(res => {
-          if(red.data.code === 0){
+          if(res.data.code === 0){
             this.$router.push({name: 'QuestionnaireFinish'});
           }
         });
