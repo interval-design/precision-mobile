@@ -32,6 +32,15 @@
 
   export default {
     name: 'Login',
+    watch:{
+      '$bus.user'(){
+        if (this.$bus.user.mobile === '' || !this.$bus.user.mobile ) {
+          return;
+        } else {
+          this.$router.push({name:'User'});
+        }
+      }
+    },
     created() {
       this.getCaptcha();
     },
