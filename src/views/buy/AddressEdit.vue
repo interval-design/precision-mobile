@@ -126,4 +126,14 @@
       }
     }
   }
+
+  .yd-cityselect-nav-active{
+    color: $blue !important;
+    &:after{
+      background-color:$blue;
+    }
+  }
+  .yd-cityselect-item-active{
+    color: $blue !important;
+  }
 </style>

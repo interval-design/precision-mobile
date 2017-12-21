@@ -3,7 +3,7 @@
     <section class="section">
       <img src="../assets/images/pic-common-1.jpg" srcset="../assets/images/pic-common-1.jpg 2x" alt="pic-common-1">
       <base-button width="60%" class="btn-1" @click="$router.push({name:'Microbiology'})">继续了解普瑞森测序平台</base-button>
-      <base-button width="65%" class="btn-2" @click="$router.push({name:'Microbiology'})">继续了解普瑞森大数据平台</base-button>
+      <base-button width="70%" class="btn-2" @click="$router.push({name:'Microbiology'})">继续了解普瑞森大数据平台</base-button>
     </section>
     <template v-if="$route.name != 'Index'">
       <img src="../assets/images/pic-common-2.jpg" srcset="../assets/images/pic-common-2.jpg 2x" alt="pic-common-2">
@@ -17,17 +17,42 @@
         <img src="../assets/ecosystem/pic-2.jpg" srcset="../assets/ecosystem/pic-2.jpg 2x">
       </template>
       <img src="../assets/images/pic-common-3.jpg" srcset="../assets/images/pic-common-3.jpg 2x" alt="pic-common-3">
-      <base-button width="100%" fixed="bottom" size="big" @click="buy">购买服务<p style="font-size: 24px">(暂仅支持凭邀请券购买)</p></base-button>
+      <base-button class="buy" width="100%" fixed="bottom" size="big" @click="buy" v-if="!soldOut">购买服务<p style="font-size: 24px">(暂仅支持凭邀请券购买)</p></base-button>
+      <base-button width="100%" fixed="bottom" size="big" disabled v-else>服务暂时无法购买</base-button>
     </template>
   </div>
 </template>
 
 <script>
   import ApiWx from '../api/wx';
+  import ApiBuy from '../api/buy';
 
   export default {
     name: 'ServiceCommonPart',
+    props:{
+      productId:{
+        type:String,
+      }
+    },
+    created(){
+      this.loadProduct();
+    },
+    data() {
+      return {
+        soldOut: false
+      }
+    },
     methods: {
+      loadProduct(){
+        ApiBuy.getProduct(this.productId).then(res=>{
+          if(res.data.code === 0){
+            return;
+          } else if(res.data.code === 1104){
+            this.soldOut = true;
+          }
+        })
+      },
+
       buy() {
         if(!this.$cookies.getRaw('_prs_wx_user')){
           location.href = process.env.NODE_HOST + `extensions/wx/user/authorize/?state=${encodeURIComponent(location.href)}`;
@@ -47,7 +72,7 @@
                 let _cardList = res.cardList; // 用户选中的卡券列表信息
                 this.$bus.encryptCode = JSON.parse(_cardList)[0].encrypt_code;
                 setTimeout(()=>{
-                  this.$router.push({name: 'Buy'});
+                  this.$router.push({name: 'Buy',query:{product_id:this.productId}});
                 },200)
               },
             });
@@ -73,7 +98,7 @@
         bottom: 510px;
       }
     }
-    .itv-base-button{
+    .buy{
       padding: 8px 80px;
     }
   }

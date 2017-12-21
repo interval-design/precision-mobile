@@ -20,7 +20,7 @@
       <div class="swiper-button-next" slot="button-next"></div>
     </swiper>
     <img src="../../assets/ecosystem/pic-1.jpg" srcset="../../assets/ecosystem/pic-1.jpg 2x" alt="pic-1">
-    <common-part></common-part>
+    <common-part product-id="3"></common-part>
   </div>
 </template>
 

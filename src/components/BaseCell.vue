@@ -31,6 +31,7 @@
         default: '',
         validator: function (value) {
           return [
+            '',
             'small',
           ].indexOf(value) !== -1
         }

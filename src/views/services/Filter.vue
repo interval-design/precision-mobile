@@ -6,7 +6,7 @@
     <img src="../../assets/filter/pic-1.jpg" srcset="../../assets/filter/pic-1.jpg 2x" alt="pic-1">
     <img src="../../assets/filter/pic-2.jpg" srcset="../../assets/filter/pic-2.jpg 2x" alt="pic-2">
     <img src="../../assets/filter/pic-3.jpg" srcset="../../assets/filter/pic-3.jpg 2x" alt="pic-3">
-    <common-part></common-part>
+    <common-part product-id="1"></common-part>
   </div>
 </template>
 

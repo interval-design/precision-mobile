@@ -171,6 +171,10 @@
       cursor: no-drop;
       background: transparent;
     }
+    &--primary.itv-base-button--disabled{
+      background: #a0cfff;
+      border:#a0cfff;
+    }
     &--disabled {
       border-color: $gray;
       background: $gray;

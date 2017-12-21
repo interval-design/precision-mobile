@@ -6,6 +6,16 @@ import axios from 'axios'
 
 export default {
   /**
+   * 获取产品详情
+   * @param productId
+   * @param params
+   * @returns {AxiosPromise<any>}
+   */
+  getProduct(productId, params) {
+    return axios.get(`/api/products/${productId}/`, {params:params});
+  },
+
+  /**
    * 根据微信卡券code获取邀请码组详情
    * @param WxCardCode
    * @param params
@@ -39,8 +49,8 @@ export default {
    * @param params
    * @returns {AxiosPromise<any>}
    */
-  editAddress(addressId,params){
-    return axios.put(`/api/addresses/${addressId}/`,params);
+  editAddress(addressId, params) {
+    return axios.put(`/api/addresses/${addressId}/`, params);
   },
 
   /**
@@ -49,7 +59,7 @@ export default {
    * @param params
    * @returns {AxiosPromise}
    */
-  delAddress(addressId, params){
-    return axios.delete(`/api/addresses/${addressId}/`,params);
+  delAddress(addressId, params) {
+    return axios.delete(`/api/addresses/${addressId}/`, params);
   }
 }

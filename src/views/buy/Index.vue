@@ -31,9 +31,12 @@
     </template>
     <p class="protocol itv-bg-white" @click="protocol = !protocol">
       <icon-svg :icon-class="protocol ? 'radio-checked':'radio'" style="margin:0 16px 4px 0;"></icon-svg>
-      我已阅读并同意<router-link :to="{name:'Protocol'}" class="itv-highlight-blue">《普瑞森基因服务知情同意书》</router-link>
-      </p>
-    <base-button type="error" size="big" width="100%" position="bottom" :disabled="!protocol" @click="createOrders">支付订单</base-button>
+      我已阅读并同意
+      <router-link :to="{name:'Protocol'}" class="itv-highlight-blue">《普瑞森基因服务知情同意书》</router-link>
+    </p>
+    <base-button type="error" size="big" width="100%" position="bottom" :disabled="!protocol" @click="createOrders">
+      支付订单
+    </base-button>
   </div>
 </template>
 
@@ -48,16 +51,6 @@
         return `${this.address.province} ${this.address.city} ${this.address.district} ${this.address.street}`
       }
     },
-    watch: {
-      addresses() {
-        if (this.addresses.length === 0) {
-          this.$router.replace({name: 'AddressAdd'});
-        }
-      }
-    },
-    created() {
-      this.loadDetails();
-    },
     mounted() {
       this.$nextTick(() => {
         // 判断$bus中是否有地址，如果没选默认为地址列表中的第一个
@@ -66,6 +59,7 @@
           return;
         }
         this.loadAddresses();
+        this.loadDetails();
       })
     },
     data() {
@@ -73,7 +67,7 @@
         details: null,
         address: {},
         number: 1,
-        protocol:true,
+        protocol: true,
       }
     },
     methods: {
@@ -84,7 +78,11 @@
       loadAddresses() {
         ApiBuy.getAddresses().then(res => {
           if (res.data.code === 0) {
-            this.address = this.$bus.address = res.data.data.addresses[0];
+            if (res.data.data.addresses.length > 0) {
+              this.address = this.$bus.address = res.data.data.addresses[0];
+            } else {
+              this.$router.push({name: 'AddressAdd'});
+            }
           }
         })
       },
@@ -94,11 +92,17 @@
        */
       loadDetails() {
         // this.$bus.encryptCode = 'N9Wgb4sYDhlYAgOuhYrtJ/sgH+TeKlf2uVcKRd+A0us=';
-        ApiBuy.getInviteCodeGroup(this.$bus.encryptCode).then(res => {
+        ApiBuy.getInviteCodeGroup(this.$bus.encryptCode, {
+          product_id: this.$route.query.product_id
+        }).then(res => {
           if (res.data.code === 0) {
             this.details = res.data.data.invite_code_group;
           } else {
-            this.$router.replace({name: 'BuyError'});
+            if (res.data.code === 1419) {
+              alert('非常抱歉，该产品已下架');
+            } else {
+              this.$router.replace({name: 'BuyError'});
+            }
           }
         })
       },
@@ -107,7 +111,7 @@
        * 创建订单
        */
       createOrders() {
-        if(!this.protocol){
+        if (!this.protocol) {
           return;
         }
         ApiOrders.createOrders(this.$bus.encryptCode, {
@@ -142,12 +146,12 @@
               paySign: _data.paySign,
               success: (res) => {
                 if (res.errMsg === "chooseWXPay:ok") {
-                  this.$router.push({ name: 'TransactionsSuccess' })
+                  this.$router.push({name: 'TransactionsSuccess'})
                 }
               }
             })
           } else {
-            this.$router.push({ name: 'TransactionsError' })
+            this.$router.push({name: 'TransactionsError'})
           }
         })
       }
@@ -158,13 +162,13 @@
   @import "../../styles/variable";
 
   .itv-buy {
-    .itv-product-info{
+    .itv-product-info {
       margin: 16px 0;
     }
     .money {
       font-size: 32px;
     }
-    .protocol{
+    .protocol {
       position: absolute;
       left: 0;
       bottom: 95px;
@@ -172,8 +176,8 @@
       height: 100px;
       width: 100%;
       line-height: 100px;
-      font-size:28px;
-      a{
+      font-size: 28px;
+      a {
         vertical-align: inherit;
       }
     }
