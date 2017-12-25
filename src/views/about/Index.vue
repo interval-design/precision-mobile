@@ -2,7 +2,7 @@
   <div class="itv-about">
     <yd-tab class="itv-orders-nav" active-color="#3C90EF" :callback="tabActive">
       <yd-tab-panel label="了解普瑞森" :active="$route.name === 'AboutInfo'"></yd-tab-panel>
-      <yd-tab-panel label="普瑞森团队" :active="$route.name === 'AboutTeam'"></yd-tab-panel>
+      <!-- <yd-tab-panel label="普瑞森团队" :active="$route.name === 'AboutTeam'"></yd-tab-panel> -->
       <yd-tab-panel label="加入我们" :active="$route.name === 'AboutJoin'"></yd-tab-panel>
     </yd-tab>
     <div class="itv-about-content">
