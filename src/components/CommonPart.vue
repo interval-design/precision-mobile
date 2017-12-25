@@ -72,7 +72,8 @@
                 let _cardList = res.cardList; // 用户选中的卡券列表信息
                 this.$bus.encryptCode = JSON.parse(_cardList)[0].encrypt_code;
                 setTimeout(()=>{
-                  this.$router.push({name: 'Buy',query:{product_id:this.productId}});
+                  this.$bus.productId = this.productId;
+                  this.$router.push({name: 'Buy'});
                 },200)
               },
             });

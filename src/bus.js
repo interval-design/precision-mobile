@@ -7,6 +7,7 @@ export default new Vue({
       user: {},
       weixinUser:{},
       encryptCode:'', // 购买时选券返回的加密码
+      proudctId:'',
       address:null,
       scrollPosition:null,
       EVENTS: {

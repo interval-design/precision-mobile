@@ -31,7 +31,7 @@ export default {
   name:'Protocol',
   methods: {
     back() {
-      history.back();
+      this.$router.replace({name:'Buy'});
     }
   },
 }

@@ -22,7 +22,7 @@
     },
     methods: {
       back(){
-        history.back();
+         this.$router.replace({name:'Index'});
       },
     },
   }

@@ -75,7 +75,7 @@
         ApiBuy.creatdAddress(this.form).then(res => {
           if (res.data.code === 0) {
             this.$bus.address = res.data.data.address;
-            history.back();
+            this.$router.replace({name:'Buy'});
           }
         })
       },

@@ -41,145 +41,146 @@
 </template>
 
 <script>
-  import ApiBuy from '../../api/buy';
-  import ApiOrders from '../../api/orders';
+import ApiBuy from "../../api/buy";
+import ApiOrders from "../../api/orders";
 
-  export default {
-    name: 'BuyIndex',
-    computed: {
-      formatAddress() {
-        return `${this.address.province} ${this.address.city} ${this.address.district} ${this.address.street}`
+export default {
+  name: "BuyIndex",
+  computed: {
+    formatAddress() {
+      return `${this.address.province} ${this.address.city} ${this.address
+        .district} ${this.address.street}`;
+    }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.loadDetails();
+      // 判断$bus中是否有地址，如果没选默认为地址列表中的第一个
+      if (this.$bus.address) {
+        this.address = this.$bus.address;
+        return;
       }
-    },
-    mounted() {
-      this.$nextTick(() => {
-        // 判断$bus中是否有地址，如果没选默认为地址列表中的第一个
-        if (this.$bus.address) {
-          this.address = this.$bus.address;
-          return;
-        }
-        this.loadAddresses();
-        this.loadDetails();
-      })
-    },
-    data() {
-      return {
-        details: null,
-        address: {},
-        number: 1,
-        protocol: true,
-      }
-    },
-    methods: {
-
-      /**
+      this.loadAddresses();
+    });
+  },
+  data() {
+    return {
+      details: null,
+      address: {},
+      number: 1,
+      protocol: true
+    };
+  },
+  methods: {
+    /**
        * 列出地址列表
        */
-      loadAddresses() {
-        ApiBuy.getAddresses().then(res => {
-          if (res.data.code === 0) {
-            if (res.data.data.addresses.length > 0) {
-              this.address = this.$bus.address = res.data.data.addresses[0];
-            } else {
-              this.$router.push({name: 'AddressAdd'});
-            }
+    loadAddresses() {
+      ApiBuy.getAddresses().then(res => {
+        if (res.data.code === 0) {
+          if (res.data.data.addresses.length > 0) {
+            this.address = this.$bus.address = res.data.data.addresses[0];
+          } else {
+            this.$router.push({ name: "AddressAdd" });
           }
-        })
-      },
+        }
+      });
+    },
 
-      /**
+    /**
        * 根据微信卡券code获取邀请码组详情
        */
-      loadDetails() {
-        // this.$bus.encryptCode = 'N9Wgb4sYDhlYAgOuhYrtJ/sgH+TeKlf2uVcKRd+A0us=';
-        ApiBuy.getInviteCodeGroup(this.$bus.encryptCode, {
-          product_id: this.$route.query.product_id
-        }).then(res => {
-          if (res.data.code === 0) {
-            this.details = res.data.data.invite_code_group;
+    loadDetails() {
+      // this.$bus.encryptCode = 'N9Wgb4sYDhlYAgOuhYrtJ1e6kIJMcCXXR2EdJTKKTWM=';
+      // this.$bus.productId = 1;
+      ApiBuy.getInviteCodeGroup(this.$bus.encryptCode, {
+        product_id: this.$bus.productId
+      }).then(res => {
+        if (res.data.code === 0) {
+          this.details = res.data.data.invite_code_group;
+        } else {
+          if (res.data.code === 1419) {
+            alert("非常抱歉，该产品已下架");
           } else {
-            if (res.data.code === 1419) {
-              alert('非常抱歉，该产品已下架');
-            } else {
-              this.$router.replace({name: 'BuyError'});
-            }
+            this.$router.replace({ name: "BuyError" });
           }
-        })
-      },
+        }
+      });
+    },
 
-      /**
+    /**
        * 创建订单
        */
-      createOrders() {
-        if (!this.protocol) {
-          return;
+    createOrders() {
+      if (!this.protocol) {
+        return;
+      }
+      ApiOrders.createOrders(this.$bus.encryptCode, {
+        product_id: this.details.product.id,
+        quantity: this.number,
+        address_id: this.$bus.address.id
+      }).then(res => {
+        if (res.data.code === 0) {
+          let _orderId = res.data.data.order.id;
+          this.createTransactions(_orderId);
+        } else {
+          this.$router.replace({ name: "BuyError" });
         }
-        ApiOrders.createOrders(this.$bus.encryptCode, {
-          product_id: this.details.product.id,
-          quantity: this.number,
-          address_id: this.$bus.address.id
-        }).then(res => {
-          if (res.data.code === 0) {
-            let _orderId = res.data.data.order.id;
-            this.createTransactions(_orderId);
-          } else {
-            this.$router.replace({name: 'BuyError'});
-          }
-        })
-      },
+      });
+    },
 
-      /**
+    /**
        * 创建交易
        * @param orderId
        */
-      createTransactions(orderId) {
-        ApiOrders.createTransactions(orderId, {
-          channel: 'WX_JSAPI'
-        }).then(res => {
-          if (res.data.code === 0) {
-            let _data = res.data.data;
-            wx.chooseWXPay({
-              timestamp: _data.timeStamp,
-              nonceStr: _data.nonceStr,
-              package: _data.package,
-              signType: _data.signType,
-              paySign: _data.paySign,
-              success: (res) => {
-                if (res.errMsg === "chooseWXPay:ok") {
-                  this.$router.push({name: 'TransactionsSuccess'})
-                }
+    createTransactions(orderId) {
+      ApiOrders.createTransactions(orderId, {
+        channel: "WX_JSAPI"
+      }).then(res => {
+        if (res.data.code === 0) {
+          let _data = res.data.data;
+          wx.chooseWXPay({
+            timestamp: _data.timeStamp,
+            nonceStr: _data.nonceStr,
+            package: _data.package,
+            signType: _data.signType,
+            paySign: _data.paySign,
+            success: res => {
+              if (res.errMsg === "chooseWXPay:ok") {
+                this.$router.push({ name: "TransactionsSuccess" });
               }
-            })
-          } else {
-            this.$router.push({name: 'TransactionsError'})
-          }
-        })
-      }
-    },
+            }
+          });
+        } else {
+          this.$router.push({ name: "TransactionsError" });
+        }
+      });
+    }
   }
+};
 </script>
 <style lang="scss">
-  @import "../../styles/variable";
+@import "../../styles/variable";
 
-  .itv-buy {
-    .itv-product-info {
-      margin: 16px 0;
-    }
-    .money {
-      font-size: 32px;
-    }
-    .protocol {
-      position: absolute;
-      left: 0;
-      bottom: 95px;
-      padding: 0 32px;
-      height: 100px;
-      width: 100%;
-      line-height: 100px;
-      font-size: 28px;
-      a {
-        vertical-align: inherit;
-      }
+.itv-buy {
+  .itv-product-info {
+    margin: 16px 0;
+  }
+  .money {
+    font-size: 32px;
+  }
+  .protocol {
+    position: absolute;
+    left: 0;
+    bottom: 95px;
+    padding: 0 32px;
+    height: 100px;
+    width: 100%;
+    line-height: 100px;
+    font-size: 28px;
+    a {
+      vertical-align: inherit;
     }
   }
+}
 </style>
