@@ -95,6 +95,7 @@
               {id: '6-2', text: '偶尔腹泻'},
               {id: '6-3', text: '经常性便秘'},
               {id: '6-4', text: '偶尔便秘'},
+              {id: '6-5', text: '排便比较规律'},
             ],
             selected: '',
           },
@@ -230,7 +231,7 @@
   }
 
   .itv-question {
-    margin: 10px 0;
+    margin: 10px 0 80px;
     padding: 32px;
     &-hd {
       display: flex;
