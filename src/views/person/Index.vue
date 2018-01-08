@@ -66,7 +66,6 @@
       <base-input title="年龄" v-model="form.age"></base-input>
       <base-input title="身高" v-model="form.height" footer="cm"></base-input>
       <base-input title="体重" v-model="form.weight" footer="kg"></base-input>
-      <base-input title="腰围" v-model="form.waist" footer="cm"></base-input>
     </div>
     <base-button size="big" width="100%" position="bottom" :disabled="kitCode === ''" @click="next">下一步</base-button>
   </div>
@@ -88,7 +87,6 @@
           age: '',
           height: '',
           weight: '',
-          waist: ''
         }
       }
     },
@@ -110,8 +108,7 @@
           sex:this.form.sex,
           age:this.form.age,
           height:this.form.height + 'cm',
-          weight:this.form.weight + 'kg',
-          waist:this.form.waist + 'cm'
+          weight:this.form.weight + 'kg'
         }).then(res => {
           if (res.data.code === 0) {
             this.$router.push({name:'Questionnaire',query:{'kit_code':this.kitCode}});
