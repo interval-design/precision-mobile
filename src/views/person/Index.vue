@@ -107,8 +107,8 @@
           name:this.form.name,
           sex:this.form.sex,
           age:this.form.age,
-          height:this.form.height + 'cm',
-          weight:this.form.weight + 'kg'
+          height:this.form.height,
+          weight:this.form.weight
         }).then(res => {
           if (res.data.code === 0) {
             this.$router.push({name:'Questionnaire',query:{'kit_code':this.kitCode}});
