@@ -1,9 +1,14 @@
-<!DOCTYPE html><html><head><meta charset=utf-8><title>普瑞森</title><script>var width = 750, phoneWidth = parseInt(window.screen.width), phoneScale = phoneWidth / width,
-      ua = navigator.userAgent;
-    if (/Android (\d+\.\d+)/.test(ua)) {
-      var version = parseFloat(RegExp.$1);
-      version > 2.3 ? document.write('<meta name="viewport" content="width=' + width + ", minimum-scale = " + phoneScale + ", maximum-scale = " + phoneScale + ', user-scalable=no">') : document.write('<meta name="viewport" content="width=' + width + ', user-scalable=no">')
-    } else document.write('<meta name="viewport" content="width=' + width + ', user-scalable=no">')</script><script src=https://res.wx.qq.com/open/js/jweixin-1.0.0.js></script><script src=//unpkg.com/vue-ydui/dist/ydui.flexible.js></script><script>(function(){
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset=utf-8>
+    
+    <title>普瑞森</title>
+    <script>var width=750,phoneWidth=parseInt(window.screen.width),phoneScale=phoneWidth/width,ua=navigator.userAgent;if(/Android (\d+\.\d+)/.test(ua)){var version=parseFloat(RegExp.$1);version>2.3?document.write('<meta name="viewport" content="width='+width+", minimum-scale = "+phoneScale+", maximum-scale = "+phoneScale+', target-densitydpi=device-dpi">'):document.write('<meta name="viewport" content="width='+width+', target-densitydpi=device-dpi">')}else document.write('<meta name="viewport" content="width='+width+', user-scalable=no, target-densitydpi=device-dpi">')</script>
+    <script src=https://res.wx.qq.com/open/js/jweixin-1.0.0.js></script>
+    <script src=//unpkg.com/vue-ydui/dist/ydui.flexible.js></script>
+    <script>
+      (function(){
         if (typeof(WeixinJSBridge) == "undefined") {
           document.addEventListener("WeixinJSBridgeReady", function (e) {
             setTimeout(function(){
@@ -19,4 +24,11 @@
             });
           },0);
         }
-      })();</script><link href=/static/css/app.7ab2665120ed2c41aa505a8dad6a033c.css rel=stylesheet></head><body><div id=app></div><script type=text/javascript src=/static/js/manifest.e61bbd985c550759ddcd.js></script><script type=text/javascript src=/static/js/vendor.158c609a7c090d825e66.js></script><script type=text/javascript src=/static/js/app.7fb723f27bbb31f43ef1.js></script></body></html>
+      })();
+    </script>
+  <link href=/static/css/app.7ab2665120ed2c41aa505a8dad6a033c.css rel=stylesheet></head>
+  <body>
+    <div id=app></div>
+    
+  <script type=text/javascript src=/static/js/manifest.e61bbd985c550759ddcd.js></script><script type=text/javascript src=/static/js/vendor.158c609a7c090d825e66.js></script><script type=text/javascript src=/static/js/app.7fb723f27bbb31f43ef1.js></script></body>
+</html>
