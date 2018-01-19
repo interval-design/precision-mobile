@@ -31,23 +31,30 @@ router.beforeEach((to, from, next) => {
 });
 
 
-Vue.filter('formatTime', (val) => {
-  if (!val) {
+Vue.filter('formatTime', (time, cFormat) => {
+  if (!time) {
     return '-';
   }
-  /**
-   * 数字补零
-   */
-  let addZero = (num) => {
-    return (num < 10 ? '0' : '') + num;
+  const format = cFormat || '{y}-{m}-{d} {h}:{i}:{s}';
+  let date = new Date(time);
+  const formatObj = {
+    y: date.getFullYear(),
+    m: date.getMonth() + 1,
+    d: date.getDate(),
+    h: date.getHours(),
+    i: date.getMinutes(),
+    s: date.getSeconds(),
+    a: date.getDay()
   };
-  let time = new Date(val);
-  let year = time.getFullYear();
-  let month = time.getMonth() + 1;
-  let day = time.getDate();
-  let hour = addZero(time.getHours());
-  let min = addZero(time.getMinutes());
-  return `${year}-${month}-${day} ${hour}:${min}`;
+  const time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
+    let value = formatObj[key];
+    if (key === 'a') return ['一', '二', '三', '四', '五', '六', '日'][value - 1];
+    if (result.length > 0 && value < 10) {
+      value = '0' + value
+    }
+    return value || 0
+  });
+  return time_str
 });
 
 // 滚动到顶部
