@@ -32,7 +32,7 @@
 
   export default {
     name: 'Login',
-    created() {
+    mounted(){
       this.getCaptcha();
       if (this.$bus.user.mobile === '' || !this.$bus.user.mobile ) {
         return;
