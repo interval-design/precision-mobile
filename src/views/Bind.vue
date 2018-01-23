@@ -11,7 +11,7 @@
         <icon-svg :icon-class="focus === 2 ? 'captcha' : 'captcha-disabled'"></icon-svg>
         <input class="itv-input" type="text" v-model="bindForm.captchaCode" placeholder="请输入验证码" @focus="focus = 2">
         <div class="captcha-group">
-          <img class="img" :src="'data:img/jpg;base64,' + bindForm.captchaImage" alt="captchaImage">
+          <img class="img" :src="'data:img/jpg;base64,' + bindForm.captchaImage" alt="captchaImage" v-if='bindForm.captchaImage'>
           <span class="refresh" @click="getCaptcha">刷新</span>
         </div>
       </div>
