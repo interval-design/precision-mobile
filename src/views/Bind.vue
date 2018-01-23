@@ -33,12 +33,12 @@
   export default {
     name: 'Login',
     created() {
+      this.getCaptcha();
       if (this.$bus.user.mobile === '' || !this.$bus.user.mobile ) {
         return;
       } else {
         this.$router.push({name:'User'});
       }
-      this.getCaptcha();
     },
     data() {
       return {
