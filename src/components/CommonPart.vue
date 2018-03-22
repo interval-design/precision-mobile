@@ -104,10 +104,10 @@ export default {
       transform: translateX(-50%);
     }
     .btn-1 {
-      top: 1020px;
+      top: 1033px;
     }
     .btn-2 {
-      bottom: 510px;
+      bottom: 444px;
     }
   }
   .buy {
