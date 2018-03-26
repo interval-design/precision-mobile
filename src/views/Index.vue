@@ -4,16 +4,16 @@
     <swiper class="itv-swiper" :options="bannerOption">
       <swiper-slide>
         <img src="../assets/index/banner-child.jpg" srcset="../assets/index/banner-child.jpg 2x" alt="banner-child">
-        <base-button size="small" line @click="$router.push({name:'ServiceChild'})">了解更多</base-button>
+        <base-button size="small" type="white" line @click="$router.push({name:'ServiceChild'})">了解更多</base-button>
       </swiper-slide>
       <swiper-slide>
         <img src="../assets/index/banner-filter.jpg" srcset="../assets/index/banner-filter.jpg 2x" alt="banner-filter">
-        <base-button size="small" line @click="$router.push({name:'ServiceFilter'})">了解更多</base-button>
+        <base-button size="small" type="white" line @click="$router.push({name:'ServiceFilter'})">了解更多</base-button>
       </swiper-slide>
       <swiper-slide>
         <img src="../assets/index/banner-ecosystem.jpg" srcset="../assets/index/banner-ecosystem.jpg 2x"
              alt="banner-ecosystem">
-        <base-button size="small" line @click="$router.push({name:'ServiceEcosystem'})">了解更多</base-button>
+        <base-button class="special" size="small" type="white" line @click="$router.push({name:'ServiceEcosystem'})">了解更多</base-button>
       </swiper-slide>
     </swiper>
     <div class="section-link">
@@ -106,7 +106,7 @@
     .section-1 {
       .itv-base-button {
         left: 50%;
-        bottom: 64px;
+        bottom: 40px;
         transform: translateX(-50%);
       }
     }

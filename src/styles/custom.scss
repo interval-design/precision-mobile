@@ -224,8 +224,13 @@
   }
   .itv-base-button {
     position: absolute;
-    left: 60px;
-    top: 200px;
+    left: 50%;
+    top: 250px;
+    margin-left: -81px;
+    text-shadow: 0 2px 4px rgba(0,0,0,.6);
+    &.special{
+      text-shadow: 0 2px 4px rgba(0,0,0,1);
+    }
   }
   .swiper-button-prev {
     left: 32px;
