@@ -137,7 +137,7 @@
       <template v-for="report in order.sub_orders">
         <div class="report-item"
            :class="{'bg-filter':order.product === 1,'bg-child':order.product === 2,'bg-microbiology':order.product === 3}"
-           @click="openReport(report.id,report.report_full_link.split(',')[0])">
+           @click="openReport(report.id,report.report_lite_link.split(',')[0])">
           <h3>{{ report.product_name }}报告</h3>
           <p class="person">
             <span>被测人：{{ report.person_name ? report.person_name : '-' }}</span>
@@ -145,8 +145,8 @@
           </p>
         </div>
        <div class="report-item bg-microbiology"
-           @click="openReport(report.id,report.report_full_link.split(',')[1])"
-           v-if="report.report_full_link.split(',').length > 1">
+           @click="openReport(report.id,report.report_lite_link.split(',')[1])"
+           v-if="report.report_lite_link.split(',').length > 1">
           <h3>肠道微生态检测报告</h3>
           <p class="person">
             <span>被测人：{{ report.person_name ? report.person_name : '-' }}</span>
