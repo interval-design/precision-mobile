@@ -9,14 +9,14 @@
       <p class="itv-question-hd">
         <icon-svg icon-class="issue"></icon-svg>
         <span class="itv-question-hd_text">{{ current.question }}</span>
-        <span class="itv-question-hd_progress">{{ page + 1 }}/15</span>
+        <span class="itv-question-hd_progress">{{ page + 1 }}/19</span>
       </p>
       <div class="itv-radio-group" v-for="option in current.options">
         <input class="itv-radio" type="radio" :id="option.id" :value="option.text" v-model="current.selected">
         <label :for="option.id">{{ option.text }}</label>
       </div>
       <base-button fixed="bottom" width="100%" size="big" @click.native="next" :disabled="current.selected === ''">
-        {{ page === 14 ? '完成' :'下一题'  }}
+        {{ page === 18 ? '完成' :'下一题'  }}
       </base-button>
     </div>
   </div>
@@ -180,6 +180,54 @@
             ],
             selected: '',
           },
+          {
+            id: 16,
+            question: '饮酒频率？',
+            options: [
+              {id: '16-1', text: '从不饮酒'},
+              {id: '16-2', text: '每月 1-2 次'},
+              {id: '16-3', text: '每周 1-2 次'},
+              {id: '16-4', text: '每周 >3 次'},
+            ],
+            selected: '',
+          },
+          {
+            id: 17,
+            question: '您平时使用哪些药物？',
+            options: [
+              {id: '17-1', text: '无'},
+              {id: '17-2', text: '抗病毒'},
+              {id: '17-3', text: '降血压'},
+              {id: '17-4', text: '降血糖'},
+              {id: '17-5', text: '降血脂'},
+              {id: '17-6', text: '胃药'},
+            ],
+            selected: '',
+          },
+          {
+            id: 18,
+            question: '您是否有过敏原？',
+            options: [
+              {id: '18-1', text: '无'},
+              {id: '18-2', text: '花粉'},
+              {id: '18-3', text: '霉菌'},
+              {id: '18-4', text: '牛奶'},
+              {id: '18-5', text: '鸡蛋'},
+              {id: '18-6', text: '大豆'},
+              {id: '18-7', text: '海鲜'},
+              {id: '18-8', text: '坚果类'},
+            ],
+            selected: '',
+          },
+          {
+            id: 19,
+            question: '您最近一年是否有门诊就医或者住院经历？',
+            options: [
+              {id: '19-1', text: '是'},
+              {id: '19-2', text: '否'},
+            ],
+            selected: '',
+          },
         ],
         result: [],
       }
@@ -190,7 +238,7 @@
           return;
         }
         this.result.push(this.current.selected);
-        if (this.current.id === 15) {
+        if (this.current.id === 19) {
           this.finish();
           return;
         }
