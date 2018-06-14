@@ -165,6 +165,7 @@
       }
     }
     .info {
+      margin-bottom: 100px;
       &_hd {
         padding: 24px;
         font-size: 32px;
