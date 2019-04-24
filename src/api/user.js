@@ -102,5 +102,7 @@ export default {
    */
   updateReportViews(subOrderId,params){
     return axios.put(`/api/sub_orders/${subOrderId}/report_views/`, params);
-  }
+  },
+
+  
 }

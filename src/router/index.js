@@ -3,7 +3,7 @@ import Router from 'vue-router'
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   scrollBehavior(to, from, savedPosition) {
     if (savedPosition) {
@@ -227,6 +227,61 @@ export default new Router({
       name: 'Message',
       meta: {auth: true},
       component: (resolve) => require(["@/views/user/message/Index"], resolve)
-    }
-  ]
+    },
+
+    /*------- 经销商入口 ------------------------------------*/
+    {
+      path: '/dealers/login',
+      name: 'DealersLogin',
+      component: (resolve) => require(["@/dealersViews/Login"], resolve)
+    },
+     {
+      path: '/dealers/scanner',
+      name: 'DealersScanner',
+      meta: {auth: true},
+      component: (resolve) => require(["@/dealersViews/Scanner"], resolve)
+    },
+    // 前置问卷
+    {
+      path: '/dealers/questionnaire',
+      name: 'DealersQuestionnaire',
+      meta: {auth: true},
+      component: (resolve) => require(["@/dealersViews/Questionnaire"], resolve)
+    },
+    {
+      path: '/dealers/questionnaire-finish',
+      name: 'DealersQuestionnaireFinish',
+      meta: {auth: true},
+      component: (resolve) => require(["@/dealersViews/QuestionnaireFinish"], resolve)
+    },
+    // 个人中心
+    {
+      path: '/dealers/user',
+      name: 'DealersUser',
+      meta: {auth: true},
+      component: (resolve) => require(["@/dealersViews/User"], resolve)
+    },
+    // 订单
+    {
+      path: '/dealers/orders',
+      name: 'DealersOrders',
+      meta: {auth: true},
+      component: (resolve) => require(["@/dealersViews/orders/Index"], resolve)
+    },
+    {
+      path: '/dealers/orders/:order_id',
+      name: 'DealersOrderDetails',
+      meta: {auth: true},
+      component: (resolve) => require(["@/dealersViews/orders/Details"], resolve)
+    },
+    // 报告
+    {
+      path: '/dealers/reports',
+      name: 'DealersReports',
+      meta: {auth: true},
+      component: (resolve) => require(["@/dealersViews/Report"], resolve)
+    },
+  ],
 })
+
+export default router

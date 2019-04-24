@@ -32,27 +32,44 @@
 
   export default {
     name: 'app',
-    created() {
-      this.initToken();
-      this.authCheck();
-
-      //  用户更新事件
-      this.$bus.$on(this.$bus.EVENTS.USER_UPDATE, () => {
-        this.getCurrentUser()
-      });
-      // 微信用户更新事件
-      this.$bus.$on(this.$bus.EVENTS.WX_USER_UPDATE, () => {
-        this.getCurrentWeixinUser()
-      });
-      this.getCurrentUser();
-      this.getCurrentWeixinUser();
+    data() {
+      return {
+        firstEnter: true
+      }
     },
     watch:{
       $route(){
-        this.authCheck();
+        if(this.firstEnter){
+          this.checkLink()
+          this.firstEnter = false
+        }
+        if(this.$route.path.indexOf('dealers') === -1){
+          this.authCheck();
+        }
       }
     },
     methods: {
+      checkLink(){
+        this.initToken();
+        // 主入口
+        if(this.$route.path.indexOf('dealers') === -1){
+          //  用户更新事件
+          this.$bus.$on(this.$bus.EVENTS.USER_UPDATE, () => {
+            this.getCurrentUser()
+          });
+          // 微信用户更新事件
+          this.$bus.$on(this.$bus.EVENTS.WX_USER_UPDATE, () => {
+            this.getCurrentWeixinUser()
+          });
+          this.getCurrentUser();
+          this.getCurrentWeixinUser();
+        } else {
+          // 经销商入口要初始化的事
+          this.getDealersCurrentUser();
+          // TODO:
+        }
+      },
+
       initToken() {
         ApiWx.getWexinToken({url: location.href.split('#')[0]}).then(res => {
           let data = res.data;
@@ -79,6 +96,13 @@
             this.$bus.user = res.data.data.user;
           }
         })
+      },
+
+      // 获取当前用户（经销商入口）
+      getDealersCurrentUser(){
+        // TODO:等接口
+        console.log('获取当前用户....')
+        // 如果报1101 就跳转到login
       },
 
       /**
