@@ -4,7 +4,7 @@
       <div class="itv-avatar">
         <img src="../assets/avatar.png" alt="avatar">
       </div>
-      <p>{{ $bus.dealersUser.mobile }}</p>
+      <p>{{ $bus.user.mobile }}</p>
     </div>
     <div class="itv-center-order">
       <router-link :to="{name:'DealersOrders',query:{tab:'all'}}">
@@ -25,8 +25,8 @@
       </div>
     </div>
     <router-link :to="{name:'DealersReports'}" class="itv-center-report">
-      <h2>我的报告<span class="new" v-if="$bus.dealersUser.total_unread_reports > 0">有新报告</span></h2>
-      <div><span class="total">{{ $bus.dealersUser.total_reports }}</span>份</div>
+      <h2>我的报告<span class="new" v-if="$bus.user.total_unread_reports > 0">有新报告</span></h2>
+      <div><span class="total">{{ $bus.user.total_reports }}</span>份</div>
     </router-link>
   </div>
 </template>

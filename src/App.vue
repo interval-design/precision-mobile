@@ -64,9 +64,7 @@
           this.getCurrentUser();
           this.getCurrentWeixinUser();
         } else {
-          // 经销商入口要初始化的事
-          this.getDealersCurrentUser();
-          // TODO:
+          this.getCurrentUser();
         }
       },
 
@@ -94,15 +92,14 @@
         ApiUser.getCurrentUser().then(res => {
           if (res.data.code === 0) {
             this.$bus.user = res.data.data.user;
+            return
+          }
+          if(res.data.code === 1101){
+            if(this.$route.path.indexOf('dealers') === -1){
+              this.$router.push({name:'DealersLogin'})
+            }
           }
         })
-      },
-
-      // 获取当前用户（经销商入口）
-      getDealersCurrentUser(){
-        // TODO:等接口
-        console.log('获取当前用户....')
-        // 如果报1101 就跳转到login
       },
 
       /**

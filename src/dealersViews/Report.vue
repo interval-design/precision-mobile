@@ -5,11 +5,10 @@
       <h1>您还没有报告</h1>
     </div>
     <template v-for="report in reports">
-      <!-- TODO:链接要改，目前不定 -->
-      <div class="report-item bg-microbiology"
-           @click="openReport(report.id,report.report_lite_link.split(',')[1])"
-           v-if="report.report_lite_link.split(',').length > 1">
-        <h3>xxx检测报告</h3>
+      <div class="report-item"
+           :class="{'bg-filter':report.product === 1,'bg-child':report.product === 2,'bg-microbiology':[3,4].includes(report.product)}"
+           @click="openReport(report.id,report.report_lite_link.split(',')[0])">
+        <h3>{{ report.product_name }}报告</h3>
         <p class="person">
           <span>被测人：{{ report.person_name ? report.person_name : '-' }}</span>
           <span>{{ report.iso_finish_time | formatTime }}</span>

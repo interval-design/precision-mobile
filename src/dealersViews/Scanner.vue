@@ -7,7 +7,7 @@
           <icon-svg icon-class="barcode" width="26px" height="26px" style="margin-right: 16px;vertical-align: sub;"></icon-svg>
           条码输入成功 {{ kitCode }}
         </p>
-        <span class="itv-highlight-red">条码输入不正确？</span>
+        <p class="itv-highlight-red">{{ errorText }}</p>
       </div>
       <div class="action_bd">
         <base-button @click="scan">
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-  import ApiPerson from '../api/person'
+  import ApiOrders from '../api/orders'
 
   export default {
     name: "DealersScanner",
@@ -44,7 +44,8 @@
           height: '',
           weight: '',
           mobile:''
-        }
+        },
+        errorText:''
       }
     },
     methods: {
@@ -60,7 +61,8 @@
       },
 
       next() {
-        ApiPerson.EditPersonInfo(this.kitCode, {
+        ApiOrders.createOrdersFormDealers(7, {
+          kit_code:this.kitCode,
           name:this.form.name,
           sex:this.form.sex,
           age:this.form.age,
@@ -70,6 +72,11 @@
         }).then(res => {
           if (res.data.code === 0) {
             this.$router.push({name:'DealersQuestionnaire',query:{'kit_code':this.kitCode}});
+            return
+          } else {
+            if(res.data.code === 1418){
+              this.errorText = '试剂盒信息已存在';
+            }
           }
         })
       }
@@ -108,7 +115,7 @@
       }
       &_bd {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         padding: 24px 32px;
         width: 100%;
         text-align: center;

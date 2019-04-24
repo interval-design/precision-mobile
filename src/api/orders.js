@@ -43,5 +43,14 @@ export default {
    */
   getOrdersDetails(orderId, params) {
     return axios.get(`/api/orders/${orderId}/`, {params: params});
+  },
+
+  /**
+   * 经销商页面创建订单
+   * @param {*} dealer_id
+   * @param {*} params
+   */
+  createOrdersFormDealers(dealer_id,params){
+    return axios.put(`/api/dealers/${dealer_id}/orders`,params)
   }
 }

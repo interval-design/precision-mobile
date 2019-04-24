@@ -104,5 +104,22 @@ export default {
     return axios.put(`/api/sub_orders/${subOrderId}/report_views/`, params);
   },
 
-  
+  /**
+   * 发送用户登录验证码短信
+   * @param params
+   * @returns {*}
+   */
+  sendSmsLogin(params) {
+    return axios.post('/api/sms/login/',params);
+  },
+
+  /**
+   * 登录
+   * @param params
+   * @returns {*}
+   */
+  login(params) {
+    return axios.put('/api/user/login/', params);
+  },
+
 }
