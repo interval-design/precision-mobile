@@ -95,7 +95,7 @@
             return
           }
           if(res.data.code === 1101){
-            if(this.$route.path.indexOf('dealers') === -1){
+            if(this.$route.path.indexOf('dealers') !== -1){
               this.$router.push({name:'DealersLogin'})
             }
           }
