@@ -39,7 +39,7 @@
           <span class="itv-product-info-num">x{{ order.quantity }}</span>
         </div>
         <div class="itv-orders-item_footer">
-          <p>总金额<span class="itv-highlight-red money">￥{{ order.price / 100 }}</span></p>
+          <p>总金额<span class="itv-highlight-red money">￥{{ order.price ? ((order.price / 100) === 0 ? '-': order.price / 100 ) : '-'  }}</span></p>
           <base-button line size="small" style="margin-left: 16px" v-if="order.status === 0" @click="createTransactions(order.id)">付款</base-button>
         </div>
       </router-link>
@@ -61,6 +61,7 @@
     },
     created() {
       this.isFirstEnter = true;
+      this.setStatus();
     },
     activated() {
       if (!this.$route.meta.isBack || this.isFirstEnter) {
@@ -75,7 +76,7 @@
     data() {
       return {
         orders: [],
-        status: null,
+        status: undefined,
         isFirstEnter: false
       }
     },

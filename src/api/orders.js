@@ -51,6 +51,6 @@ export default {
    * @param {*} params
    */
   createOrdersFormDealers(dealer_id,params){
-    return axios.put(`/api/dealers/${dealer_id}/orders`,params)
+    return axios.post(`/api/dealers/${dealer_id}/orders/`,params)
   }
 }

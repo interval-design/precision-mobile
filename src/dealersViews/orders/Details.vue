@@ -2,19 +2,11 @@
   <div class="itv-orders-details" v-if="order">
     <!-- 只在非已关闭的情况下显示 -->
     <div class="itv-orders-details_hd" v-if="order.status !== 5">
-      <template v-if="order.status === 1">
-        <icon-svg icon-class="order-1" class-name="order"></icon-svg>
-        <div class="desc">
-          <h2>付款成功</h2>
-          <p>您已付款成功，我们会尽快寄出试剂盒</p>
-        </div>
-      </template>
       <template v-if="order.status === 2">
         <icon-svg icon-class="order-2" class-name="order"></icon-svg>
         <div class="desc">
-          <h2>试剂盒已寄出</h2>
-          <p>试剂盒已寄出，正马不停蹄奔向您</p>
-          <p>请注意签收哦~</p>
+          <h2>被测人信息已登记</h2>
+          <p>您已填写被测人信息，请按说明书完成采样并寄回样本</p>
         </div>
       </template>
       <template v-if="order.status === 3 && !showAnalyzeTime">
@@ -62,9 +54,9 @@
           <th>订单状态：</th>
           <td>{{ orderStatus(order.status) }}</td>
         </tr>
-        <tr v-if="order.iso_receive_time">
-          <th>收到试剂盒时间：</th>
-          <td>{{order.iso_receive_time | formatTime}}</td>
+        <tr>
+          <th>下单时间：</th>
+          <td>{{ order.iso_create_time | formatTime }}</td>
         </tr>
         <tr v-if="order.iso_finish_time">
           <th>完成时间：</th>
@@ -72,7 +64,6 @@
         </tr>
       </table>
     </div>
-
     <!-- 检测报告 -->
     <div class="itv-report itv-bg-white" v-if="order.status === 4">
       <h2>检测报告</h2>
@@ -106,24 +97,7 @@
           return;
         }
         return Date.now() > this.getAnalyzeTime();
-      },
-
-      /**
-       * 支付类型
-       */
-      transaction() {
-        switch (this.order.transaction) {
-          case 'ALI_ORCODE':
-            return '支付宝网页扫码支付';
-            break;
-          case 'WX_NATIVE':
-            return '微信网页扫码支付';
-            break;
-          case 'WX_JSAPI':
-            return '微信公众号支付';
-            break;
-        }
-      },
+      }
     },
     created() {
       this.loadOrderDetails();
@@ -154,7 +128,7 @@
        * 根据订单状态码返回订单状态文字
        */
       orderStatus(statusCode) {
-        let status = ['已付款', '试剂盒已寄出', '样本检测中', '已完成', '已关闭'];
+        let status = ['待付款','已付款', '被测人信息已登记', '样本检测中', '已完成', '已关闭'];
         return status[statusCode];
       },
 

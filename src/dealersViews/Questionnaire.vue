@@ -1,6 +1,6 @@
 <template>
   <div class="itv-questionnaire">
-    <router-link class="skip" :to="{name:'QuestionnaireFinish',query:{action:'skip'}}">跳过</router-link>
+    <router-link class="skip" :to="{name:'DealersQuestionnaireFinish',query:{action:'skip'}}">跳过</router-link>
     <div class="itv-services-banner">
       <img src="../assets/banner-questionnaire.jpg" alt="banner-questionnaire">
     </div>

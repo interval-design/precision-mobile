@@ -10,7 +10,7 @@
       <h1>您还没有订单</h1>
     </div>
     <div class="itv-orders-container" v-else>
-      <router-link class="itv-orders-item itv-bg-white" :to="{name:'OrderDetails',params:{order_id:order.id}}"
+      <router-link class="itv-orders-item itv-bg-white" :to="{name:'DealersOrderDetails',params:{order_id:order.id}}"
                    v-for="order in orders" :key="order.id">
         <div class="itv-orders-item_hd">
           <span>订单号 {{ order.code }}</span>
@@ -28,7 +28,7 @@
           <span class="itv-product-info-num">x{{ order.quantity }}</span>
         </div>
         <div class="itv-orders-item_footer">
-          <p>总金额<span class="itv-highlight-red money">￥{{ order.price / 100 }}</span></p>
+          <p>总金额<span class="itv-highlight-red money">￥{{ order.price ? ((order.price / 100) === 0 ? '-': order.price / 100 ) : '-'  }}</span></p>
         </div>
       </router-link>
     </div>
@@ -49,6 +49,7 @@
     },
     created() {
       this.isFirstEnter = true;
+      this.setStatus();
     },
     activated() {
       if (!this.$route.meta.isBack || this.isFirstEnter) {
@@ -63,7 +64,7 @@
     data() {
       return {
         orders: [],
-        status: null,
+        status: undefined,
         isFirstEnter: false
       }
     },
@@ -115,7 +116,7 @@
        * 根据订单状态码返回订单状态文字
        */
       orderStatus(statusCode) {
-        let status = ['已付款', '试剂盒已寄出', '样本检测中', '已完成', '已关闭'];
+        let status = ['待付款','已付款', '被测人信息已登记', '样本检测中', '已完成', '已关闭'];
         return status[statusCode];
       }
     },
