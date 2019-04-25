@@ -36,7 +36,7 @@
     name: "DealersScanner",
     data() {
       return {
-        kitCode: '777777',
+        kitCode: '',
         form: {
           name: '',
           sex: '',
