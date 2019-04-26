@@ -117,7 +117,11 @@
           if (res.data.code === 0) {
             this.$bus.$emit(this.$bus.EVENTS.USER_UPDATE, _data.user);
             this.$cookies.setRaw('_prs_user', _data.token, {expires: '30D'});
-            this.$router.replace({path:this.$route.query.next});
+            if(this.$route.query.next){
+              this.$router.replace({path:this.$route.query.next});
+            } else {
+              this.$router.replace({name:'DealersUser'});
+            }
           } else {
             this.form.errorText = res.data.message;
           }
