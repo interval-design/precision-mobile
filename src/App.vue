@@ -39,6 +39,7 @@
     },
     watch:{
       $route(){
+        this.initToken();
         if(this.firstEnter){
           this.checkLink()
           this.firstEnter = false
@@ -50,7 +51,6 @@
     },
     methods: {
       checkLink(){
-        this.initToken();
         // 主入口
         if(this.$route.path.indexOf('dealers') === -1){
           //  用户更新事件
