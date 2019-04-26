@@ -21,6 +21,7 @@
       <base-input title="姓名" v-model="form.name"></base-input>
       <base-input title="性别" v-model="form.sex"></base-input>
       <base-input title="年龄" v-model="form.age"></base-input>
+      <base-input title="民族" v-model="form.nation"></base-input>
       <base-input title="身高" v-model="form.height" footer="cm"></base-input>
       <base-input title="体重" v-model="form.weight" footer="kg"></base-input>
       <base-input title="手机号" v-model="form.mobile"></base-input>
@@ -41,6 +42,7 @@
           name: '',
           sex: '',
           age: '',
+          national:'',
           height: '',
           weight: '',
           mobile:''
@@ -66,6 +68,7 @@
           name:this.form.name,
           sex:this.form.sex,
           age:this.form.age,
+          nation:this.form.nation,
           height:this.form.height,
           weight:this.form.weight,
           mobile:this.form.mobile
