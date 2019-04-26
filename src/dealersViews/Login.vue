@@ -84,7 +84,8 @@
         ApiUser.sendSmsLogin({
           mobile: this.form.mobile,
           captcha_token: this.form.captchaToken,
-          captcha_code: this.form.captchaCode
+          captcha_code: this.form.captchaCode,
+          dealer:7
         }).then(res => {
           if (res.data.code === 0) {
             this.form.errorText = '';
