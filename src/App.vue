@@ -56,21 +56,20 @@
     },
     methods: {
       checkLink(){
+        //  用户更新事件
+        this.$bus.$on(this.$bus.EVENTS.USER_UPDATE, () => {
+          this.getCurrentUser()
+        });
+        this.getCurrentUser();
         // 主入口
         if(this.$route.path.indexOf('dealers') === -1){
-          //  用户更新事件
-          this.$bus.$on(this.$bus.EVENTS.USER_UPDATE, () => {
-            this.getCurrentUser()
-          });
           // 微信用户更新事件
           this.$bus.$on(this.$bus.EVENTS.WX_USER_UPDATE, () => {
             this.getCurrentWeixinUser()
           });
-          this.getCurrentUser();
           this.getCurrentWeixinUser();
           document.title = '普瑞森'
         } else {
-          this.getCurrentUser();
           document.title = '肠道菌群基因检测'
         }
       },
