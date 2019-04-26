@@ -37,6 +37,11 @@
         firstEnter: true
       }
     },
+    created() {
+      if (window.entryUrl === undefined || window.entryUrl === '') {
+        window.entryUrl = location.href.split('#')[0]
+      }
+    },
     watch:{
       $route(){
         this.initToken();
@@ -69,7 +74,8 @@
       },
 
       initToken() {
-        ApiWx.getWexinToken({url: location.href.split('#')[0]}).then(res => {
+        let signLink = /(Android)/i.test(navigator.userAgent) ? location.href.split('#')[0] : window.entryUrl
+        ApiWx.getWexinToken({url:signLink}).then(res => {
           let data = res.data;
           if (data.code === 0) {
             wx.config({

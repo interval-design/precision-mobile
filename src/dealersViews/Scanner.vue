@@ -76,6 +76,8 @@
           } else {
             if(res.data.code === 1418){
               this.errorText = '试剂盒信息已存在';
+            } else {
+              this.errorText = res.data.message
             }
           }
         })
