@@ -1,6 +1,6 @@
 <template>
   <div class="itv-bind">
-    <p>肠道菌群基因检测</p>
+    <p class="tit">肠道菌群基因检测</p>
     <div class="itv-form">
       <div class="itv-input-group" :class="{'active':focus === 1}">
         <icon-svg :icon-class="focus === 1 ? 'phone' : 'phone-disabled'"></icon-svg>
@@ -116,7 +116,7 @@
           if (res.data.code === 0) {
             this.$bus.$emit(this.$bus.EVENTS.USER_UPDATE, _data.user);
             this.$cookies.setRaw('_prs_user', _data.token, {expires: '30D'});
-            this.$router.push({name:'DealersScanner'});
+            this.$router.replace({path:this.$route.query.next});
           } else {
             this.form.errorText = res.data.message;
           }
@@ -142,6 +142,10 @@
       padding: 16px 0;
       color: $red;
       text-align: right;
+    }
+    .tit{
+      font-size:48px;
+      letter-spacing: 10px;
     }
   }
 </style>

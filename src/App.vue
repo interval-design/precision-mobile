@@ -68,8 +68,10 @@
           });
           this.getCurrentUser();
           this.getCurrentWeixinUser();
+          document.title = '普瑞森'
         } else {
           this.getCurrentUser();
+          document.title = '肠道菌群基因检测'
         }
       },
 
@@ -102,7 +104,7 @@
           }
           if(res.data.code === 1101){
             if(this.$route.path.indexOf('dealers') !== -1){
-              this.$router.push({name:'DealersLogin'})
+              this.$router.push({name:'DealersLogin',query:{next:this.$route.path}})
             }
           }
         })
