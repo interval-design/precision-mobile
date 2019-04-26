@@ -251,7 +251,7 @@
           questionnaire: this.result,
         }).then(res => {
           if(res.data.code === 0){
-            this.$router.push({name: 'QuestionnaireFinish'});
+            this.$router.push({name: 'DealersQuestionnaireFinish'});
           }
         });
       }
