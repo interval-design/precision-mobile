@@ -1,10 +1,12 @@
 <template>
   <div class="itv-questionnaire">
-    <router-link class="skip" :to="{name:'DealersQuestionnaireFinish',query:{action:'skip'}}">跳过</router-link>
     <div class="itv-services-banner">
       <img src="../assets/banner-questionnaire.jpg" alt="banner-questionnaire">
     </div>
-    <p class="itv-questionnaire-desc itv-bg-white">检测前置健康问卷能帮助我们了解您的生活习惯、健康状况和病史，会影响我们对您所出分析报告结果和对您的健康建议，请您如实填写</p>
+    <p class="itv-questionnaire-desc itv-bg-white">
+      服用抗生素一周内，不可采集样本<br/>
+      请如实填写相关信息，提交完成后无法修改
+    </p>
     <div class="itv-question itv-bg-white">
       <p class="itv-question-hd">
         <icon-svg icon-class="issue"></icon-svg>

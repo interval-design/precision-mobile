@@ -109,6 +109,10 @@
       },
 
       login() {
+        if(this.form.mobile === '' || this.form.code === '' || this.form.captchaCode === ''){
+          this.form.errorText = '信息填写不完整，请检查';
+          return
+        }
         ApiUser.login({
           mobile: this.form.mobile,
           code: this.form.code

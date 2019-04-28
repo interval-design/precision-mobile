@@ -14,8 +14,24 @@
           <icon-svg icon-class="scan"></icon-svg>
           {{ kitCode === '' ? '扫一扫':'重新扫描' }}
         </base-button>
+        <base-button type="info" line @click="kitCodeDialog = true">
+          <icon-svg icon-class="keyboard"></icon-svg>
+          手动输入
+        </base-button>
       </div>
     </div>
+      <!-- 手动输入 -->
+    <base-Dialog title="手动输入" class="kit-code" :visible.sync="kitCodeDialog" width="80%">
+      <div class="input">
+        <div class="itv-input-group">
+          <input class="itv-input" type="text" v-model="kitCode" placeholder="请输入试剂盒条码号">
+        </div>
+      </div>
+      <template slot="footer">
+        <base-button line width="40%" @click="kitCodeDialog = false;kitCode = ''">取消</base-button>
+        <base-button width="40%" @click="kitCodeDialog = false">确定</base-button>
+      </template>
+    </base-Dialog>
     <div class="info itv-bg-white">
       <p class="info_hd">基本信息<span class="sub">（所有信息必填）</span></p>
       <base-input title="姓名" v-model="form.name"></base-input>
@@ -37,6 +53,7 @@
     name: "DealersScanner",
     data() {
       return {
+        kitCodeDialog:false,
         kitCode: '',
         form: {
           name: '',
