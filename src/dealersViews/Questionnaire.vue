@@ -39,71 +39,73 @@
         form: [
           {
             id: 1,
-            question: '您是否吸烟及每天的吸烟量？',
+            question: '吸烟频率（每天）？',
             options: [
               {id: '1-1', text: '不吸烟'},
-              {id: '1-2', text: '半包'},
-              {id: '1-3', text: '1包'},
-              {id: '1-4', text: '1-2包'},
-              {id: '1-5', text: '2包以上'},
+              {id: '1-2', text: '偶尔'},
+              {id: '1-3', text: '半包'},
+              {id: '1-4', text: '1包'},
+              {id: '1-5', text: '1-2包'},
+              {id: '1-6', text: '2包以上'},
             ],
             selected: '',
           },
           {
             id: 2,
-            question: '三餐饮食的规律性',
+            question: '饮酒频率？',
             options: [
-              {id: '1-1', text: '三餐比较规律'},
-              {id: '2-2', text: '不吃早餐'},
-              {id: '2-3', text: '不吃午餐'},
-              {id: '2-4', text: '不吃晚餐'},
-              {id: '2-5', text: '少量多餐'},
+              {id: '2-1', text: '从不饮酒'},
+              {id: '2-2', text: '每月1-2次'},
+              {id: '2-3', text: '每周1-2次'},
+              {id: '2-4', text: '每周>3次'},
             ],
             selected: '',
           },
           {
             id: 3,
-            question: '您日常饮食中是否包含全谷类食品？(全谷类包括麦麸、麦片、全麦粉及糙米、燕麦、豆类)',
+            question: '饮食习惯？',
             options: [
-              {id: '3-1', text: '是'},
-              {id: '3-2', text: '否'},
+              {id: '3-1', text: '三餐比较规律'},
+              {id: '3-2', text: '不吃早餐'},
+              {id: '3-3', text: '不吃午餐'},
+              {id: '3-4', text: '不吃晚餐'},
+              {id: '3-5', text: '少量多餐'},
             ],
             selected: '',
           },
           {
             id: 4,
-            question: '您日常饮食中是否包含益生菌(包括酸奶)或益生元?',
+            question: '饮食情况？',
             options: [
-              {id: '4-1', text: '是'},
-              {id: '4-2', text: '否'},
+              {id: '4-1', text: '较均衡'},
+              {id: '4-2', text: '偏肉型'},
+              {id: '4-3', text: '偏素型'},
             ],
             selected: '',
           },
           {
             id: 5,
-            question: '您平常运动的频率？',
+            question: '持续服用过一段时间的益生菌补充剂？',
             options: [
-              {id: '5-1', text: '经常'},
-              {id: '5-2', text: '偶尔'},
-              {id: '5-3', text: '从不'},
+              {id: '5-1', text: '是'},
+              {id: '5-2', text: '否'},
             ],
             selected: '',
           },
           {
             id: 6,
-            question: '您的排便情况？',
+            question: '您平常运动的频率？',
             options: [
-              {id: '6-1', text: '经常性腹泻'},
-              {id: '6-2', text: '偶尔腹泻'},
-              {id: '6-3', text: '经常性便秘'},
-              {id: '6-4', text: '偶尔便秘'},
-              {id: '6-5', text: '排便比较规律'},
+              {id: '6-1', text: '定期（3-5次/周）'},
+              {id: '6-2', text: '偶尔（1-2次/周）'},
+              {id: '6-3', text: '很少（不到1次/周）'},
+              {id: '6-4', text: '没有'},
             ],
             selected: '',
           },
           {
             id: 7,
-            question: '您近期是否有便血症状？',
+            question: '长期感到精神压抑或有过重大精神创伤（例如：离异，亲人离世等）？',
             options: [
               {id: '7-1', text: '是'},
               {id: '7-2', text: '否'},
@@ -112,7 +114,7 @@
           },
           {
             id: 8,
-            question: '您是否患过阑尾炎或者接受过阑尾切除手术？',
+            question: '最近5年是否接受过肠镜检查？',
             options: [
               {id: '8-1', text: '是'},
               {id: '8-2', text: '否'},
@@ -121,7 +123,7 @@
           },
           {
             id: 9,
-            question: '您最近5年是否接受过肠镜检查？',
+            question: '本人是否有肠息肉病史？',
             options: [
               {id: '9-1', text: '是'},
               {id: '9-2', text: '否'},
@@ -130,7 +132,7 @@
           },
           {
             id: 10,
-            question: '您本人是否有肠息肉病史？',
+            question: '一级亲属有肠癌史或肠息肉史（一级亲属：父母、同胞兄弟姐妹、子女）？',
             options: [
               {id: '10-1', text: '是'},
               {id: '10-2', text: '否'},
@@ -139,7 +141,7 @@
           },
           {
             id: 11,
-            question: '您本人是否有癌症病史(包括任何恶性癌症)？',
+            question: '您是否患阑尾炎或者接受过阑尾切除手术？',
             options: [
               {id: '11-1', text: '是'},
               {id: '11-2', text: '否'},
@@ -148,7 +150,7 @@
           },
           {
             id: 12,
-            question: '您的父母，同胞兄弟姐妹，或者子女是否有人患过肠癌？',
+            question: '您是否患慢性胆囊炎或者接受过胆囊切除手术？',
             options: [
               {id: '12-1', text: '是'},
               {id: '12-2', text: '否'},
@@ -157,7 +159,7 @@
           },
           {
             id: 13,
-            question: '您是否长期感觉精神压力大？',
+            question: '近半年有便血或黏液便？',
             options: [
               {id: '13-1', text: '是'},
               {id: '13-2', text: '否'},
@@ -166,67 +168,72 @@
           },
           {
             id: 14,
-            question: '您在近20年内是否由于某些生活事件(例如离婚，丧偶，近亲死亡等)遭受过重大并且持续的精神创伤？',
+            question: '出现腹泻的情况？',
             options: [
-              {id: '14-1', text: '是'},
-              {id: '14-2', text: '否'},
+              {id: '14-1', text: '排便比较规律'},
+              {id: '14-2', text: '经常每周多次'},
+              {id: '14-3', text: '经常每月多次'},
             ],
             selected: '',
           },
           {
             id: 15,
-            question: '您再采样前48h是否使用过抗生素？',
+            question: '便秘情况？（正常排便频率：1~2次/(每1~2天)）',
             options: [
-              {id: '15-1', text: '是'},
-              {id: '15-2', text: '否'},
+              {id: '15-1', text: '排便比较规律'},
+              {id: '15-2', text: '偶尔便秘（每月会发生几次）'},
+              {id: '15-3', text: '经常性便秘（每周都出现）'},
             ],
             selected: '',
           },
           {
             id: 16,
-            question: '饮酒频率？',
+            question: '存在过敏源？',
             options: [
-              {id: '16-1', text: '从不饮酒'},
-              {id: '16-2', text: '每月 1-2 次'},
-              {id: '16-3', text: '每周 1-2 次'},
-              {id: '16-4', text: '每周 >3 次'},
+              {id: '16-1', text: '无'},
+              {id: '16-2', text: '食物过敏'},
+              {id: '16-3', text: '呼吸道过敏（例如：花粉过敏、过敏性鼻炎、过敏性哮喘）'},
+              {id: '16-4', text: '均有（食物+呼吸道过敏）'},
             ],
             selected: '',
           },
           {
             id: 17,
-            question: '您平时使用哪些药物？',
+            question: '最近一次使用抗生素是？（药名包含：沙星、头孢、环素、霉素、硝唑、西林（例如：阿莫西林））',
             options: [
-              {id: '17-1', text: '无'},
-              {id: '17-2', text: '抗病毒'},
-              {id: '17-3', text: '降血压'},
-              {id: '17-4', text: '降血糖'},
-              {id: '17-5', text: '降血脂'},
-              {id: '17-6', text: '胃药'},
+              {id: '17-1', text: '近3天'},
+              {id: '17-2', text: '本周'},
+              {id: '17-3', text: '本月'},
+              {id: '17-4', text: '半年内'},
+              {id: '17-5', text: '一年内'},
+              {id: '17-6', text: '一年以上'},
             ],
             selected: '',
           },
           {
             id: 18,
-            question: '您是否有过敏原？',
+            question: '有癌症病史？',
             options: [
-              {id: '18-1', text: '无'},
-              {id: '18-2', text: '花粉'},
-              {id: '18-3', text: '霉菌'},
-              {id: '18-4', text: '牛奶'},
-              {id: '18-5', text: '鸡蛋'},
-              {id: '18-6', text: '大豆'},
-              {id: '18-7', text: '海鲜'},
-              {id: '18-8', text: '坚果类'},
+              {id: '18-1', text: '是'},
+              {id: '18-2', text: '否'},
             ],
             selected: '',
           },
           {
             id: 19,
-            question: '您最近一年是否有门诊就医或者住院经历？',
+            question: '近一年有住院或手术经历？',
             options: [
               {id: '19-1', text: '是'},
               {id: '19-2', text: '否'},
+            ],
+            selected: '',
+          },
+          {
+            id: 20,
+            question: '在长期服用一些药物？',
+            options: [
+              {id: '20-1', text: '是'},
+              {id: '20-2', text: '否'},
             ],
             selected: '',
           },
@@ -239,8 +246,8 @@
         if(this.current.selected === ''){
           return;
         }
-        this.result.push(this.current.selected);
-        if (this.current.id === 19) {
+        this.result.push({q:this.current.question,a:this.current.selected});
+        if (this.current.id === 20) {
           this.finish();
           return;
         }

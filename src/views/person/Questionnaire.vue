@@ -51,7 +51,7 @@
             id: 2,
             question: '三餐饮食的规律性',
             options: [
-              {id: '1-1', text: '三餐比较规律'},
+              {id: '2-1', text: '三餐比较规律'},
               {id: '2-2', text: '不吃早餐'},
               {id: '2-3', text: '不吃午餐'},
               {id: '2-4', text: '不吃晚餐'},
@@ -237,7 +237,7 @@
         if(this.current.selected === ''){
           return;
         }
-        this.result.push(this.current.selected);
+        this.result.push({q:this.current.question,a:this.current.selected});
         if (this.current.id === 19) {
           this.finish();
           return;
