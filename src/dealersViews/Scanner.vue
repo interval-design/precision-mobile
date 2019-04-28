@@ -20,7 +20,31 @@
         </base-button>
       </div>
     </div>
-      <!-- 手动输入 -->
+    <base-Dialog class="clause" :visible.sync="clauseDialog" title="《知情同意书》" width="90%" top="10%">
+      <div class="clause-desc">
+        <p>本同意书将向您提供必要的信息以帮助您决定是否参加此检测项目，此项目已通过相应研究机构伦理审查委员会审查。请您仔细阅读，如有任何疑问，请立刻向我们的工作人员提出。</p>
+        <p>我们在帮助您了解人体微生物奥秘的同时，也会同有兴趣的科学家一起，使用您和其他用户的信息，研究人和微生物的关系，以期为人类健康做贡献。</p>
+        <p>我们将在您同意的前提下，收集您的微生物样本（如粪便、体表微生物等）；同时，请您按照我们的指导方式规范取样，以确保取样过程不会对您产生任何伤害；此外，我们还需要您协助完成关于您的生活方式的调查问卷，问卷会涉及到您的一些私人信息，如家族病史、个人病史等，这将有助于我们更好地为您提供服务。</p>
+        <h2>权益与申明</h2>
+        <ol>
+          <li>这是一项科学研究，目的是推动科学技术进步。</li>
+          <li>实验结果不能被作为临床诊断依据，我们也不提供任何临床治疗方案。</li>
+        </ol>
+        <h2>我们承诺</h2>
+        <ol>
+          <li>1、我们保证不会在未经您同意的情况下公布您的个人信息。您所提供的生物样本及该样本所产生的数据都会以一个编号命名，只有少数经过授权的人才有权限将您的个人信息同这些编号联系在一起，其他参与此项目的研究人员不会知道您的个人信息。</li>
+          <li>2、我们保证所有参加实验的个人信息将被妥善保管，不会向任何人或机构透露（根据法律法规的规定或相关政府、司法机关要求提供您的个人信息的情况除外）；公开发表的出版物中不会包含和使用任何您的个人信息。</li>
+        </ol>
+        <h2>请您确认并取样</h2>
+        <ol>
+          <li>1、您参加此项检测是完全出于自愿。未成年人（未满18周岁）或者没有独立行为能力的人需要由其监护人签署本知情同意书后方可参加此项研究。</li>
+          <li>2、按照取样试剂盒的指示完成取样。</li>
+          <li>3、允许我们的研究者在保证实验结果准确性的前提下，使用您的个人信息。</li>
+        </ol>
+      </div>
+      <base-button slot="close" type="white" line>我同意</base-button>
+    </base-Dialog>
+    <!-- 手动输入 -->
     <base-Dialog title="手动输入" class="kit-code" :visible.sync="kitCodeDialog" width="80%">
       <div class="input">
         <div class="itv-input-group">
@@ -32,6 +56,7 @@
         <base-button width="40%" @click="kitCodeDialog = false">确定</base-button>
       </template>
     </base-Dialog>
+
     <div class="info itv-bg-white">
       <p class="info_hd">基本信息<span class="sub">（所有信息必填）</span></p>
       <base-input title="姓名" v-model="form.name"></base-input>
@@ -53,6 +78,7 @@
     name: "DealersScanner",
     data() {
       return {
+        clauseDialog: true,
         kitCodeDialog:false,
         kitCode: '',
         form: {
