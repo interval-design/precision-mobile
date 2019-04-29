@@ -245,7 +245,7 @@
           return;
         }
         this.result.push({q:this.current.question,a:this.current.selected});
-        if (this.current.id === 19) {
+        if (this.current.id === 20) {
           this.finish();
           return;
         }
