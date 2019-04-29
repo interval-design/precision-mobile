@@ -5,8 +5,7 @@
     </div>
     <p class="itv-questionnaire-desc itv-bg-white">
       服用抗生素一周内，不可采集样本<br/>
-      请一次性、按顺序填写问卷，不可返回，否则信息无法提交<br/>
-      请如实填写相关信息，提交完成后无法修改
+      请一次性、按顺序填写问卷，不可返回，否则信息无法提交。请如实填写相关信息，提交完成后无法修改
     </p>
     <div class="itv-question itv-bg-white">
       <p class="itv-question-hd">
